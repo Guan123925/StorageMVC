@@ -1,0 +1,71 @@
+﻿<!DOCTYPE html>
+
+<html>
+<head>
+    <meta name="viewport" content="width=device-width" />
+    <title>@ViewBag.Title</title>
+    <script src="~/Scripts/jquery-3.4.1.min.js"></script>
+    <script src="~/Scripts/jquery.unobtrusive-ajax.min.js"></script>
+<style>
+    #tbo {
+      border-collapse:collapse;
+    }
+        #tbo td {
+        border:1px solid #000000;
+        padding:20px;
+        text-align:center;
+        }
+</style>
+</head>
+<body>
+    <div>
+        @RenderBody()
+    </div>
+    <div>
+        <span>项目编号：</span>
+        <span id="SpanNumber"></span><br /><br />
+        <span>项目描述：</span>
+        <span  id="SpanDetail">暂未添加项目描述</span><br /><br />
+        <span>项目负责人：</span>
+        <span  id="SpanProjectPerson"></span><br /><br />
+        <span>技术负责人：</span>
+        <span id="SpanTechnologyPerson"></span><br /><br />
+        <span>产品负责人：</span>
+        <span id="SpanProductPerson"></span><br /><br />
+        <span>测试负责人：</span>
+        <span id="SpanRestPerson"></span><br /><br />
+        <span>市场负责人：</span>
+        <span id="SpanBazaarPerson"></span><br /><br />
+        <span>项目开始时间：</span>
+        <span id="SpanStartTime"></span><br /><br />
+        <span>项目截止时间：</span>
+        <span id="SpanOffTime"></span><br /><br />
+        <span>阶段计划表:</span>
+        <table id="tbo" style="margin-left:150px;margin-top:20px">
+            <thead>
+                <tr>
+                    <td>序号</td>
+                    <td>阶段</td>
+                    <td>开始日期</td>
+                    <td>完成日期</td>
+                    <td>阶段负责人</td>
+                </tr>
+            </thead>
+            <tbody id="tdy">
+                <tr>
+                    <td>序号</td>
+                    <td>阶段</td>
+                    <td>开始日期</td>
+                    <td>完成日期</td>
+                    <td>阶段负责人</td>
+                </tr>
+            </tbody>
+        </table>
+    </div>
+    <div  class="layui-table" lay-even lay-skin="nob" id="tbod">
+        <button style="margin-left:200px;margin-top:20px; color:lightskyblue;background-color:white;height:30px;width:50px;">编辑</button>
+        <button  style="margin-left:100px;margin-top:20px; color:lightskyblue;background-color:white;height:30px;width:50px;">返回</button>
+    </div>
+</body>
+</html>
+
