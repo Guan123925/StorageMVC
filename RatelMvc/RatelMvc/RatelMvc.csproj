@@ -52,7 +52,7 @@
     <Reference Include="Microsoft.CSharp" />
     <Reference Include="SDKClient, Version=1.0.0.0, Culture=neutral, processorArchitecture=MSIL">
       <SpecificVersion>False</SpecificVersion>
-      <HintPath>..\..\..\CMS\RatelCMSAPI\SDKClient\bin\Debug\SDKClient.dll</HintPath>
+      <HintPath>..\..\..\RatelApi\RatelCMSAPI\SDKClient\obj\Debug\SDKClient.dll</HintPath>
     </Reference>
     <Reference Include="System" />
     <Reference Include="System.Data" />
@@ -719,6 +719,7 @@
     <Content Include="Scripts\jquery.validate.unobtrusive.min.js" />
     <Content Include="Scripts\modernizr-2.8.3.js" />
     <Content Include="Scripts\vue.min.js" />
+    <Content Include="style.css" />
     <Content Include="Web.config" />
     <Content Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
@@ -743,8 +744,8 @@
     <Content Include="Views\Project\StageUpdate.cshtml" />
     <Content Include="Views\Users\_LoginShow.cshtml" />
     <Content Include="Views\Users\LoginShow.cshtml" />
-    <Content Include="Views\Master\Project\ProjectAdd.cshtml" />
-    <Content Include="Views\Project\ProjectAdd.cshtml" />
+    <Content Include="Views\Users\UserRegist.cshtml" />
+    <Content Include="Views\Users\RegistShow.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
