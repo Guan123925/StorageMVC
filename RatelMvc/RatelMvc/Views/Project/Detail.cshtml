@@ -5,12 +5,58 @@
 }
 <script>
     $().ready(function () {
-        
+        ProjectDetail();
+        StageDetail();
     })
-    $.ajax(
-        url: "",
-        data: "",
-        type; "",
-       
-    )
+    function ProjectDetail() {
+
+        var ProjectNumber = "sdk";
+        $.ajax({
+            url: "/Project/ProjectDetail",
+            data: {
+                ProjectNumber: ProjectNumber
+            },
+            type: "POST",
+            datatype: "JSON",
+            success: function (res) {
+                $(res.Project).each(function () {
+                    $("#SpanNumber").text(res.Project[0].ProjectNumber);
+                    $("#SpanDetail").text(res.Project[0].ProjectDescribe);
+                    $("#SpanProjectPerson").text(res.Project[0].ProjectStaffId);
+                    $("#SpanTechnologyPerson").text(res.Project[0].TechStaffId);
+                    $("#SpanProductPerson").text(res.Project[0].ProductStaffId);
+                    $("#SpanTestPerson").text(res.Project[0].TestStaffId);
+                    $("#SpanBazaarPerson").text(res.Project[0].MarketStaffId);
+                    $("#SpanStartTime").text(res.Project[0].ProjectStartTime);
+                    $("#SpanOffTime").text(res.Project[0].ProjectOutTime);
+                })
+            }
+        })
+    }
+
+    function StageDetail() {
+        var ProjectStageId = 1;
+
+        $.ajax({
+            url: "/Project/StageDetail",
+            data: {
+                ProjectStageId:ProjectStageId
+            },
+            datatype: "Json",
+            type:"Post",
+            success: function (res) {
+                var list = "";
+                $(res.Stage).each(function () {
+                    list += "<tr>" +
+                        "<td>" + this.PlanId + "</td>" +
+                        "<td>" + this.StageName + "</td>" +
+                        "<td>" + this.StageStartTime + "</td>" +
+                        "<td>" + this.StageFinishTime + "</td>" +
+                        "<td>" + this.StageStaffName + "</td>" +
+                        "</tr>";
+                })
+                $("#tdy").append(list);
+            }
+        })
+    }
 </script>
