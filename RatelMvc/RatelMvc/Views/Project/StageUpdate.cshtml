@@ -29,4 +29,28 @@
             }
         })
     }
+
+    function StageUpdate() {
+        var PlanId = $("#hidPlanId").val();
+
+        $.ajax({
+            url: "/Project/UpdateStage",
+            data: {
+                PlanId: PlanId,
+
+            },
+            type:"post",
+            datatype: "json",
+            success: function (res) {
+                if (res.IsRegistSuccess) {
+                    alert("修改失败");
+                    location.href = "/Project/AddProjectAndStage";
+                }
+                else {
+                    alert("修改失败");
+                    return;
+                }
+            }
+        })
+    }
 </script>
