@@ -622,6 +622,10 @@
     <Content Include="Views\Project\InfoMation.cshtml" />
     <Content Include="Views\Master\Project\ProjectDetail.cshtml" />
     <Content Include="Views\Project\Detail.cshtml" />
+    <Content Include="Views\Master\Project\ProjectAddOrUpdate.cshtml" />
+    <Content Include="Views\Project\AddProjectAndStage.cshtml" />
+    <Content Include="Views\Master\Project\StageUpdate.cshtml" />
+    <Content Include="Views\Project\StageUpdate.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

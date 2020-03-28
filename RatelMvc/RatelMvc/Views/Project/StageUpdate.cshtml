@@ -1,0 +1,32 @@
+﻿
+@{
+    ViewBag.Title = "StageUpdate";
+    Layout = "~/Views/Master/Project/StageUpdate.cshtml";
+}
+
+<script>
+    $().ready(function () {
+        StageBackFill();
+    })
+
+    function StageBackFill() {
+        var PlanId = $("#hidPlanId").val();
+
+        $.ajax({
+            url: "/Project/StageBackFill",
+            data: {
+                PlanId: PlanId
+            },
+            type: "post",
+            datatype: "json",
+            success: function (res) {
+                $(res.Stage).each(function () {
+                    $("#txtStage").val(res.Stage[0].StageName);
+                    $("#txtStartTime").val(res.Stage[0].StageStartTime);
+                    $("#txtOffTime").val(res.Stage[0].StageFinishTime);
+                    $("#txtPerson").val(res.Stage[0].StageStaffName);
+                })
+            }
+        })
+    }
+</script>

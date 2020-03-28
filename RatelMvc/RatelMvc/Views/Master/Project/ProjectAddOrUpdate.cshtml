@@ -1,0 +1,117 @@
+﻿<!DOCTYPE html>
+
+<html>
+<head>
+    <meta name="viewport" content="width=device-width" />
+    <title>@ViewBag.Title</title>
+    <script src="~/Scripts/jquery-3.4.1.min.js"></script>
+    <script src="~/Scripts/jquery.unobtrusive-ajax.min.js"></script>
+<style>
+    #tbo td {
+    padding:10px;
+    }
+    #tab {
+    border-collapse:collapse;
+    }
+        #tab td {
+        padding:10px;
+        border:1px solid #000000;
+        text-align:center;
+        }
+</style>
+</head>
+
+<body>
+    <div>
+        @RenderBody()
+    </div>
+    <div>
+        <h2 style="float:left">新增/编辑</h2>
+        <button style="width:50px;height:30px; margin-left:300px;margin-top:50px;background-color:aqua">取消</button>
+        <button style="width:50px;height:30px;margin-left:50px;background-color:aqua">保存</button>
+    </div>
+    <div>
+        <table class="table table-bordered" id="tbo">
+            <tr>
+                <td>项目编号：</td>
+                <td><input type="text" id="txtNumber" placeholder="输入项目编号" /></td>
+            </tr>
+            <tr>
+                <td>项目描述：</td>
+                <td><input type="text" id="txtDetail" placeholder="输入20字内项" /></td>
+            </tr>
+            <tr>
+                <td>项目负责人：</td>
+                <td>
+                    <select id="selProject">
+                        <option value="0">请选择</option>
+
+                    </select>
+                </td>
+            </tr>
+            <tr>
+                <td>技术负责人：</td>
+                <td>
+                    <select id="selTech">
+                        <option value="0">请选择</option>
+
+                    </select>
+                </td>
+            </tr>
+            <tr>
+                <td>产品负责人：</td>
+                <td>
+                    <select id="selProduct">
+                        <option value="0">请选择</option>
+
+                    </select>
+                </td>
+            </tr>
+            <tr>
+                <td>测试负责人：</td>
+                <td>
+                    <select id="selTest">
+                        <option value="0">请选择</option>
+
+                    </select>
+                </td>
+            </tr>
+            <tr>
+                <td>市场负责人：</td>
+                <td>
+                    <select id="selMark">
+                        <option value="0">请选择</option>
+
+                    </select>
+                </td>
+            </tr>
+            <tr>
+                <td>项目开始日期：</td>
+                <td><input type="text" id="txtStartTime" /></td>
+            </tr>
+            <tr>
+                <td>项目截止日期：</td>
+                <td><input type="text" id="txtOffTime" /></td>
+            </tr>
+        </table>
+    </div>
+    <div style="margin-top:15px;margin-left:15px;">
+        <span>阶段计划表:</span>
+        <span><a href="#">新增阶段</a></span>
+        <table style="margin-top:15px;" id="tab">
+            <thead>
+                <tr>
+                    <td>序号</td>
+                    <td>阶段</td>
+                    <td>开始日期</td>
+                    <td>完成日期</td>
+                    <td>阶段负责人</td>
+                    <td colspan="2">操作</td>
+                </tr>
+    
+            </thead>
+            <tbody id="tby"></tbody>
+        </table>
+    </div>
+</body>
+</html>
