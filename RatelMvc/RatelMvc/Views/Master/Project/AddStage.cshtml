@@ -4,9 +4,11 @@
 <head>
     <meta name="viewport" content="width=device-width" />
     <title>@ViewBag.Title</title>
+    <script src="~/Scripts/jquery-3.4.1.min.js"></script>
+    <script src="~/Scripts/jquery.unobtrusive-ajax.min.js"></script>
     <style>
         #tab td {
-        padding:15px;
+            padding: 15px;
         }
     </style>
 </head>
@@ -34,7 +36,7 @@
                 <td><input type="text" id="txtPerson" /></td>
             </tr>
         </table>
-        <button onclick="StageUpdate()" style="margin-left:15px;margin-top:15px;width:50px;height:30px;">保存</button>
+        <button onclick="StageAdd()" style="margin-left:15px;margin-top:15px;width:50px;height:30px;">保存</button>
     </div>
 </body>
 </html>
