@@ -1,0 +1,95 @@
+﻿@model Models.Talent.TalentsModel
+
+@{
+    ViewBag.Title = "PutTalent";
+}
+
+<h2>PutTalent</h2>
+
+@using(Html.BeginForm())
+{
+    <table class="table">
+        <tr>
+            <td>姓名</td>
+            <td>
+                <input id="Text1" name="TName" value="@Model.TName" /><input type="hidden" name="FId" value="@Model.TId" />
+<td>
+        </tr>
+        <tr>
+            <td>联系方式</td>
+            <td><input id="Text2" name="TelePhone" value="@Model.TelePhone" />
+            <td>
+        </tr>
+        <tr>
+            <td>毕业院校</td>
+            <td><input id="Text3" name="Graduate" value="@Model.Graduate" />
+            <td>
+        </tr>
+        <tr>
+            <td>学历</td>
+            <td>
+                <select id="Select1" value="@Model.Education" name="Education">
+                    <option value="--请选择--">--请选择--</option>
+                    <option value="专科">专科</option>
+                    <option value="大学">大学</option>
+                    <option value="大专">大专</option>
+                </select>
+            <td>
+        </tr>
+        <tr>
+            <td>应聘岗位</td>
+            <td>
+                <select id="Select2" value="@Model.Station" name="Station">
+                    <option value="--请选择--">--请选择--</option>
+                    <option value="测试经理">测试经理</option>
+                    <option value="产品经理">产品经理</option>
+                    <option value="java开发">java开发</option>
+                    <option value="测试专员">测试专员</option>
+                    <option value="产品助理">产品助理</option>
+                    <option value="产品总监">产品总监</option>
+                </select>
+            <td>
+        </tr>
+        <tr>
+            <td>信息来源</td>
+            <td>
+                <select id="Select3" value="@Model.Information" name="Information">
+                    <option value="--请选择--">--请选择--</option>
+                    <option value="Boss直聘">Boss直聘</option>
+                    <option value="猎聘">猎聘</option>
+                    <option value="猎头">猎头</option>
+                    <option value="前程无忧">前程无忧</option>
+                    <option value="内推">内推</option>
+                </select>
+            <td>
+        </tr>
+        <tr>
+            <td>电子邮件</td>
+            <td><input id="Text4" name="Email" value="@Model.Email" />
+            <td>
+        </tr>
+        <tr>
+            <td>反馈</td>
+            <td><input id="Text5" name="FanKui" value="@Model.FanKui" />
+            <td>
+        </tr>
+        <tr>
+            <td>人员状态</td>
+            <td>
+                <select id="Select5" value="@Model.TState" name="TState">
+                    <option value="--请选择--">--请选择--</option>
+                    <option value="跟进中    ">跟进中    </option>
+                    <option value="已完成    ">已完成    </option>
+                </select>
+            <td>
+        </tr>
+        <tr>
+            <td><input id="Submit1" type="submit" value="修改" />
+            <td>
+        </tr>
+    </table>
+    }
+
+<div>
+    @Html.ActionLink("Back to List", "Index")
+</div>      

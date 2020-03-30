@@ -1,0 +1,45 @@
+﻿@model Models.Talent.RecordModel
+@{
+    ViewBag.Title = "AddRecoed";
+}
+
+<h2>AddRecoed</h2>
+@using (Html.BeginForm())
+{
+<table class="table">
+    <tr>
+        <td>工作单位:</td>
+        <td><input id="Text1" name="Organization" value="" />
+        <td>
+    </tr>
+    <tr>
+        <td>职位:</td>
+        <td><input id="Text2" name="Position" value="" />
+        <td>
+    </tr>
+    <tr>
+        <td>薪资:</td>
+        <td><input id="Text3" name="Pay" value="" />
+        <td>
+    </tr>
+    <tr>
+        <td>工作内容:</td>
+        <td><input id="Text4" name="GongNeiR" value="" />
+        <td>
+    </tr>
+    <tr>
+        <td>离职原因:</td>
+        <td><input id="Text5" name="LiZhi" value="" />
+        <td>
+    </tr>
+    <tr>
+        <td>工作时间:</td>
+        <td><input id="Text6" name="RTime" value="" /></td>
+    </tr>
+    <tr>
+        <td>
+            <input id="Submit1" type="submit" value="提交" />
+        <td>
+    </tr>
+</table>
+}
