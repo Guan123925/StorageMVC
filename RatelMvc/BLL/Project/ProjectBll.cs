@@ -93,6 +93,16 @@ namespace BLL
         }
 
         /// <summary>
+        /// 阶段反填
+        /// </summary>
+        /// <param name="request"></param>
+        /// <returns></returns>
+        public StageBackFillGetResponse StageBackFill(StageBackFillGetRequest request)
+        {
+            return ApiRequestHelp.Post<StageBackFillGetRequest, StageBackFillGetResponse>(request);
+        }
+
+        /// <summary>
         /// 修改项目状态
         /// </summary>
         /// <returns></returns>

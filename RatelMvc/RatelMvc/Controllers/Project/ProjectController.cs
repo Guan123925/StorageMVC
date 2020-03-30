@@ -21,6 +21,26 @@ namespace RatelMvc.Controllers
             return View();
         }
 
+        public ActionResult AddProjectAndStage()
+        {
+            return View();
+        }
+
+        public ActionResult StageUpdate()
+        {
+            return View();
+        }
+
+        [HttpPost]
+        /// <summary>
+        /// 阶段反填
+        /// </summary>
+        /// <param name="request"></param>
+        /// <returns></returns>
+        public JsonResult StageBackFill(StageBackFillGetRequest request)
+        {
+            return Json(bll.StageBackFill(request));
+        }
         [HttpPost]
         /// <summary>
         /// 项目参与人员绑定
