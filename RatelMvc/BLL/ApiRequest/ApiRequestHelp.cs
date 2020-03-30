@@ -13,7 +13,7 @@ namespace BLL
 {
     public static class ApiRequestHelp
     {
-        static string BaseAddress = "http://localhost:51845/";
+        static string BaseAddress = "http://localhost:51845";
 
         public static TResponse Post<TRequet, TResponse>(TRequet t) where TRequet : BaseRequest where TResponse : BaseResponse, new()
         {
