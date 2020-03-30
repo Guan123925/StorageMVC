@@ -32,18 +32,25 @@
 
     function StageUpdate() {
         var PlanId = $("#hidPlanId").val();
+        var StageName = $("#txtStage").val();
+        var StageStartTime = $("#txtStartTime").val();
+        var StageFinishTime = $("#txtOffTime").val();
+        var StageStaffName = $("#txtPerson").val();
 
         $.ajax({
             url: "/Project/UpdateStage",
             data: {
                 PlanId: PlanId,
-
+                StageName: StageName,
+                StageStartTime:StageStartTime,
+                StageFinishTime: StageFinishTime,
+                StageStaffName:StageStaffName,
             },
             type:"post",
             datatype: "json",
             success: function (res) {
                 if (res.IsRegistSuccess) {
-                    alert("修改失败");
+                    alert("修改成功");
                     location.href = "/Project/AddProjectAndStage";
                 }
                 else {

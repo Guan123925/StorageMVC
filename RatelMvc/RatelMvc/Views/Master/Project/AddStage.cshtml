@@ -1,0 +1,40 @@
+﻿<!DOCTYPE html>
+
+<html>
+<head>
+    <meta name="viewport" content="width=device-width" />
+    <title>@ViewBag.Title</title>
+    <style>
+        #tab td {
+        padding:15px;
+        }
+    </style>
+</head>
+<body>
+    <div>
+        @RenderBody()
+    </div>
+    <div>
+        <h2 style="margin-left:15px;">新增阶段</h2>
+        <table id="tab">
+            <tr>
+                <td>阶段:</td>
+                <td><input type="text" id="txtStage" /></td>
+            </tr>
+            <tr>
+                <td>开始日期:</td>
+                <td><input type="text" id="txtStartTime" /></td>
+            </tr>
+            <tr>
+                <td>完成日期:</td>
+                <td><input type="text" id="txtOffTime" /></td>
+            </tr>
+            <tr>
+                <td>阶段负责人:</td>
+                <td><input type="text" id="txtPerson" /></td>
+            </tr>
+        </table>
+        <button onclick="StageUpdate()" style="margin-left:15px;margin-top:15px;width:50px;height:30px;">保存</button>
+    </div>
+</body>
+</html>
