@@ -4,3 +4,31 @@
     Layout = "~/Views/Master/Project/ProjectInfoMation.cshtml";
 }
 
+<script>
+    $().ready({
+        ProjectShow();
+    })
+
+    function ProjectShow() {
+        var PageIndex = 1;
+        var PageSize = 3;
+        var Projectstage = -1;
+        var ProjectNumber = "";
+
+        $.ajax({
+            url: "/Project/ProjectShow",
+            data: {
+                PageIndex:PageIndex,
+                PageSize:PageSize,
+                Projectstage: Projectstage,
+                ProjectNumber:ProjectNumber
+            },
+            datatype: "json",
+            type: "post",
+            success: function (res) {
+
+            }
+        })
+    }
+</script>
+
