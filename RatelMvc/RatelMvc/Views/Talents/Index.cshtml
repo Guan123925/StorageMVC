@@ -1,0 +1,70 @@
+﻿@model IEnumerable<Models.Talent.TalentsModel>
+
+@{
+    ViewBag.Title = "Index";
+}
+
+<h2>显示</h2>
+
+@using (Html.BeginForm())
+{
+
+}
+
+<table class="layui-table" lay-skin="line">
+    <tr>
+        <th>
+            序号
+        </th>
+        <th>
+            姓名
+        </th>
+        <th>
+            联系方式
+        </th>
+        <th>
+            应聘岗位
+        </th>
+        <th>
+            信息来源
+        </th>
+        <th>
+            面试反馈
+        </th>
+        <th>
+            人员状态
+        </th>
+        <th></th>
+    </tr>
+
+@foreach (var item in Model) {
+    <tr>
+        <td>
+            @Html.DisplayFor(modelItem => item.TId)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.TName)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.TelePhone)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Station)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Information)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.FanKui)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.TState)
+        </td>
+        <td>
+            @Html.ActionLink("修改", "PutTalent", new { /* id=item.PrimaryKey */ },new { @class = "layui-btn layui-btn-danger layui-btn-xs" }) |
+            @Html.ActionLink("查看", "Details", new { /* id=item.PrimaryKey */ },new { @class = "layui-btn layui-btn-primary layui-btn-xs" }) |
+        </td>
+    </tr>
+}
+
+</table>
