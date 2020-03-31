@@ -5,7 +5,8 @@
 }
 
 <script>
-     $().ready(function () {
+    $().ready(function () {
+         ProjectBackFill();
          StageDetail();
          ProjectBand();
          MarkBand();
@@ -14,34 +15,16 @@
          ProductBand();
      })
 
-      function StageDetail() {
-        var ProjectStageId = 1;
-
-        $.ajax({
-            url: "/Project/StageDetail",
-            data: {
-                ProjectStageId:ProjectStageId
-            },
-            datatype: "Json",
-            type:"Post",
-            success: function (res) {
-                var list = "";
-                $(res.Stage).each(function () {
-                    list += "<tr>" +
-                        "<td>" + this.PlanId + "</td>" +
-                        "<td>" + this.StageName + "</td>" +
-                        "<td>" + this.StageStartTime + "</td>" +
-                        "<td>" + this.StageFinishTime + "</td>" +
-                        "<td>" + this.StageStaffName + "</td>" +
-                        "<td><a onclick='StageDelete("+this.PlanId+")' >删除</a>"+"</td>"+
-                        "<td><a onclick='StageUpdtae("+this.PlanId+")' >修改</a>"+"</td>"+
-                        "</tr>";  
-                })
-                $("#tby").append(list);
-
-              
-            }
-        })
+    
+    function ChangeDateFormat(val) {
+        if (val != null) {
+            var date = new Date(parseInt(val.replace("/Date(", "").replace(")/", ""), 10));
+            //月份为0-11，所以+1，月份小于10时补个0
+            var month = date.getMonth() + 1 < 10 ? "0" + (date.getMonth() + 1) : date.getMonth() + 1;
+            var currentDate = date.getDate() < 10 ? "0" + date.getDate() : date.getDate();
+            return date.getFullYear() + "-" + month + "-" + currentDate;
+        }
+        return "";
     }
 
       function StageDelete(PlanId) {
@@ -67,6 +50,29 @@
 
     function StageUpdtae(PlanId) {
         window.location = "/Project/StageUpdate?PlanId=" + PlanId;
+    }
+
+    function ProjectBackFill() {
+        var ProjectId = $("#hidProjectId").val();
+
+        $.ajax({
+            url: "/Project/ProjectDetail",
+            data: {
+                ProjectId:ProjectId
+            },
+            type: "post",
+            datatype: "json",
+            success: function (res) {
+                $(res.Project).each(function () {
+                    $("#txtNumber").val(res.Project[0].ProjectNumber);
+                    $("#txtName").val(res.Project[0].ProjectName);
+                    $("#txtDetail").val(res.Project[0].ProjectDescribe);
+                    $("#txtStartTime").val(ChangeDateFormat(res.Project[0].ProjectStartTime));
+                    $("#txtOffTime").val(ChangeDateFormat(res.Project[0].ProjectOutTime));
+                    ProjectStageIdOrBackFill = res.Project[0].ProjectStage;
+                })
+            }
+        })
     }
 
     function AddStage() {
@@ -213,5 +219,41 @@
                 }
             }
         })
+    }
+    
+    function StageDetail() {
+        var ProjectId = $("#hidProjectId").val();
+                
+            $.ajax({
+            url: "/Project/StageDetail",
+            data: {
+                ProjectStageId:ProjectId
+            },
+            datatype: "Json",
+            type:"Post",
+            success: function (res) {
+                var list = "";
+                $(res.Stage).each(function () {
+                    list += "<tr>" +
+                        "<td>" + this.PlanId + "</td>" +
+                        "<td>" + this.StageName + "</td>" +
+                        "<td>" +ChangeDateFormat(this.StageStartTime) + "</td>" +
+                        "<td>" +ChangeDateFormat(this.StageFinishTime) + "</td>" +
+                        "<td>" + this.StageStaffName + "</td>" +
+                        "<td><a onclick='StageDelete("+this.PlanId+")' >删除</a>"+"</td>"+
+                        "<td><a onclick='StageUpdtae("+this.PlanId+")' >修改</a>"+"</td>"+
+                        "</tr>";  
+                })
+                $("#tby").append(list);
+
+              
+            }
+        })
+    }
+
+    function AddStage() {
+        var ProjectId = $("#hidProjectId").val();
+
+        window.location = "/Project/StageAdd?ProjectId="+ProjectId;
     }
 </script>
