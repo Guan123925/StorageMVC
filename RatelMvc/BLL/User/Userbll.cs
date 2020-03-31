@@ -16,7 +16,7 @@ namespace BLL
         /// <returns></returns>
         public UserLoginResponse UserLogin(UserLoginRequest request)
         {
-            return 
+            return ApiRequestHelp.Post<UserLoginRequest, UserLoginResponse>(request);
         }
         /// <summary>
         /// 用户注册

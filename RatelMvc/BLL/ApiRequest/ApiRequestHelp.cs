@@ -8,12 +8,11 @@ using System.Threading.Tasks;
 using SDKClient;
 using Newtonsoft.Json;
 using System.Net.Http.Headers;
-
 namespace BLL
 {
     public static class ApiRequestHelp
     {
-        static string BaseAddress = "http://localhost:51845";
+        static string BaseAddress = "http://localhost:8066";
 
         public static TResponse Post<TRequet, TResponse>(TRequet t) where TRequet : BaseRequest where TResponse : BaseResponse, new()
         {
