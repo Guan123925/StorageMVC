@@ -11,7 +11,7 @@
     <meta name="viewport" content="width=device-width,initial-scale=1,minimum-scale=1,maximum-scale=1,user-scalable=no" />
     <title>后台登录</title>
     <link rel="stylesheet" type="text/css" href="~/admin/layui/css/layui.css" />
-    
+    <script src="~/admin/layui/layui.js" type="text/javascript" charset="utf-8"></script>
     <link rel="stylesheet" type="text/css" href="~/admin/css/login.css" />
 </head>
 <body>
@@ -25,12 +25,7 @@
                     <div class="layui-form-item">
                         <input type="text" id="acc" name="title" required lay-verify="required" lay-reqtext="用户名是必填项，岂能为空？" placeholder="请输入账号" autocomplete="off" class="layui-input">
                     </div>
-                    <div class="layui-form-item">
-                        <label class="layui-form-label">验证必填项</label>
-                        <div class="layui-input-block">
-                            <input type="text" name="username" lay-verify="required" lay-reqtext="用户名是必填项，岂能为空？" placeholder="请输入" autocomplete="off" class="layui-input">
-                        </div>
-                    </div>
+                 
                     <div class="layui-form-item">
                         <input type="password" id="pass" name="password" required lay-verify="required" placeholder="请输入密码" autocomplete="off" class="layui-input">
                     </div>
@@ -54,42 +49,11 @@
                         </div>
                     </div>
 
+                    </div>
+                    <p class="copyright">Copyright 2015-2016 by XIAODU</p>
                 </div>
-                <p class="copyright">Copyright 2015-2016 by XIAODU</p>
-            </div>
         </div>
-        <script src="~/admin/layui/layui.js" type="text/javascript" charset="utf-8"></script>
-
-        <script>
-
-                    layui.use(['form', 'layedit', 'laydate'], function() {
-                    	var form = layui.form(),
-                    		layer = layui.layer;
-
-                    	//自定义验证规则
-                    	form.verify({
-                    		title: function(value) {
-                    			if(value.length < 5) {
-                    				return '标题至少得5个字符啊';
-                    			}
-                    		},
-                    		password: [/(.+){6,12}$/, '密码必须6到12位'],
-                    		
-
-                    	});
-
-
-                    	监听提交
-                    	form.on('submit(login)', function(data) {
-                    		layer.alert(JSON.stringify(data.field), {
-                    			title: '最终的提交信息'
-                    		})
-                    		return false;
-                    	});
-
-                    });
-        </script>
-
+        
     </div>
 </body>
 </html>
