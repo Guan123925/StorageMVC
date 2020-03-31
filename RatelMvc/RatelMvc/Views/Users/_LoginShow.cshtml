@@ -1,0 +1,60 @@
+﻿
+
+<!DOCTYPE html>
+<html>
+
+<head>
+
+    <meta name="viewport" content="width=device-width" />
+    <title>@ViewBag.Title</title>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width,initial-scale=1,minimum-scale=1,maximum-scale=1,user-scalable=no" />
+    <title>后台登录</title>
+    <link rel="stylesheet" type="text/css" href="~/admin/layui/css/layui.css" />
+    <script src="~/admin/layui/layui.js" type="text/javascript" charset="utf-8"></script>
+    <link rel="stylesheet" type="text/css" href="~/admin/css/login.css" />
+</head>
+<body>
+    <div>
+        @RenderBody()
+        <div class="m-login-bg">
+            <div class="m-login">
+                <h3>后台系统登录</h3>
+                <div class="m-login-warp">
+
+                    <div class="layui-form-item">
+                        <input type="text" id="acc" name="title" required lay-verify="required" lay-reqtext="用户名是必填项，岂能为空？" placeholder="请输入账号" autocomplete="off" class="layui-input">
+                    </div>
+                 
+                    <div class="layui-form-item">
+                        <input type="password" id="pass" name="password" required lay-verify="required" placeholder="请输入密码" autocomplete="off" class="layui-input">
+                    </div>
+                    <div id="P1" style="width:200px;height:5px;margin:auto" class="text-center">
+
+                    </div>
+                    @*<div class="layui-form-item">
+            <div class="layui-inline">
+                <input type="text" name="verity"  placeholder="验证码" autocomplete="off" class="layui-input">
+            </div>
+            <div class="layui-inline">
+                <img class="verifyImg" onclick="this.src=this.src+'?c='+Math.random();" src="~/Content/admin/images/login/yzm.jpg" />
+            </div>
+        </div>*@
+                    <div class="layui-form-item m-login-btn">
+                        <div class="layui-inline">
+                            <button class="layui-btn layui-btn-normal" lay-submit lay-filter="login" onclick="TuPianYanZheng()">登录</button>
+                        </div>
+                        <div class="layui-inline">
+                            <button type="reset" class="layui-btn layui-btn-primary">取消</button>
+                        </div>
+                    </div>
+
+                    </div>
+                    <p class="copyright">Copyright 2015-2016 by XIAODU</p>
+                </div>
+        </div>
+        
+    </div>
+</body>
+</html>
+

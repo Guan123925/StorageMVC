@@ -42,11 +42,11 @@ namespace RatelMvc.Controllers
         /// </summary>
         /// <param name="request"></param>
         /// <returns></returns>
-        public JsonResult StageBackFill(StageBackFillGetRequest request)
-        {
-            return Json(bll.StageBackFill(request));
-        }
-        [HttpPost]
+        //public JsonResult StageBackFill(StageBackFillGetRequest request)
+        //{
+        //    return Json(bll.StageBackFill(request));
+        //}
+        //[HttpPost]
         /// <summary>
         /// 项目参与人员绑定
         /// 根据所在职位部门

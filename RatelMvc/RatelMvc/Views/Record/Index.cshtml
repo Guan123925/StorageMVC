@@ -1,0 +1,67 @@
+﻿@model IEnumerable<Models.Talent.RecordModel>
+
+@{
+    ViewBag.Title = "Index";
+}
+
+<h2>Index</h2>
+
+<p>
+    @Html.ActionLink("Create New", "Create")
+</p>
+<table class="table">
+    <tr>
+        <th>
+            编号
+        </th>
+        <th>
+            工作单位
+        </th>
+        <th>
+            职位
+        </th>
+        <th>
+            薪资
+        </th>
+        <th>
+            工作内容
+        </th>
+        <th>
+            离职原因
+        </th>
+        <th>
+            工作时间
+        </th>
+        <th></th>
+    </tr>
+
+@foreach (var item in Model) {
+    <tr>
+        <td>
+            @Html.DisplayFor(modelItem => item.RId)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Organization)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Position)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Pay)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.GongNeiR)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.LiZhi)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.RTime)
+        </td>
+        <td>
+            @Html.ActionLink("删除", "DeleteRecoed", new { id=item.RId },new { @class = "layui-btn layui-btn-danger layui-btn-xs" })
+        </td>
+    </tr>
+}
+
+</table>

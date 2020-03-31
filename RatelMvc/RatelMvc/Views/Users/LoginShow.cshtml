@@ -1,0 +1,66 @@
+﻿
+@{
+    ViewBag.Title = "LoginShow";
+    Layout = "~/Views/Users/_LoginShow.cshtml";
+}
+<script type="text/javascript" src="https://cdn.dingxiang-inc.com/ctu-group/captcha-ui/index.js"></script>
+<script src="~/Scripts/jquery-3.4.1.js"></script>
+<script src="~/admin/layui/layui.js" type="text/javascript" charset="utf-8"></script>
+<script>
+ 
+    function TuPianYanZheng() {
+        var myCaptcha = _dx.Captcha(document.getElementById('P1'), {
+            appId: 'f4821addb462dd54853153c0c72ef42f', //appId，在控制台中“应用管理”或“应用配置”模块获取
+            success: function (token) {
+                $.ajax({
+                    url: "/Users/TuPianYanZheng",
+                    typ: "get",
+                    data: { token: token },
+                    success: function (data) {
+                        if (data == "SERVER_SUCCESS1") {
+                            var username = $("#acc").val()
+                            var password = $("#pass").val()
+                            $.ajax({
+                                url: "/Users/UserLogin",
+                                type: "post",
+                                datatype: "Json",
+                                data: {
+                                    UserPhone: username,
+                                    UserPass: password
+                                },
+                                success: function (res) {
+                                    if (res.IsLoginSuccess) {
+                                        $.ajax({
+                                            url: "/Users/UserLogins",
+                                            data: {
+                                                name: res.UName,
+                                                Id: res.UserId
+                                            },
+                                            success: function () {
+                                                alert(res.Message);
+                                                location.href = "/Hotel/ShowMenu";
+                                            }
+                                        });
+                                    }
+                                    else {
+                                        alert("登录失败");
+                                    }
+                                }
+                            });
+                        }
+                        else {
+                            alert("图片验证未通过");
+                        }
+                    }
+                })
+            }
+        })
+    }
+</script>
+
+
+
+
+
+
+
