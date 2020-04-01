@@ -69,10 +69,17 @@ namespace RatelMvc.Controllers
         /// </summary>
         /// <param name="request"></param>
         /// <returns></returns>
+        /// 
+
+
+        [HttpPost]
         public JsonResult UserRegist(UserRegistRequest request)
         {
             return Json(bll.UserRegist(request));
         }
-  
+        public ActionResult RegistShow()
+        {
+            return View();
+        }
     }
 }

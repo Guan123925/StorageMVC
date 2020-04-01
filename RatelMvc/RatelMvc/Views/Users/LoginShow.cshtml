@@ -7,8 +7,27 @@
 <script src="~/Scripts/jquery-3.4.1.js"></script>
 <script src="~/admin/layui/layui.js" type="text/javascript" charset="utf-8"></script>
 <script>
- 
+
+
     function TuPianYanZheng() {
+
+        if ($("#acc").val() == "") {
+            $("#acc").css('borderColor', 'red');
+
+            return;
+        }
+        else {
+            $("#a").text("");
+            $("#acc").css('borderColor', ''); //取消css样式
+        }
+
+        if ($("#pass").val() == "") {
+            $("#pass").css('borderColor', 'red');
+            return;
+        }
+         else {
+            $("#pass").css('borderColor', ''); //取消css样式
+        }
         var myCaptcha = _dx.Captcha(document.getElementById('P1'), {
             appId: 'f4821addb462dd54853153c0c72ef42f', //appId，在控制台中“应用管理”或“应用配置”模块获取
             success: function (token) {
@@ -38,7 +57,8 @@
                                             },
                                             success: function () {
                                                 alert(res.Message);
-                                                location.href = "/Hotel/ShowMenu";
+                                                location.href = "/Users/UserRegist.cshtml";
+
                                             }
                                         });
                                     }
