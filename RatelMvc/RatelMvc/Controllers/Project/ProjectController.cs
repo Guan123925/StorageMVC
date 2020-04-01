@@ -31,6 +31,11 @@ namespace RatelMvc.Controllers
             return View();
         }
 
+        public ActionResult StageAdd()
+        {
+            return View();
+        }
+
         [HttpPost]
         /// <summary>
         /// 阶段反填

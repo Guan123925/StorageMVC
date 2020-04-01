@@ -4,3 +4,155 @@
     Layout = "~/Views/Master/Project/ProjectInfoMation.cshtml";
 }
 
+<script>
+    $().ready(function () {
+        ProjectShow();
+    })
+
+      function ChangeDateFormat(val) {
+        if (val != null) {
+            var date = new Date(parseInt(val.replace("/Date(", "").replace(")/", ""), 10));
+            //月份为0-11，所以+1，月份小于10时补个0
+            var month = date.getMonth() + 1 < 10 ? "0" + (date.getMonth() + 1) : date.getMonth() + 1;
+            var currentDate = date.getDate() < 10 ? "0" + date.getDate() : date.getDate();
+            return date.getFullYear() + "-" + month + "-" + currentDate;
+        }
+        return "";
+    }
+
+    function ProjectShow() {
+        var PageIndex = 1;
+        var PageSize = 3;
+        var Projectstage = -1;
+        var ProjectNumber = "";
+
+        
+        $.ajax({
+            url: "/Project/ProjectShow",
+            data: {
+                PageIndex:PageIndex,
+                PageSize:PageSize,
+                Projectstage: Projectstage,
+                ProjectNumber:ProjectNumber
+            },
+            datatype: "json",
+            type: "post",
+            success: function (res) {
+                var list = "";
+                $(res.Project).each(function () {
+                    list += "<tr>" +
+                        "<td>" + this.ProjectId + "</td>" +
+                        "<td>" + this.ProjectNumber + "</td>" +
+                        "<td>" + this.ProjectDescribe + "</td>" +
+                        "<td>" + this.ProjectName + "</td>" +
+                        "<td>"+this.ProjectDescribe+"</td>"+
+                        "<td style='color:paleturquoise'>进行中</td>" +
+                        "<td>" +ChangeDateFormat(this.ProjectStartTime) + "</td>" +
+                        "<td>"+
+                        "<button class='layui-btn layui-btn-mini table-list-status layui-btn-warm' disabled autocomplete='off'>跟进</button>" +
+                        "<button class='layui-btn layui-btn-small layui-btn-danger del-btn' onclick='ProjectDelete(" + this.ProjectId + ")' >删除</button>" +
+                        "<button class='layui-btn layui-btn-mini table-list-status layui-btn-warm'  onclick='ProjectUpdate(" + this.ProjectId + ")' >编辑</button>" +
+                        "<button class='layui-btn layui-btn-mini layui-btn-normal table-list-status' onclick='ProjectDetail(" + this.ProjectId + ")' >详情</button>" +
+                        "</td>"+
+                        "</tr>";
+
+                    $("#tbo").append(list);
+                })
+            }
+        })
+    }
+
+    function ProjectDetail(ProjectId) {
+
+        window.location = "/Project/Detail?ProjectId=" + ProjectId;
+        
+    }
+
+    function ProjectAdd() {
+        window.location = "/Project/AddProjectAndStage";
+    }
+
+    function ProjectDelete(ProjectId) {
+
+        $("#tbo").empty();
+
+        if (confirm("你确定要删除么？")) {
+             $.ajax({
+            url: "/Project/UpdateStausProject",
+            data: {
+                ProjectId: ProjectId
+            },
+            type: "post",
+            dataType:"json",
+            success: function (res) {
+                if (res.IsRegistSuccess) {
+                    alert("删除成功");
+                    ProjectShow();
+                }
+                else {
+                    alert("删除失败");
+                }
+            }
+        })
+        }
+       
+    }
+
+    function GetProject() {
+
+        var ProjectNumber = $("#txtNumber").val();
+        var ProjectStage = $("#SelectMent").val();
+        var PageIndex = 1;
+        var PageSize = 3;
+
+        $("#tbo").empty();
+
+        $.ajax({
+            url: "/Project/ProjectShow",
+            data: {
+                PageIndex:PageIndex,
+                PageSize:PageSize,
+                Projectstage: ProjectStage,
+                ProjectNumber:ProjectNumber
+            },
+            datatype: "json",
+            type: "post",
+            success: function (res) {
+                var list = "";
+
+                if (res.IsRegistSuccess) {
+                    $(res.Project).each(function () {
+                    list += "<tr>" +
+                        "<td>" + this.ProjectId + "</td>" +
+                        "<td>" + this.ProjectNumber + "</td>" +
+                        "<td>" + this.ProjectDescribe + "</td>" +
+                        "<td>" + this.ProjectName + "</td>" +
+                        "<td>" + this.ProjectDescribe + "</td>" +
+                        "<td style='color:paleturquoise'>进行中</td>" +
+                        "<td>" +ChangeDateFormat(this.ProjectStartTime) + "</td>" +
+                        "<td>" +
+                        "<button class='layui-btn layui-btn-mini table-list-status layui-btn-warm' disabled autocomplete='off'>跟进</button>" +
+                        "<button class='layui-btn layui-btn-small layui-btn-danger del-btn' onclick='ProjectDelete(" + this.ProjectId + ")' >删除</button>" +
+                        "<button class='layui-btn layui-btn-mini table-list-status layui-btn-warm' disabled autocomplete='off' onclick='ProjectUpdate(" + this.ProjectId + ")'>编辑</button>" +
+                        "<button class='layui-btn layui-btn-mini layui-btn-normal table-list-status' onclick='ProjectDetail(" + this.ProjectId + ")' >详情</button>" +
+                        "</td>" +
+                        "</tr>";
+
+                    $("#tbo").append(list);
+                });
+                }
+                else {
+                    alert("没有这条数据,请重新查询");
+                }
+                
+            }
+        })
+    }
+
+    function ProjectUpdate(ProjectId) {
+
+        window.location = "/Project/AddProjectAndStage?ProjectId=" + ProjectId
+       
+    }
+</script>
+

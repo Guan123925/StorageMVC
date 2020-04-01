@@ -8,17 +8,19 @@
     <meta name="viewport" content="width=device-width,initial-scale=1,minimum-scale=1,maximum-scale=1,user-scalable=no" />
     <link rel="stylesheet" type="text/css" href="~/admin/layui/css/layui.css" />
     <link rel="stylesheet" type="text/css" href="~/admin/css/admin.css" />
+    <script src="~/Scripts/jquery-3.4.1.min.js"></script>
+    <script src="~/Scripts/jquery.unobtrusive-ajax.min.js"></script>
     <meta name="viewport" content="width=device-width" />
     <title>@ViewBag.Title</title>
     <style>
         #tbod td {
             height: 40px;
-            width: 10px;
+            width: 5px;
         }
 
         #tbod th {
             height: 40px;
-            width: 10px;
+            width: 5px;
         }
     </style>
 
@@ -31,7 +33,7 @@
         <div @*class="layui-form" action=""*@ style="margin-top:50px">
             <div class="layui-form-item">
                 <div class="layui-inline tool-btn" style="float:left">
-                    <button class="layui-btn layui-btn-small layui-btn-normal addBtn hidden-xs" onclick="Refer()"><i class="layui-icon">&#xe654;</i></button>
+                    <button class="layui-btn layui-btn-small layui-btn-normal addBtn hidden-xs" onclick="ProjectAdd()"><i class="layui-icon">&#xe654;</i>新增</button>
                 </div>
                 <div @*class="layui-inline"*@ style="float:left">
                     <span style="margin-left:20px;">项目编号：</span>
@@ -41,19 +43,19 @@
                         <option value="0">请选择</option>
                     </select>
                 </div>
-                <input type="button" style="color:white;background-color:dodgerblue;margin-left:80px;height:35px;width:80px;" value="搜索" onclick="SelectData()" />
+                <input type="button" style="color:white;background-color:dodgerblue;margin-left:80px;height:35px;width:80px;" value="搜索" onclick="GetProject()" />
             </div>
         </div>
         <div class="layui-form" id="table-list" style="margin-top:50px">
             <table class="layui-table" lay-even lay-skin="nob" id="tbod">
-                <colgroup>
+                @*<colgroup>
                     <col width="50">
                     <col class="hidden-xs" width="50">
                     <col class="hidden-xs" width="100">
                     <col>
                     <col width="80">
                     <col width="150">
-                </colgroup>
+                </colgroup>*@
                 <thead>
                     <tr>
                         <th>序号</th>
@@ -67,7 +69,7 @@
                     </tr>
                 </thead>
                 <tbody id="tbo">
-                    <tr>
+                    @*<tr>
                         <td>1</td>
                         <td>0001</td>
                         <td>健康小窝项目</td>
@@ -76,11 +78,11 @@
                         <td style="color:paleturquoise">进行中</td>
                         <td>2018-08-08</td>
                         <td>
-                            <button class='layui-btn layui-btn-mini table-list-status layui-btn-warm' data-status='this.TypeId' disabled autocomplete='off'>跟进</button>
-                            <button class="layui-btn layui-btn-small layui-btn-danger del-btn" data-id="1" data-url="article-detail.html">删除</button>
-                            <button class='layui-btn layui-btn-mini layui-btn-normal table-list-status' data-status='this.TypeId'>详情</button>
+                            <button class='layui-btn layui-btn-mini table-list-status layui-btn-warm' disabled autocomplete='off'>跟进</button>
+                            <button class="layui-btn layui-btn-small layui-btn-danger del-btn" >删除</button>
+                            <button class='layui-btn layui-btn-mini layui-btn-normal table-list-status' >详情</button>
                         </td>
-                    </tr>
+                    </tr>*@
                 </tbody>
             </table>
             <div style="margin-top:100px;margin-left:1100px;">

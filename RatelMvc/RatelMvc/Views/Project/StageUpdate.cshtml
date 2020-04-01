@@ -9,6 +9,17 @@
         StageBackFill();
     })
 
+     function ChangeDateFormat(val) {
+        if (val != null) {
+            var date = new Date(parseInt(val.replace("/Date(", "").replace(")/", ""), 10));
+            //月份为0-11，所以+1，月份小于10时补个0
+            var month = date.getMonth() + 1 < 10 ? "0" + (date.getMonth() + 1) : date.getMonth() + 1;
+            var currentDate = date.getDate() < 10 ? "0" + date.getDate() : date.getDate();
+            return date.getFullYear() + "-" + month + "-" + currentDate;
+        }
+        return "";
+    }
+
     function StageBackFill() {
         var PlanId = $("#hidPlanId").val();
 
@@ -22,10 +33,41 @@
             success: function (res) {
                 $(res.Stage).each(function () {
                     $("#txtStage").val(res.Stage[0].StageName);
-                    $("#txtStartTime").val(res.Stage[0].StageStartTime);
-                    $("#txtOffTime").val(res.Stage[0].StageFinishTime);
+                    $("#txtStartTime").val(ChangeDateFormat(res.Stage[0].StageStartTime));
+                    $("#txtOffTime").val(ChangeDateFormat(res.Stage[0].StageFinishTime));
                     $("#txtPerson").val(res.Stage[0].StageStaffName);
                 })
+            }
+        })
+    }
+
+    function StageUpdate() {
+        var PlanId = $("#hidPlanId").val();
+        var StageName = $("#txtStage").val();
+        var StageStartTime = $("#txtStartTime").val();
+        var StageFinishTime = $("#txtOffTime").val();
+        var StageStaffName = $("#txtPerson").val();
+
+        $.ajax({
+            url: "/Project/UpdateStage",
+            data: {
+                PlanId: PlanId,
+                StageName: StageName,
+                StageStartTime:StageStartTime,
+                StageFinishTime: StageFinishTime,
+                StageStaffName:StageStaffName,
+            },
+            type:"post",
+            datatype: "json",
+            success: function (res) {
+                if (res.IsRegistSuccess) {
+                    alert("修改成功");
+                    location.href = "/Project/AddProjectAndStage";
+                }
+                else {
+                    alert("修改失败");
+                    return;
+                }
             }
         })
     }

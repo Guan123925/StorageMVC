@@ -1,0 +1,36 @@
+﻿
+@{
+    ViewBag.Title = "StageAdd";
+    Layout = "~/Views/Master/Project/AddStage.cshtml";
+}
+
+<script>
+    function StageAdd() {
+        var ProjectStageId = $("#hidProjectId").val();
+        var StageName = $("#txtStage").val();
+        var StageFinishTime = $("#txtOffTime").val();
+        var StageStartTime  = $("#txtStartTime").val();
+        var StageStaffName  = $("#txtPerson").val();
+
+        $.ajax({
+            url: "/Project/AddStage",
+            data: {
+                ProjectStageId: ProjectStageId,
+                StageName: StageName,
+                StageFinishTime: StageFinishTime,
+                StageStartTime: StageStartTime,
+                StageStaffName:StageStaffName
+            },
+            datatype: "json",
+            type: "post",
+            success: function (res) {
+                if (res.IsRegistSuccess) {
+                    alert("添加成功");
+                }
+                else {
+                    alert("添加失败");
+                }
+            }
+        })
+    }
+</script>
