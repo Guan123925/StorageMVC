@@ -12,33 +12,19 @@
         #tbo td {
             padding: 10px;
         }
+
         #tbod th {
-          text-align:center;
+            text-align: center;
         }
 
         #tbod td {
-           text-align:center;
+            text-align: center;
         }
-
-        #tab {
-            border-collapse: collapse;
-        }
-
-            #tab td {
-                padding: 10px;
-                border: 1px solid #000000;
-                text-align: center;
-            }
     </style>
 </head>
-
 <body>
     <div>
         @RenderBody()
-    </div>
-    <div style="float:right;margin-right:400px;">
-        <button class="layui-btn layui-btn-mini layui-btn-normal table-list-status" style="width:70px;height:50px; margin-left:20px;margin-top:30px;" onclick="ProjectUpdate()">编辑</button>
-        <button class="layui-btn layui-btn-small layui-btn-danger del-btn" style="width:70px;height:50px;margin-left:50px;margin-top:30px;" onclick="ExitProject()">取消</button>
     </div>
     <div style="margin-top:30px;">
         <input type="hidden" id="hidProjectId" value="@Request["ProjectId"]" />
@@ -113,24 +99,9 @@
             </tr>
         </table>
     </div>
-    <div style="margin-top:15px;margin-left:15px;">
-        <span>阶段计划表:</span>
-        <span><a onclick="AddStage()">新增阶段</a></span>
-        <div class="layui-form" id="table-list" style="margin-top:50px;width:1200px;">
-            <table class="layui-table" lay-even @*lay-skin="nob"*@ id="tbod">
-                <thead>
-                    <tr>
-                        <th>序号</th>
-                        <th>阶段</th>
-                        <th>开始日期</th>
-                        <th>完成日期</th>
-                        <th>阶段负责人</th>
-                        <th colspan="2">操作</th>
-                    </tr>
-                </thead>
-                <tbody id="tby"></tbody>
-            </table>
-        </div>
+    <div>
+        <button class="layui-btn layui-btn-mini layui-btn-normal table-list-status" style="width:50px;height:30px; margin-left:100px;margin-top:30px;" onclick="AddProject()">保存</button>
+        <button class="layui-btn layui-btn-small layui-btn-danger del-btn"  style="width:50px;height:30px;margin-left:50px;margin-top:30px;" onclick="ExitProject()">取消</button>
     </div>
 </body>
 </html>

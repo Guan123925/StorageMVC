@@ -97,10 +97,10 @@ namespace BLL
         /// </summary>
         /// <param name="request"></param>
         /// <returns></returns>
-        //public StageBackFillGetResponse StageBackFill(StageBackFillGetRequest request)
-        //{
-        //    return ApiRequestHelp.Post<StageBackFillGetRequest, StageBackFillGetResponse>(request);
-        //}
+        public StageBackFillGetResponse StageBackFill(StageBackFillGetRequest request)
+        {
+            return ApiRequestHelp.Post<StageBackFillGetRequest, StageBackFillGetResponse>(request);
+        }
 
         /// <summary>
         /// 修改项目状态

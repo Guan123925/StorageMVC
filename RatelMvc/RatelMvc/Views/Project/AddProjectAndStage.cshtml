@@ -38,10 +38,10 @@
                   datatype: "json",
                   success: function (res) {
                       if (res.IsRegistSuccess) {
-                          alert("删除成功");
+                          alert(res.Message);
                       }
                       else {
-                          alert("删除失败");
+                          alert(res.Message);
                       }
                   }
                  })
@@ -75,9 +75,52 @@
         })
     }
 
-    function AddStage() {
-        window.location = "/Project/StageAdd";
+    function ProjectUpdate() {
+        var ProjectId = $("#hidProjectId").val();
+        var ProjectNumber = $("#txtNumber").val();
+        var ProjectName = $("#txtName").val();
+        var ProjectDescribe = $("#txtDetail").val();
+        var ProjectStaffId = $("#selProject").val();
+        var TechStaffId = $("#selTech").val();
+        var ProductStaffId = $("#selProduct").val();
+        var TestStaffId = $("#selTest").val();
+        var MarketStaffId = $("#selMark").val();
+        var ProjectStartTime = $("#txtStartTime").val();
+        var ProjectOutTime = $("#txtOffTime").val();
+        var ProjectStage = 0;
+
+        $.ajax({
+            url: "/Project/UpdateProject",
+            data: {
+                ProjectId:ProjectId,
+                ProjectNumber: ProjectNumber,
+                ProjectName: ProjectName,
+                ProjectDescribe: ProjectDescribe,
+                ProjectStaffId: ProjectStaffId,
+                TechStaffId: TechStaffId,
+                ProductStaffId: ProductStaffId,
+                TestStaffId: TestStaffId,
+                MarketStaffId: MarketStaffId,
+                ProjectStartTime: ProjectStartTime,
+                ProjectOutTime: ProjectOutTime,
+                ProjectStage:ProjectStage
+            },
+            type: "post",
+            datatype: "json",
+            success: function (res) {
+                if (res.IsRegistSuccess) {
+                    alert(res.Message);
+                }
+                else {
+                    alert(res.Message);
+                }
+            }
+        })
     }
+
+    //function AddStage() {
+    //    window.location = "/Project/StageUpdate?ProjectStageId="+;
+    //}
 
     function ProjectBand() {
         var DepartId = 1;
@@ -179,47 +222,11 @@
         })
     }
 
-    function AddProject() {
-        var ProjectNumber = $("#txtNumber").val();
-        var ProjectName = $("#txtName").val();
-        var ProjectDescribe = $("#txtDetail").val();
-        var ProjectStaffId = $("#selProject").val();
-        var TechStaffId = $("#selTech").val();
-        var ProductStaffId = $("#selProduct").val();
-        var TestStaffId = $("#selTest").val();
-        var MarketStaffId = $("#selMark").val();
-        var ProjectStartTime = $("#txtStartTime").val();
-        var ProjectOutTime = $("#txtOffTime").val();
-        var ProjectStage = 0;
-
-
-        $.ajax({
-            url: "/Project/AddProject",
-            data: {
-                ProjectNumber: ProjectNumber,
-                ProjectName: ProjectName,
-                ProjectDescribe: ProjectDescribe,
-                ProjectStaffId: ProjectStaffId,
-                TechStaffId: TechStaffId,
-                ProductStaffId: ProductStaffId,
-                TestStaffId: TestStaffId,
-                MarketStaffId: MarketStaffId,
-                ProjectStartTime: ProjectStartTime,
-                ProjectOutTime: ProjectOutTime,
-                ProjectStage:ProjectStage
-            },
-            datatype: "json",
-            type: "post",
-            success: function (res) {
-                if (res.IsRegistSuccess) {
-                    alert("添加成功");
-                }
-                else {
-                    alert("添加失败");
-                }
-            }
-        })
+    function ExitProject() {
+        window.location = "/Project/InfoMation";
     }
+
+    
     
     function StageDetail() {
         var ProjectId = $("#hidProjectId").val();
@@ -254,6 +261,6 @@
     function AddStage() {
         var ProjectId = $("#hidProjectId").val();
 
-        window.location = "/Project/StageAdd?ProjectId="+ProjectId;
+        window.location = "/Project/StageUpdate?ProjectStage="+ProjectId;
     }
 </script>

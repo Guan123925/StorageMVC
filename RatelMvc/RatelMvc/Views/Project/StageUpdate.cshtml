@@ -61,12 +61,43 @@
             datatype: "json",
             success: function (res) {
                 if (res.IsRegistSuccess) {
-                    alert("修改成功");
+                    alert(res.Message);
                     location.href = "/Project/AddProjectAndStage";
                 }
                 else {
-                    alert("修改失败");
+                    alert(res.Message);
                     return;
+                }
+            }
+        })
+    }
+
+    function StageAdd() {
+        var StageProjectId = $("#hidProjectStage").val();
+
+        alert(StageProjectId);
+        var StageName = $("#txtStage").val();
+        var StageStartTime = $("#txtStartTime").val();
+        var StageFinishTime = $("#txtOffTime").val();
+        var StageStaffName = $("#txtPerson").val();
+
+        $.ajax({
+            url: "/Project/AddStage",
+            data: {
+                ProjectStageId: StageProjectId,
+                StageName: StageName,
+                StageStartTime: StageStartTime,
+                StageFinishTime: StageFinishTime,
+                StageStaffName:StageStaffName
+            },
+            type: "post",
+            datatype: "json",
+            success: function (res) {
+                if (res.IsRegistSuccess) {
+                    alert(res.Message);
+                }
+                else {
+                    alert(res.Message);
                 }
             }
         })
