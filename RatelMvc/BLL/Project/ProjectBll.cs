@@ -18,6 +18,15 @@ namespace BLL
         {
             return ApiRequestHelp.Post<UserGetProjectRequest, UserGetProjectResponse>(request);
         }
+        /// <summary>
+        /// 修改项目阶段
+        /// </summary>
+        /// <param name="request"></param>
+        /// <returns></returns>
+        public ProjectStageUpdateResponse UpdateProjectStage(ProjectStageUpdateRequest request)
+        {
+            return ApiRequestHelp.Post<ProjectStageUpdateRequest, ProjectStageUpdateResponse>(request);
+        }
 
         /// <summary>
         /// 新增项目

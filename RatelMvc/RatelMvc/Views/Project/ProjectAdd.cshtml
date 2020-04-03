@@ -131,6 +131,8 @@
         var ProjectOutTime = $("#txtOffTime").val();
         var ProjectStage = 0;
 
+        alert(ProjectStaffId);
+
 
         $.ajax({
             url: "/Project/AddProject",
@@ -152,6 +154,7 @@
             success: function (res) {
                 if (res.IsRegistSuccess) {
                     alert(res.Message);
+                    location.href = "/Project/InfoMation";
                 }
                 else {
                     alert(res.Message);

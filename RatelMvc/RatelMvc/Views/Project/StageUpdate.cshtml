@@ -4,97 +4,98 @@
     Layout = "~/Views/Master/Project/StageUpdate.cshtml";
 }
 
-<script>
-    $().ready(function () {
-        StageBackFill();
-    })
+    <script>
+        $().ready(function () {
+            StageBackFill();
+        })
 
-     function ChangeDateFormat(val) {
-        if (val != null) {
-            var date = new Date(parseInt(val.replace("/Date(", "").replace(")/", ""), 10));
-            //月份为0-11，所以+1，月份小于10时补个0
-            var month = date.getMonth() + 1 < 10 ? "0" + (date.getMonth() + 1) : date.getMonth() + 1;
-            var currentDate = date.getDate() < 10 ? "0" + date.getDate() : date.getDate();
-            return date.getFullYear() + "-" + month + "-" + currentDate;
+        function ChangeDateFormat(val) {
+            if (val != null) {
+                var date = new Date(parseInt(val.replace("/Date(", "").replace(")/", ""), 10));
+                //月份为0-11，所以+1，月份小于10时补个0
+                var month = date.getMonth() + 1 < 10 ? "0" + (date.getMonth() + 1) : date.getMonth() + 1;
+                var currentDate = date.getDate() < 10 ? "0" + date.getDate() : date.getDate();
+                return date.getFullYear() + "-" + month + "-" + currentDate;
+            }
+            return "";
         }
-        return "";
-    }
 
-    function StageBackFill() {
-        var PlanId = $("#hidPlanId").val();
+        function StageBackFill() {
+            var PlanId = $("#hidPlanId").val();
 
-        $.ajax({
-            url: "/Project/StageBackFill",
-            data: {
-                PlanId: PlanId
-            },
-            type: "post",
-            datatype: "json",
-            success: function (res) {
-                $(res.Stage).each(function () {
-                    $("#txtStage").val(res.Stage[0].StageName);
-                    $("#txtStartTime").val(ChangeDateFormat(res.Stage[0].StageStartTime));
-                    $("#txtOffTime").val(ChangeDateFormat(res.Stage[0].StageFinishTime));
-                    $("#txtPerson").val(res.Stage[0].StageStaffName);
-                })
-            }
-        })
-    }
-
-    function StageUpdate() {
-        var PlanId = $("#hidPlanId").val();
-        var StageName = $("#txtStage").val();
-        var StageStartTime = $("#txtStartTime").val();
-        var StageFinishTime = $("#txtOffTime").val();
-        var StageStaffName = $("#txtPerson").val();
-
-        $.ajax({
-            url: "/Project/UpdateStage",
-            data: {
-                PlanId: PlanId,
-                StageName: StageName,
-                StageStartTime:StageStartTime,
-                StageFinishTime: StageFinishTime,
-                StageStaffName:StageStaffName,
-            },
-            type:"post",
-            datatype: "json",
-            success: function (res) {
-                if (res.IsRegistSuccess) {
-                    alert(res.Message);
-                    location.href = "/Project/AddProjectAndStage";
+            $.ajax({
+                url: "/Project/StageBackFill",
+                data: {
+                    PlanId: PlanId
+                },
+                type: "post",
+                datatype: "json",
+                success: function (res) {
+                    $(res.Stage).each(function () {
+                        $("#txtStage").val(res.Stage[0].StageName);
+                        $("#txtStartTime").val(ChangeDateFormat(res.Stage[0].StageStartTime));
+                        $("#txtOffTime").val(ChangeDateFormat(res.Stage[0].StageFinishTime));
+                        $("#txtPerson").val(res.Stage[0].StageStaffName);
+                    })
                 }
-                else {
-                    alert(res.Message);
-                    return;
+            })
+        }
+
+        function StageUpdate() {
+            var PlanId = $("#hidPlanId").val();
+            var StageName = $("#txtStage").val();
+            var StageStartTime = $("#txtStartTime").val();
+            var StageFinishTime = $("#txtOffTime").val();
+            var StageStaffName = $("#txtPerson").val();
+
+            $.ajax({
+                url: "/Project/UpdateStage",
+                data: {
+                    PlanId: PlanId,
+                    StageName: StageName,
+                    StageStartTime: StageStartTime,
+                    StageFinishTime: StageFinishTime,
+                    StageStaffName: StageStaffName,
+                },
+                type: "post",
+                datatype: "json",
+                success: function (res) {
+                    if (res.IsRegistSuccess) {
+                        alert(res.Message);
+                        window.history.back(-1); 
+                    }
+                    else {
+                        alert(res.Message);
+                        return;
+                    }
                 }
-            }
-        })
-    }
+            })
+        }
 
-    function StageAdd() {
-        var StageProjectId = $("#hidProjectStage").val();
+        function StageAdd() {
+            var StageProjectId = $("#hidProjectStage").val();
 
-        alert(StageProjectId);
-        var StageName = $("#txtStage").val();
-        var StageStartTime = $("#txtStartTime").val();
-        var StageFinishTime = $("#txtOffTime").val();
-        var StageStaffName = $("#txtPerson").val();
+            alert(StageProjectId);
+            var StageName = $("#txtStage").val();
+            var StageStartTime = $("#txtStartTime").val();
+            var StageFinishTime = $("#txtOffTime").val();
+            var StageStaffName = $("#txtPerson").val();
 
-        $.ajax({
-            url: "/Project/AddStage",
-            data: {
-                ProjectStageId: StageProjectId,
-                StageName: StageName,
-                StageStartTime: StageStartTime,
-                StageFinishTime: StageFinishTime,
-                StageStaffName:StageStaffName
-            },
-            type: "post",
-            datatype: "json",
-            success: function (res) {
-                if (res.IsRegistSuccess) {
-                    alert(res.Message);
+            $.ajax({
+                url: "/Project/AddStage",
+                data: {
+                    ProjectStageId: StageProjectId,
+                    StageName: StageName,
+                    StageStartTime: StageStartTime,
+                    StageFinishTime: StageFinishTime,
+                    StageStaffName: StageStaffName
+                },
+                type: "post",
+                datatype: "json",
+                success: function (res) {
+                    if (res.IsRegistSuccess) {
+                      window.history.back(-1); 
+                    //location.href = "/Project/AddProjectAndStage";
                 }
                 else {
                     alert(res.Message);

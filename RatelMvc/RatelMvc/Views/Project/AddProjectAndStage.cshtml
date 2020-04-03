@@ -38,7 +38,9 @@
                   datatype: "json",
                   success: function (res) {
                       if (res.IsRegistSuccess) {
+                          StageDetail();
                           alert(res.Message);
+                          
                       }
                       else {
                           alert(res.Message);
@@ -80,14 +82,16 @@
         var ProjectNumber = $("#txtNumber").val();
         var ProjectName = $("#txtName").val();
         var ProjectDescribe = $("#txtDetail").val();
-        var ProjectStaffId = $("#selProject").val();
-        var TechStaffId = $("#selTech").val();
-        var ProductStaffId = $("#selProduct").val();
-        var TestStaffId = $("#selTest").val();
-        var MarketStaffId = $("#selMark").val();
+        var ProjectStaffId = $("#selProject").text();
+        var TechStaffId = $("#selTech").text();
+        var ProductStaffId = $("#selProduct").text();
+        var TestStaffId = $("#selTest").text();
+        var MarketStaffId = $("#selMark").text();
         var ProjectStartTime = $("#txtStartTime").val();
         var ProjectOutTime = $("#txtOffTime").val();
         var ProjectStage = 0;
+
+        alert(TechStaff);
 
         $.ajax({
             url: "/Project/UpdateProject",
@@ -110,6 +114,7 @@
             success: function (res) {
                 if (res.IsRegistSuccess) {
                     alert(res.Message);
+                    location.href = "/Project/InfoMation";
                 }
                 else {
                     alert(res.Message);

@@ -4,26 +4,27 @@
 <head>
     <meta name="viewport" content="width=device-width" />
     <title>@ViewBag.Title</title>
+    <link rel="stylesheet" type="text/css" href="~/admin/layui/css/layui.css" />
+    <link rel="stylesheet" type="text/css" href="~/admin/css/admin.css" />
     <script src="~/Scripts/jquery-3.4.1.min.js"></script>
     <script src="~/Scripts/jquery.unobtrusive-ajax.min.js"></script>
     <style>
         #tbo {
-        border-collapse:collapse;
+            border-collapse: collapse;
         }
-            #tbo td {
-                padding:15px;
-            }
 
+            #tbo td {
+                padding: 15px;
+            }
     </style>
 </head>
 <body>
     <div>
         @RenderBody()
     </div>
-    <h2>编辑/新增阶段</h2>
     <input type="hidden" id="hidPlanId" value="@Request["PlanId"]" />
     <input type="hidden" id="hidProjectStage" value="@Request["ProjectStage"]" />
-    <table id="tbo">
+    <table id="tbo" style="margin-left:20px;margin-top:30px;">
         <tr>
             <td style="color:red">阶段：</td>
             <td><input type="text" id="txtStage" placeholder="请输入阶段名称" style="height:30px;width:180px" /></td>
@@ -49,8 +50,10 @@
             <td><input type="text" id="txtPerson" placeholder="请输入阶段负责人" style="height:30px;width:180px" /></td>
         </tr>
     </table>
-
-    <button onclick="StageUpdate()" style="margin-left:15px;margin-top:15px;width:50px;height:30px;">修改</button>
-    <button onclick="StageAdd()" style="margin-left:15px;margin-top:15px;width:50px;height:30px;">添加</button>
+    <div style="margin-left:70px;margin-top:30px;">
+        <button onclick="StageUpdate()" class='layui-btn layui-btn-mini layui-btn-normal table-list-status' style="margin-left:15px;margin-top:15px;width:50px;height:30px;">修改</button>
+        <button onclick="StageAdd()" class='layui-btn layui-btn-mini table-list-status layui-btn-warm' style="margin-left:30px;margin-top:15px;width:50px;height:30px;">添加</button>
+    </div>
+    
 </body>
 </html>

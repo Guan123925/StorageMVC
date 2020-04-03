@@ -43,6 +43,17 @@ namespace RatelMvc.Controllers
 
         [HttpPost]
         /// <summary>
+        /// 修改项目阶段
+        /// </summary>
+        /// <param name="request"></param>
+        /// <returns></returns>
+        public JsonResult UpdateProjectStage(ProjectStageUpdateRequest request)
+        {
+            return Json(bll.UpdateProjectStage(request));
+        }
+
+        [HttpPost]
+        /// <summary>
         /// 阶段反填
         /// </summary>
         /// <param name="request"></param>

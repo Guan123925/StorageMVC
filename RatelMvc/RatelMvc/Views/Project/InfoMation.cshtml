@@ -46,7 +46,7 @@
                         "<td>" + this.ProjectDescribe + "</td>" +
                         "<td>" + this.ProjectName + "</td>" +
                         "<td>"+this.ProjectDescribe+"</td>"+
-                        "<td style='color:paleturquoise'>进行中</td>" +
+                        "<td style='color:paleturquoise'>"+(this.ProjectStage==0 ?'进行中':(this.ProjectStage==1?'已完成':'已延期')) +"</td>" +
                         "<td>" +ChangeDateFormat(this.ProjectStartTime) + "</td>" +
                         "<td>"+
                         "<button class='layui-btn layui-btn-mini table-list-status layui-btn-warm' onclick='ProjectStage(" + this.ProjectId + ")';'>跟进</button>" +
@@ -132,7 +132,7 @@
                         "<td>" + this.ProjectDescribe + "</td>" +
                         "<td>" + this.ProjectName + "</td>" +
                         "<td>" + this.ProjectDescribe + "</td>" +
-                        "<td style='color:paleturquoise'>进行中</td>" +
+                        "<td style='color:paleturquoise'>" +(this.ProjectStage==0 ?'进行中':(this.ProjectStage==1?'已完成':'已延期')) +"</td>" +
                         "<td>" +ChangeDateFormat(this.ProjectStartTime) + "</td>" +
                             "<td>" +
                         "<button class='layui-btn layui-btn-mini table-list-status layui-btn-warm' onclick='ProjectStage(" + this.ProjectId + ")'; >跟进</button>" +
@@ -160,8 +160,25 @@
     }
 
     function ProjectStage(ProjectId) {
+
         if (confirm('是否已确定项目完成度？')) {
-            
+            $.ajax({
+                url: "/Project/UpdateProjectStage",
+                data: {
+                    ProjectId: ProjectId
+                },
+                type: "post",
+                datatype: "json",
+                success: function (res) {
+                    if (res.IsRegistSuccess) {
+                        alert(res.Message);
+                        ProjectShow();
+                    }
+                    else {
+                        alert(res.Message);
+                    }
+                }
+            })
         }
     }
 </script>
