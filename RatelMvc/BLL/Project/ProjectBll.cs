@@ -18,6 +18,15 @@ namespace BLL
         {
             return ApiRequestHelp.Post<UserGetProjectRequest, UserGetProjectResponse>(request);
         }
+        /// <summary>
+        /// 修改项目阶段
+        /// </summary>
+        /// <param name="request"></param>
+        /// <returns></returns>
+        public ProjectStageUpdateResponse UpdateProjectStage(ProjectStageUpdateRequest request)
+        {
+            return ApiRequestHelp.Post<ProjectStageUpdateRequest, ProjectStageUpdateResponse>(request);
+        }
 
         /// <summary>
         /// 新增项目
@@ -97,10 +106,10 @@ namespace BLL
         /// </summary>
         /// <param name="request"></param>
         /// <returns></returns>
-        //public StageBackFillGetResponse StageBackFill(StageBackFillGetRequest request)
-        //{
-        //    return ApiRequestHelp.Post<StageBackFillGetRequest, StageBackFillGetResponse>(request);
-        //}
+        public StageBackFillGetResponse StageBackFill(StageBackFillGetRequest request)
+        {
+            return ApiRequestHelp.Post<StageBackFillGetRequest, StageBackFillGetResponse>(request);
+        }
 
         /// <summary>
         /// 修改项目状态

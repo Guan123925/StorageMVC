@@ -21,6 +21,11 @@ namespace RatelMvc.Controllers
             return View();
         }
 
+        public ActionResult ProjectAdd()
+        {
+            return View();
+        }
+
         public ActionResult AddProjectAndStage()
         {
             return View();
@@ -38,15 +43,26 @@ namespace RatelMvc.Controllers
 
         [HttpPost]
         /// <summary>
+        /// 修改项目阶段
+        /// </summary>
+        /// <param name="request"></param>
+        /// <returns></returns>
+        public JsonResult UpdateProjectStage(ProjectStageUpdateRequest request)
+        {
+            return Json(bll.UpdateProjectStage(request));
+        }
+
+        [HttpPost]
+        /// <summary>
         /// 阶段反填
         /// </summary>
         /// <param name="request"></param>
         /// <returns></returns>
-        //public JsonResult StageBackFill(StageBackFillGetRequest request)
-        //{
-        //    return Json(bll.StageBackFill(request));
-        //}
-        //[HttpPost]
+        public JsonResult StageBackFill(StageBackFillGetRequest request)
+        {
+            return Json(bll.StageBackFill(request));
+        }
+        [HttpPost]
         /// <summary>
         /// 项目参与人员绑定
         /// 根据所在职位部门

@@ -25,7 +25,7 @@
         var PageSize = 3;
         var Projectstage = -1;
         var ProjectNumber = "";
-
+        $("#tbo").empty();
         
         $.ajax({
             url: "/Project/ProjectShow",
@@ -46,10 +46,10 @@
                         "<td>" + this.ProjectDescribe + "</td>" +
                         "<td>" + this.ProjectName + "</td>" +
                         "<td>"+this.ProjectDescribe+"</td>"+
-                        "<td style='color:paleturquoise'>进行中</td>" +
+                        "<td style='color:paleturquoise'>"+(this.ProjectStage==0 ?'进行中':(this.ProjectStage==1?'已完成':'已延期')) +"</td>" +
                         "<td>" +ChangeDateFormat(this.ProjectStartTime) + "</td>" +
                         "<td>"+
-                        "<button class='layui-btn layui-btn-mini table-list-status layui-btn-warm' disabled autocomplete='off'>跟进</button>" +
+                        "<button class='layui-btn layui-btn-mini table-list-status layui-btn-warm' onclick='ProjectStage(" + this.ProjectId + ")';'>跟进</button>" +
                         "<button class='layui-btn layui-btn-small layui-btn-danger del-btn' onclick='ProjectDelete(" + this.ProjectId + ")' >删除</button>" +
                         "<button class='layui-btn layui-btn-mini table-list-status layui-btn-warm'  onclick='ProjectUpdate(" + this.ProjectId + ")' >编辑</button>" +
                         "<button class='layui-btn layui-btn-mini layui-btn-normal table-list-status' onclick='ProjectDetail(" + this.ProjectId + ")' >详情</button>" +
@@ -69,7 +69,7 @@
     }
 
     function ProjectAdd() {
-        window.location = "/Project/AddProjectAndStage";
+        window.location = "/Project/ProjectAdd";
     }
 
     function ProjectDelete(ProjectId) {
@@ -86,14 +86,18 @@
             dataType:"json",
             success: function (res) {
                 if (res.IsRegistSuccess) {
-                    alert("删除成功");
+                    alert(res.Message);
                     ProjectShow();
                 }
                 else {
-                    alert("删除失败");
+                    alert(res.Message);
                 }
             }
         })
+        }
+
+        else {
+            ProjectShow();
         }
        
     }
@@ -128,10 +132,10 @@
                         "<td>" + this.ProjectDescribe + "</td>" +
                         "<td>" + this.ProjectName + "</td>" +
                         "<td>" + this.ProjectDescribe + "</td>" +
-                        "<td style='color:paleturquoise'>进行中</td>" +
+                        "<td style='color:paleturquoise'>" +(this.ProjectStage==0 ?'进行中':(this.ProjectStage==1?'已完成':'已延期')) +"</td>" +
                         "<td>" +ChangeDateFormat(this.ProjectStartTime) + "</td>" +
-                        "<td>" +
-                        "<button class='layui-btn layui-btn-mini table-list-status layui-btn-warm' disabled autocomplete='off'>跟进</button>" +
+                            "<td>" +
+                        "<button class='layui-btn layui-btn-mini table-list-status layui-btn-warm' onclick='ProjectStage(" + this.ProjectId + ")'; >跟进</button>" +
                         "<button class='layui-btn layui-btn-small layui-btn-danger del-btn' onclick='ProjectDelete(" + this.ProjectId + ")' >删除</button>" +
                         "<button class='layui-btn layui-btn-mini table-list-status layui-btn-warm' disabled autocomplete='off' onclick='ProjectUpdate(" + this.ProjectId + ")'>编辑</button>" +
                         "<button class='layui-btn layui-btn-mini layui-btn-normal table-list-status' onclick='ProjectDetail(" + this.ProjectId + ")' >详情</button>" +
@@ -153,6 +157,29 @@
 
         window.location = "/Project/AddProjectAndStage?ProjectId=" + ProjectId
        
+    }
+
+    function ProjectStage(ProjectId) {
+
+        if (confirm('是否已确定项目完成度？')) {
+            $.ajax({
+                url: "/Project/UpdateProjectStage",
+                data: {
+                    ProjectId: ProjectId
+                },
+                type: "post",
+                datatype: "json",
+                success: function (res) {
+                    if (res.IsRegistSuccess) {
+                        alert(res.Message);
+                        ProjectShow();
+                    }
+                    else {
+                        alert(res.Message);
+                    }
+                }
+            })
+        }
     }
 </script>
 
