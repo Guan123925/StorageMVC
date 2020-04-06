@@ -1,32 +1,31 @@
 ﻿
 @{
-    ViewBag.Title = "LoginShow";
-    Layout = "~/Views/Users/_LoginShow.cshtml";
+    ViewBag.Title = "LoginShows";
+    Layout = "~/Views/Users/_LoginShows.cshtml";
 }
+
+<h2>LoginShows</h2>
 <script type="text/javascript" src="https://cdn.dingxiang-inc.com/ctu-group/captcha-ui/index.js"></script>
 <script src="~/Scripts/jquery-3.4.1.js"></script>
 <script src="~/admin/layui/layui.js" type="text/javascript" charset="utf-8"></script>
 <script>
-
-
     function TuPianYanZheng() {
-
-        if ($("#acc").val() == "") {
-            $("#acc").css('borderColor', 'red');
-
-            return;
+        var username = $("#acc").val()
+        var password = $("#pass").val()
+        if (username == "") {
+            $("#u").text("账号不可为空");
+            return false;
         }
         else {
-            $("#a").text("");
-            $("#acc").css('borderColor', ''); //取消css样式
+           $("#u").text("");
         }
 
-        if ($("#pass").val() == "") {
-            $("#pass").css('borderColor', 'red');
-            return;
+        if (password == "") {
+            $("#p").text("密码不可为空");
+            return false;
         }
-         else {
-            $("#pass").css('borderColor', ''); //取消css样式
+        else {
+           $("#p").text("");
         }
         var myCaptcha = _dx.Captcha(document.getElementById('P1'), {
             appId: 'f4821addb462dd54853153c0c72ef42f', //appId，在控制台中“应用管理”或“应用配置”模块获取
@@ -57,12 +56,12 @@
                                             },
                                             success: function () {
                                                 alert(res.Message);
-                                                location.href = "/Users/UserRegist.cshtml";
-
+                                                location.href ="~/Views/RatelMenu/StartShow"
                                             }
                                         });
                                     }
                                     else {
+                                        window.location.reload();
                                         alert("登录失败");
                                     }
                                 }
@@ -77,10 +76,4 @@
         })
     }
 </script>
-
-
-
-
-
-
 

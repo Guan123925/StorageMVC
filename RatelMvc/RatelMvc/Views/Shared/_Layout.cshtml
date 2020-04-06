@@ -1,114 +1,93 @@
 ﻿<!DOCTYPE html>
 <html>
 <head>
-    <meta charset="utf-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-    <title>layout 餐饮后台 - Layui</title>
-    <link href="~/layui-v2.5.6/layui/css/layui.css" rel="stylesheet" />
-    <link href="~/Content/bootstrap.css" rel="stylesheet" />
-    <script src="~/Scripts/jquery-3.3.1.min.js"></script>
+    <meta charset="UTF-8">
+    <meta name="renderer" content="webkit">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+    <meta name="viewport" content="width=device-width,initial-scale=1,minimum-scale=1,maximum-scale=1,user-scalable=no" />
+    <title>Ratel管理平台</title>
+    <link href="~/admin/layui/css/layui.css" rel="stylesheet" />
+    <link href="~/admin/css/admin.css" rel="stylesheet" />
 </head>
-<body class="layui-layout-body">
-    <div class="layui-layout layui-layout-admin">
-        <div class="layui-header">
-            <div class="layui-logo">小微企业高效管理系统</div>
-            <!-- 头部区域（可配合layui已有的水平导航） -->
-            <ul class="layui-nav layui-layout-left">
-                <li class="layui-nav-item"><a href="">控制台</a></li>
-                <li class="layui-nav-item"><a href="">商品管理</a></li>
-                <li class="layui-nav-item"><a href="">用户</a></li>
-                <li class="layui-nav-item">
-                    <a href="javascript:;">其它系统</a>
-                    <dl class="layui-nav-child">
-                        <dd><a href="">邮件管理</a></dd>
-                        <dd><a href="">消息管理</a></dd>
-                        <dd><a href="">授权管理</a></dd>
-                    </dl>
+<body>
+    <div class="main-layout" id='main-layout'>
+        <!--侧边栏-->
+        <div class="main-layout-side">
+            <div>
+                <img src="~/Content/无标题.png" style="height:60px; width:200px" />
+            </div>
+            <ul class="layui-nav layui-nav-tree" lay-filter="leftNav">
+                <li class="layui-nav-item layui-nav-itemed">
+                    <a href="javascript:;"><i class="iconfont">&#xe607;</i>首页</a>
                 </li>
-            </ul>
-            <ul class="layui-nav layui-layout-right">
                 <li class="layui-nav-item">
-                    <a href="javascript:;">
-                        <img src="http://t.cn/RCzsdCq" class="layui-nav-img">
-                        贤心
-                    </a>
-                    <dl class="layui-nav-child">
-                        <dd><a href="">基本资料</a></dd>
-                        <dd><a href="">安全设置</a></dd>
-                    </dl>
+                    <a href="javascript:;" data-url="Project/InfoMation" data-id='1'><i class="iconfont">&#xe608;</i>项目管理</a>
                 </li>
-                <li class="layui-nav-item"><a href="">退了</a></li>
+           
+                <li class="layui-nav-item">
+                    <a href="javascript:;"><i class="iconfont">&#xe604;</i>费用管理</a>
+                </li>
+                <li class="layui-nav-item">
+                    <a href="javascript:;"><i class="iconfont">&#xe60c;</i>合同管理</a>
+                </li>
+                <li class="layui-nav-item">
+                    <a href="javascript:;"><i class="iconfont">&#xe60a;</i>RBAC</a>
+                </li>
+                <li class="layui-nav-item">
+                    <a href="javascript:;" data-url="/Hotel/email" data-id='4' data-text="邮件系统"><i class="iconfont">&#xe603;</i>人才管理</a>
+                </li>
+                <li class="layui-nav-item">
+                    <a href="javascript:;"><i class="iconfont">&#xe60d;</i>生成静态</a>
+                </li>
+                <li class="layui-nav-item">
+                    <a href="javascript:;"><i class="iconfont">&#xe600;</i>备份管理</a>
+                </li>
+                <li class="layui-nav-item">
+                    <a href="javascript:;" data-url="/Hotel/UserInfoShow" data-id='5' data-text="个人信息"><i class="iconfont">&#xe606;</i>个人信息</a>
+                </li>
+                <li class="layui-nav-item">
+                    <a href="javascript:;" data-url="/Project/InfoMation/" data-id='6' data-text="系统设置"><i class="iconfont">&#xe60b;</i>系统设置</a>
+                </li>
             </ul>
         </div>
-
-        <div class="layui-side layui-bg-black">
-            <div class="layui-side-scroll">
-                <!-- 左侧导航区域（可配合layui已有的垂直导航） -->
-                <ul class="layui-nav layui-nav-tree" lay-filter="test">
+        <!--右侧内容-->
+        <div class="main-layout-container">
+            <!--头部-->
+            <div class="main-layout-header">
+                <div class="menu-btn" id="hideBtn">
+                    <a href="javascript:;">
+                        <span class="iconfont">&#xe60e;</span>
+                    </a>
+                </div>
+                <ul class="layui-nav" lay-filter="rightNav">
+                    <li class="layui-nav-item"><a href="javascript:;" data-url="email.html" data-id='4' data-text="邮件系统"><i class="iconfont">&#xe603;</i></a></li>
                     <li class="layui-nav-item">
-                        <a href="javascript:; ">首页</a>
-                        <dl class="layui-nav-child">
-                            <dd><a href="">项目介绍</a></dd>
-                        </dl>
+                        <a href="javascript:;" data-url="/Hotel/UserInfoShow" data-id='5' data-text="个人信息">@Session["name"]</a>
                     </li>
-                    <li class="layui-nav-item">
-                        <a href="javascript:;">项目管理</a>
-                        <dl class="layui-nav-child">
-                            <dd><a href="">数据列表</a></dd>
-                            <dd><a href="">新增项目</a></dd>
-                            <dd><a href="">项目详情</a></dd>
-                        </dl>
-                    </li>
-                    <li class="layui-nav-item">
-                        <a href="javascript:;">费用管理</a>
-                        <dl class="layui-nav-child">
-                            <dd><a href="">数据列表</a></dd>
-                            <dd><a href="">新增费用</a></dd>
-                            <dd><a href="">修改数据</a></dd>
-                            <dd><a href="">详情数据</a></dd>
-                        </dl>
-                    </li>
-                    <li class="layui-nav-item">
-                        <a href="javascript:;">合同管理</a>
-                        <dl class="layui-nav-child">
-                            <dd><a href="">合同显示</a></dd>
-                            <dd><a href="">新增合同</a></dd>
-                            <dd><a href="">修改合同</a></dd>
-                            <dd><a href="">详情合同</a></dd>
-                        </dl>
-                    </li>
-                    <li class="layui-nav-item">
-                        <a href="javascript:;">人才管理</a>
-                        <dl class="layui-nav-child">
-                            <dd><a href="/Talents/Index">显示人才</a></dd>
-                            <dd><a href="/Talents/AddTalent">新增人才</a></dd>
-                            <dd><a href="/Talents/PutTalent">修改人才</a></dd>
-                            <dd><a href="/Record/AddRecoed">查看</a></dd>
-                        </dl>
-                    </li>
+                    <li class="layui-nav-item"><a href="javascript:;" onclick="End()">退出</a></li>
                 </ul>
             </div>
-        </div>
-
-        <div class="layui-body">
-            <!-- 内容主体区域 -->
-            <div style="padding-left: 25px;">
-                @RenderBody()
+            <!--主体内容-->
+            <div class="main-layout-body">
+                <!--tab 切换-->
+                <div class="layui-tab layui-tab-brief main-layout-tab" lay-filter="tab" lay-allowClose="true">
+                    <ul class="layui-tab-title">
+                        <li class="layui-this welcome">后台主页</li>
+                    </ul>
+                    <div class="layui-tab-content">
+                        <div class="layui-tab-item layui-show" style="background: #f5f5f5;">
+                            @RenderBody()
+                        </div>
+                    </div>
+                </div>
             </div>
         </div>
-
-        <div class="layui-footer">
-            <!-- 底部固定区域 -->
-            © 8组  小微企业高效管理
-        </div>
     </div>
-    <script src="~/layui-v2.5.6/layui/layui.js"></script>
-    <script>
-        //JavaScript代码区域
-        layui.use('element', function () {
-            var element = layui.element;
-
-        });
+    <script type="text/javascript">
+        var scope = {
+            link: '~/Views/RatelMenu/StartShow'
+        }
     </script>
 </body>
 </html>
+

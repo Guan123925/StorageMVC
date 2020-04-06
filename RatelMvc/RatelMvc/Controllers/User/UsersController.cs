@@ -16,8 +16,8 @@ namespace RatelMvc.Controllers
         {
             return View();
         }
-
-        public ActionResult LoginShow()
+        
+        public ActionResult LoginShows()
         {
             return View();
         }
@@ -25,11 +25,12 @@ namespace RatelMvc.Controllers
         /// 用户登录
         /// </summary>
         /// <param name="request"></param>
-        /// <returns></returns>
+        /// <returns></returns>      
         public JsonResult UserLogin(UserLoginRequest request)
         {  
             return Json(bll.UserLogin(request));    
         }
+
         public int UserLogins(string name = "", int Id = 0)
         {
             if (name != null)
@@ -68,11 +69,7 @@ namespace RatelMvc.Controllers
         /// 用户注册
         /// </summary>
         /// <param name="request"></param>
-        /// <returns></returns>
-        /// 
-
-
-        [HttpPost]
+        /// <returns></returns> 
         public JsonResult UserRegist(UserRegistRequest request)
         {
             return Json(bll.UserRegist(request));
