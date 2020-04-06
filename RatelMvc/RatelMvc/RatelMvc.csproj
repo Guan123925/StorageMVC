@@ -130,6 +130,8 @@
     <Compile Include="App_Start\RouteConfig.cs" />
     <Compile Include="Controllers\HttpClientHelper.cs" />
     <Compile Include="Controllers\Project\ProjectController.cs" />
+    <Compile Include="Controllers\Talent\RecordController.cs" />
+    <Compile Include="Controllers\Talent\TalentsController.cs" />
     <Compile Include="Controllers\User\UsersController.cs" />
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
@@ -575,6 +577,7 @@
     <Content Include="fonts\glyphicons-halflings-regular.svg" />
     <Content Include="Global.asax" />
     <Content Include="Content\Site.css" />
+    <Content Include="Img\timg.jpg" />
     <Content Include="layui-v2.5.6\layui\css\layui.css" />
     <Content Include="layui-v2.5.6\layui\css\layui.mobile.css" />
     <Content Include="layui-v2.5.6\layui\css\modules\code.css" />
@@ -864,6 +867,17 @@
     <Content Include="Views\Master\Project\StageUpdate.cshtml" />
     <Content Include="Views\Project\StageUpdate.cshtml" />
     <Content Include="Views\Users\RegistShow.cshtml" />
+    <Content Include="Views\Master\Project\ProjectAdd.cshtml" />
+    <Content Include="Views\Project\ProjectAdd.cshtml" />
+    <Content Include="Views\RatelMenu\StartShow.cshtml" />
+    <Content Include="Views\Record\AddRecoed.cshtml" />
+    <Content Include="Views\Record\Index.cshtml" />
+    <Content Include="Views\Talents\AddTalent.cshtml" />
+    <Content Include="Views\Talents\Index.cshtml" />
+    <Content Include="Views\Talents\PutTalent.cshtml" />
+    <Content Include="Views\Users\LoginShows.cshtml" />
+    <Content Include="Views\Users\_LoginShows.cshtml" />
+    <Content Include="Views\Users\View.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

@@ -37,7 +37,7 @@
     </Reference>
     <Reference Include="SDKClient, Version=1.0.0.0, Culture=neutral, processorArchitecture=MSIL">
       <SpecificVersion>False</SpecificVersion>
-      <HintPath>..\..\..\RatelApi\RatelCMSAPI\API\bin\SDKClient.dll</HintPath>
+      <HintPath>..\..\..\CMS\RatelCMSAPI\SDKClient\bin\Debug\SDKClient.dll</HintPath>
     </Reference>
     <Reference Include="System" />
     <Reference Include="System.Configuration" />
