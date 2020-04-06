@@ -1,0 +1,40 @@
+﻿@model IEnumerable<Models.Talent.TalentsModel>
+@{
+    ViewBag.Title = "show";
+}
+
+<h2>费用管理</h2>
+@using (Html.BeginForm())
+{
+
+
+<table class="table table-bordered">
+    <tr>
+        <td>报销人:</td>
+        <td><input id="Text1" type="text" /></td>
+        <td>报销类型:</td>
+        <td><select id="Select1"><option></option></select></td>
+        <td>报销状态:</td>
+        <td><select id="Select1"><option></option></select></td>
+    </tr>
+    <tr>
+        <td><input id="Button1" type="button" value="查询" /></td>
+    </tr>
+</table>
+<table class="table table-bordered">
+    <tr>
+        <td>
+            <input id="Button1" type="button" value="新增" />
+        </td>
+    </tr>
+    <tr>
+        <td>序号</td>
+        <td>报销类型</td>
+        <td>金额(元)</td>
+        <td>报销人</td>
+        <td>状态</td>
+        <td>报销日期</td>
+        <td>操作</td>
+    </tr>
+</table>
+}
