@@ -872,6 +872,9 @@
     <Content Include="Views\Reim\add.cshtml" />
     <Content Include="Views\Reim\Detail.cshtml" />
     <Content Include="Views\Reim\show.cshtml" />
+    <Content Include="Views\Users\LoginShows.cshtml" />
+    <Content Include="Views\Users\View.cshtml" />
+    <Content Include="Views\Users\_LoginShows.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
