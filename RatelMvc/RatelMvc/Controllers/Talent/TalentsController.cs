@@ -40,9 +40,9 @@ namespace RatelMvc.Controllers.Talent
         }
         public ActionResult PutTalent(int Id)
         {
-            string json = helper.Get("api/Talents/TalentId?Id=" + Id);
+            string json = helper.Get("api/Talents/TalentId/Id=" + Id);
             List<TalentsModel> list = JsonConvert.DeserializeObject<List<TalentsModel>>(json);
-            return View(list.FirstOrDefault());
+            return View(list);
         }
         [HttpPost]
         public void PutTalent(TalentsModel model)
@@ -58,6 +58,21 @@ namespace RatelMvc.Controllers.Talent
             else
             {
                 Response.Write("<script>alert('修改失败');location.href='/Talents/Index/'<script>");
+            }
+        }
+        public void DeleteTalent(int Id)
+        {
+            string str = helper.Delete("api/Talents/DeleteTalent/?Id=" + Id);
+
+            int i = int.Parse(str);
+
+            if (i > 0)
+            {
+                Response.Write("<script>alert('删除成功');location.href='/Talents/Index/';</script>");
+            }
+            else
+            {
+                Response.Write("<script>alert('删除失败');location.href='/Talents/Index/';</script>");
             }
         }
     }

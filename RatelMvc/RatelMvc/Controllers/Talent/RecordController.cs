@@ -38,7 +38,6 @@ namespace RatelMvc.Controllers.Talent
             List<RecordModel> list = JsonConvert.DeserializeObject<List<RecordModel>>(json);
             return View(list);
         }
-        [HttpDelete]
         public void DeleteRecoed(int Id)
         {
             string str = helper.Delete("api/Record/DeleteRecoed/?Id=" + Id);
