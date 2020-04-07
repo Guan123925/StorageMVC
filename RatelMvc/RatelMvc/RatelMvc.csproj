@@ -52,7 +52,7 @@
     <Reference Include="Microsoft.CSharp" />
     <Reference Include="SDKClient, Version=1.0.0.0, Culture=neutral, processorArchitecture=MSIL">
       <SpecificVersion>False</SpecificVersion>
-      <HintPath>..\..\..\API2\RatelCMSAPI\SDKClient\bin\Debug\SDKClient.dll</HintPath>
+      <HintPath>..\..\..\CMS\RatelCMSAPI\SDKClient\bin\Debug\SDKClient.dll</HintPath>
     </Reference>
     <Reference Include="System" />
     <Reference Include="System.Data" />
@@ -130,12 +130,15 @@
     <Compile Include="App_Start\RouteConfig.cs" />
     <Compile Include="Controllers\HttpClientHelper.cs" />
     <Compile Include="Controllers\Project\ProjectController.cs" />
+    <Compile Include="Controllers\Reimbursement\ReimController.cs" />
     <Compile Include="Controllers\Talent\RecordController.cs" />
     <Compile Include="Controllers\Talent\TalentsController.cs" />
     <Compile Include="Controllers\User\UsersController.cs" />
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
+    <Compile Include="Models\Reimbursement\ReimbursementInfo.cs" />
+    <Compile Include="Models\Reimbursement\Reimbursementtype.cs" />
     <Compile Include="Models\Talent\RecordModel.cs" />
     <Compile Include="Models\Talent\TalentsModel.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
@@ -568,6 +571,10 @@
     <Content Include="Content\bootstrap-theme.min.css" />
     <Content Include="Content\bootstrap.css" />
     <Content Include="Content\bootstrap.min.css" />
+    <Content Include="Content\ratle.jfif" />
+    <Content Include="Content\timg.jfif" />
+    <Content Include="Content\logo.jfif" />
+    <Content Include="Content\无标题.png" />
     <Content Include="DxCsharpSDK.dll" />
     <Content Include="favicon.ico" />
     <Content Include="fonts\glyphicons-halflings-regular.svg" />
@@ -861,15 +868,13 @@
     <Content Include="Views\Project\AddProjectAndStage.cshtml" />
     <Content Include="Views\Master\Project\StageUpdate.cshtml" />
     <Content Include="Views\Project\StageUpdate.cshtml" />
-    <Content Include="Views\Users\_LoginShow.cshtml" />
-    <Content Include="Views\Users\LoginShow.cshtml" />
-    <Content Include="Views\Users\UserRegist.cshtml" />
     <Content Include="Views\Users\RegistShow.cshtml" />
+    <Content Include="Views\Reim\add.cshtml" />
+    <Content Include="Views\Reim\show.cshtml" />
+    <Content Include="Views\Reim\Detail.cshtml" />
     <Content Include="Views\Talents\AddTalent.cshtml" />
     <Content Include="Views\Talents\Index.cshtml" />
     <Content Include="Views\Talents\PutTalent.cshtml" />
-    <Content Include="Views\Record\AddRecoed.cshtml" />
-    <Content Include="Views\Record\Index.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
@@ -911,7 +916,7 @@
           <AutoAssignPort>True</AutoAssignPort>
           <DevelopmentServerPort>49744</DevelopmentServerPort>
           <DevelopmentServerVPath>/</DevelopmentServerVPath>
-          <IISUrl>http://localhost:4974/</IISUrl>
+          <IISUrl>http://localhost:49744/</IISUrl>
           <NTLMAuthentication>False</NTLMAuthentication>
           <UseCustomServer>False</UseCustomServer>
           <CustomServerUrl>

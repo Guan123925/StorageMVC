@@ -12,7 +12,7 @@ namespace BLL
 {
     public static class ApiRequestHelp
     {
-        static string BaseAddress = "http://localhost:8066";
+        static string BaseAddress = "http://localhost:51845/";
 
         public static TResponse Post<TRequet, TResponse>(TRequet t) where TRequet : BaseRequest where TResponse : BaseResponse, new()
         {
@@ -26,8 +26,8 @@ namespace BLL
                 //设置 默认请求头ACCEPT 
                 client.DefaultRequestHeaders.Accept.Add(new MediaTypeWithQualityHeaderValue("application/json"));
 
-                string token = ConfigurationManager.AppSettings["token"];
-                client.DefaultRequestHeaders.Add("token", token);
+                //string token = ConfigurationManager.AppSettings["token"];
+                //client.DefaultRequestHeaders.Add("token", token);
 
                 //设置消息体
                 HttpContent content = new StringContent(JsonConvert.SerializeObject(t));

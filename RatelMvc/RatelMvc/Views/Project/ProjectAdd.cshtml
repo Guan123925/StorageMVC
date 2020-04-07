@@ -1,0 +1,165 @@
+﻿
+@{
+    ViewBag.Title = "ProjectAdd";
+    Layout = "~/Views/Master/Project/ProjectAdd.cshtml";
+}
+
+<script>
+
+    $().ready(function () {
+         ProjectBand();
+         MarkBand();
+         TestBand();
+         TechBand();
+         ProductBand();
+    })
+
+    function ProjectBand() {
+        var DepartId = 1;
+
+        $.ajax({
+            url: "/Project/BandProjectbinding",
+            data: {
+                DepartId: DepartId
+            },
+            type: "post",
+            datatype: "json",
+            success: function (res) {
+                var list = "";
+                $(res.info).each(function () {
+                    list += "<option value='" + this.Id + "' >" + this.PositName + "</option>";
+                })
+                $("#selProject").append(list);
+            }
+        })
+    }
+
+    function TechBand() {
+        var DepartId = 2;
+
+        $.ajax({
+            url: "/Project/BandProjectbinding",
+            data: {
+                DepartId: DepartId
+            },
+            type: "post",
+            datatype: "json",
+            success: function (res) {
+                var list = "";
+                $(res.info).each(function () {
+                    list += "<option value='" + this.Id + "' >" + this.PositName + "</option>";
+                })
+                $("#selTech").append(list);
+            }
+        })
+    }
+
+    function ProductBand() {
+        var DepartId = 3;
+
+        $.ajax({
+            url: "/Project/BandProjectbinding",
+            data: {
+                DepartId: DepartId
+            },
+            type: "post",
+            datatype: "json",
+            success: function (res) {
+                var list = "";
+                $(res.info).each(function () {
+                    list += "<option value='" + this.Id + "' >" + this.PositName + "</option>";
+                })
+                $("#selProduct").append(list);
+            }
+        })
+    }
+
+    function TestBand() {
+        var DepartId = 4;
+
+        $.ajax({
+            url: "/Project/BandProjectbinding",
+            data: {
+                DepartId: DepartId
+            },
+            type: "post",
+            datatype: "json",
+            success: function (res) {
+                var list = "";
+                $(res.info).each(function () {
+                    list += "<option value='" + this.Id + "' >" + this.PositName + "</option>";
+                })
+                $("#selTest").append(list);
+            }
+        })
+    }
+
+    function MarkBand() {
+        var DepartId = 5;
+
+        $.ajax({
+            url: "/Project/BandProjectbinding",
+            data: {
+                DepartId: DepartId
+            },
+            type: "post",
+            datatype: "json",
+            success: function (res) {
+                var list = "";
+                $(res.info).each(function () {
+                    list += "<option value='" + this.Id + "' >" + this.PositName + "</option>";
+                })
+                $("#selMark").append(list);
+            }
+        })
+    }
+
+     function ExitProject() {
+        window.location = "/Project/InfoMation";
+    }
+
+    function AddProject() {
+        var ProjectNumber = $("#txtNumber").val();
+        var ProjectName = $("#txtName").val();
+        var ProjectDescribe = $("#txtDetail").val();
+        var ProjectStaffId = $("#selProject").val();
+        var TechStaffId = $("#selTech").val();
+        var ProductStaffId = $("#selProduct").val();
+        var TestStaffId = $("#selTest").val();
+        var MarketStaffId = $("#selMark").val();
+        var ProjectStartTime = $("#txtStartTime").val();
+        var ProjectOutTime = $("#txtOffTime").val();
+        var ProjectStage = 0;
+
+        alert(ProjectStaffId);
+
+
+        $.ajax({
+            url: "/Project/AddProject",
+            data: {
+                ProjectNumber: ProjectNumber,
+                ProjectName: ProjectName,
+                ProjectDescribe: ProjectDescribe,
+                ProjectStaffId: ProjectStaffId,
+                TechStaffId: TechStaffId,
+                ProductStaffId: ProductStaffId,
+                TestStaffId: TestStaffId,
+                MarketStaffId: MarketStaffId,
+                ProjectStartTime: ProjectStartTime,
+                ProjectOutTime: ProjectOutTime,
+                ProjectStage:ProjectStage
+            },
+            datatype: "json",
+            type: "post",
+            success: function (res) {
+                if (res.IsRegistSuccess) {
+                    alert(res.Message);
+                    location.href = "/Project/InfoMation";
+                }
+                else {
+                    alert(res.Message);
+                }
+            }
+        })
+    }
+</script>

@@ -4,63 +4,91 @@
 <head>
     <meta name="viewport" content="width=device-width" />
     <title>@ViewBag.Title</title>
+    <link rel="stylesheet" type="text/css" href="~/admin/layui/css/layui.css" />
+    <link rel="stylesheet" type="text/css" href="~/admin/css/admin.css" />
     <script src="~/Scripts/jquery-3.4.1.min.js"></script>
     <script src="~/Scripts/jquery.unobtrusive-ajax.min.js"></script>
-<style>
-    #tbo {
-      border-collapse:collapse;
-    }
-        #tbo td {
-        border:1px solid #000000;
-        padding:20px;
-        text-align:center;
+    <style>
+        #tbo {
+            border-collapse: collapse;
         }
-</style>
+
+            #tbo td {
+                border: 1px solid #000000;
+                padding: 20px;
+                text-align: center;
+            }
+             #tbod th {
+          text-align:center;
+        }
+
+        #tbod td {
+           text-align:center;
+           border:1px;
+        }
+    </style>
 </head>
 <body>
     <div>
         @RenderBody()
     </div>
-    <div>
+    <div style="margin-left:20px;margin-top:30px;">
         <input type="hidden" id="hidProjectId" value="@Request["ProjectId"]" />
-        <span>项目编号：</span>
-        <span id="SpanNumber"></span><br /><br />
-        <span>项目描述：</span>
-        <span  id="SpanDetail">暂未添加项目描述</span><br /><br />
-        <span>项目负责人：</span>
-        <span  id="SpanProjectPerson"></span><br /><br />
-        <span>技术负责人：</span>
-        <span id="SpanTechnologyPerson"></span><br /><br />
-        <span>产品负责人：</span>
-        <span id="SpanProductPerson"></span><br /><br />
-        <span>测试负责人：</span>
-        <span id="SpanTestPerson"></span><br /><br />
-        <span>市场负责人：</span>
-        <span id="SpanBazaarPerson"></span><br /><br />
-        <span>项目开始时间：</span>
-        <span id="SpanStartTime"></span><br /><br />
-        <span>项目截止时间：</span>
-        <span id="SpanOffTime"></span><br /><br />
-        <span>阶段计划表:</span>
-        <table id="tbo" style="margin-left:150px;margin-top:20px">
-            <thead>
-                <tr>
-                    <td>序号</td>
-                    <td>阶段</td>
-                    <td>开始日期</td>
-                    <td>完成日期</td>
-                    <td>阶段负责人</td>
-                </tr>
-            </thead>
-            <tbody id="tdy">
-                
-            </tbody>
+        <table class="layui-table" style="height:300px;width:300px;" lay-even id="tbod">
+            <tr>
+                <td><span>项目编号：</span></td>
+                <td><span id="SpanNumber"></span></td>
+            </tr>
+            <tr>
+                <td><span>项目描述：</span></td>
+                <td><span id="SpanDetail">暂未添加项目描述</span></td>
+            </tr>
+            <tr>
+                <td><span>项目负责人：</span></td>
+                <td><span id="SpanProjectPerson"></span></td>
+            </tr>
+            <tr>
+                <td><span>技术负责人：</span></td>
+                <td><span id="SpanTechnologyPerson"></span></td>
+            </tr>
+            <tr>
+                <td><span>产品负责人：</span></td>
+                <td><span id="SpanProductPerson"></span></td>
+            </tr>
+            <tr>
+                <td><span>测试负责人：</span></td>
+                <td><span id="SpanTestPerson"></span></td>
+            </tr>
+            <tr>
+                <td><span>市场负责人：</span></td>
+                <td><span id="SpanBazaarPerson"></span></td>
+            </tr>
+            <tr>
+                <td><span>项目开始时间：</span></td>
+                <td><span id="SpanStartTime"></span></td>
+            </tr>
+            <tr>
+                <td><span>项目截止时间：</span></td>
+                <td><span id="SpanOffTime"></span></td>
+            </tr>
         </table>
-    </div>
-    <div  class="layui-table" lay-even lay-skin="nob" id="tbod">
-        <button style="margin-left:200px;margin-top:20px; color:lightskyblue;background-color:white;height:30px;width:50px;">编辑</button>
-        <button  style="margin-left:100px;margin-top:20px; color:lightskyblue;background-color:white;height:30px;width:50px;">返回</button>
-    </div>
+        <br /><br />
+        <span><strong>阶段计划表:</strong></span>
+        <div class="layui-form" id="table-list" style="margin-top:50px;width:600px;" >
+            <table class="layui-table" lay-even @*lay-skin="nob"*@ id="tbod">
+                <thead>
+                    <tr>
+                        <th>序号</th>
+                        <th>阶段</th>
+                        <th>开始日期</th>
+                        <th>完成日期</th>
+                        <th>阶段负责人</th>
+                    </tr>
+                </thead>
+                <tbody id="tdy"></tbody>
+            </table>
+        </div>
+        </div>
 </body>
 </html>
 
