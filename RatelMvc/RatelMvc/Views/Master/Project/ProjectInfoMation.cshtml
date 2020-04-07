@@ -1,5 +1,4 @@
 ﻿
-
 <!DOCTYPE html>
 
 <html>
@@ -38,8 +37,6 @@
                     <button class="layui-btn layui-btn-small layui-btn-normal addBtn hidden-xs" onclick="ProjectAdd()"><i class="layui-icon">&#xe654;</i>新增</button>
                 </div>
                 <div @*class="layui-inline"*@ style="float:left">
-                    <input type="hidden" value="" id="hidTotal" />
-                    <input type="hidden" value="1" id="hidIndex" />
                     <span style="margin-left:20px;">项目编号：</span>
                     <input type="text" name="title" placeholder="请输入项目编号" style="height:30px;width:100px;margin-left:20px;" id="txtNumber">
                     <span style="margin-left:20px;">项目状态：</span>
@@ -56,13 +53,13 @@
         <div class="layui-form" id="table-list" style="margin-top:50px">
             <table class="layui-table" lay-even lay-skin="nob" id="tbod">
                 @*<colgroup>
-                    <col width="50">
-                    <col class="hidden-xs" width="50">
-                    <col class="hidden-xs" width="100">
-                    <col>
-                    <col width="80">
-                    <col width="150">
-                </colgroup>*@
+                        <col width="50">
+                        <col class="hidden-xs" width="50">
+                        <col class="hidden-xs" width="100">
+                        <col>
+                        <col width="80">
+                        <col width="150">
+                    </colgroup>*@
                 <thead>
                     <tr>
                         <th>序号</th>
@@ -77,26 +74,26 @@
                 </thead>
                 <tbody id="tbo">
                     @*<tr>
-                        <td>1</td>
-                        <td>0001</td>
-                        <td>健康小窝项目</td>
-                        <td>吴亦凡</td>
-                        <td>需求对接</td>
-                        <td style="color:paleturquoise">进行中</td>
-                        <td>2018-08-08</td>
-                        <td>
-                            <button class='layui-btn layui-btn-mini table-list-status layui-btn-warm' disabled autocomplete='off'>跟进</button>
-                            <button class="layui-btn layui-btn-small layui-btn-danger del-btn" >删除</button>
-                            <button s >详情</button>
-                        </td>
-                    </tr>*@
+                            <td>1</td>
+                            <td>0001</td>
+                            <td>健康小窝项目</td>
+                            <td>吴亦凡</td>
+                            <td>需求对接</td>
+                            <td style="color:paleturquoise">进行中</td>
+                            <td>2018-08-08</td>
+                            <td>
+                                <button class='layui-btn layui-btn-mini table-list-status layui-btn-warm' disabled autocomplete='off'>跟进</button>
+                                <button class="layui-btn layui-btn-small layui-btn-danger del-btn" >删除</button>
+                                <button s >详情</button>
+                            </td>
+                        </tr>*@
                 </tbody>
             </table>
             <div style="margin-top:100px;margin-left:1100px;">
-                <button style="height:30px;width:50px;" class='layui-btn layui-btn-mini layui-btn-normal table-list-status' onclick="btnFirst()">首页</button>
-                <button style="height:30px;width:50px;margin-left:50px;" class='layui-btn layui-btn-mini layui-btn-normal table-list-status' onclick="btnBack()">上一页</button>
-                <button style="height:30px;width:50px;margin-left:50px;" class='layui-btn layui-btn-mini layui-btn-normal table-list-status' onclick="btnNext()">下一页</button>
-                <button style="height:30px;width:50px;margin-left:50px;" class='layui-btn layui-btn-mini layui-btn-normal table-list-status' onclick="btnEnd()">尾页</button>
+                <button style="height:30px;width:50px;" class='layui-btn layui-btn-mini layui-btn-normal table-list-status'>首页</button>
+                <button style="height:30px;width:50px;margin-left:50px;" class='layui-btn layui-btn-mini layui-btn-normal table-list-status'>上一页</button>
+                <button style="height:30px;width:50px;margin-left:50px;" class='layui-btn layui-btn-mini layui-btn-normal table-list-status'>下一页</button>
+                <button style="height:30px;width:50px;margin-left:50px;" class='layui-btn layui-btn-mini layui-btn-normal table-list-status'>尾页</button>
             </div>
         </div>
     </div>
