@@ -1,15 +1,107 @@
 ﻿
 @{
     ViewBag.Title = "Detail";
-    Layout = "~/Views/Master/Project/ProjectDetail.cshtml";
+    Layout = "~/Views/Shared/_Layout.cshtml";
 }
+
+<!DOCTYPE html>
+
+<html>
+<head>
+    <meta name="viewport" content="width=device-width" />
+    <title>@ViewBag.Title</title>
+    <link rel="stylesheet" type="text/css" href="~/admin/layui/css/layui.css" />
+    <link rel="stylesheet" type="text/css" href="~/admin/css/admin.css" />
+    <script src="~/Scripts/jquery-3.4.1.min.js"></script>
+    <script src="~/Scripts/jquery.unobtrusive-ajax.min.js"></script>
+    <style>
+        #tbo {
+            border-collapse: collapse;
+        }
+
+            #tbo td {
+                border: 1px solid #000000;
+                padding: 20px;
+                text-align: center;
+            }
+
+        #tbod th {
+            text-align: center;
+        }
+
+        #tbod td {
+            text-align: center;
+            border: 1px;
+        }
+    </style>
+</head>
+<body>
+    <div style="margin-left:20px;margin-top:30px;">
+        <input type="hidden" id="hidProjectId" value="@Request["ProjectId"]" />
+        <table class="layui-table" style="height:300px;width:300px;" lay-even id="tbod">
+            <tr>
+                <td><span>项目编号：</span></td>
+                <td><span id="SpanNumber"></span></td>
+            </tr>
+            <tr>
+                <td><span>项目描述：</span></td>
+                <td><span id="SpanDetail">暂未添加项目描述</span></td>
+            </tr>
+            <tr>
+                <td><span>项目负责人：</span></td>
+                <td><span id="SpanProjectPerson"></span></td>
+            </tr>
+            <tr>
+                <td><span>技术负责人：</span></td>
+                <td><span id="SpanTechnologyPerson"></span></td>
+            </tr>
+            <tr>
+                <td><span>产品负责人：</span></td>
+                <td><span id="SpanProductPerson"></span></td>
+            </tr>
+            <tr>
+                <td><span>测试负责人：</span></td>
+                <td><span id="SpanTestPerson"></span></td>
+            </tr>
+            <tr>
+                <td><span>市场负责人：</span></td>
+                <td><span id="SpanBazaarPerson"></span></td>
+            </tr>
+            <tr>
+                <td><span>项目开始时间：</span></td>
+                <td><span id="SpanStartTime"></span></td>
+            </tr>
+            <tr>
+                <td><span>项目截止时间：</span></td>
+                <td><span id="SpanOffTime"></span></td>
+            </tr>
+        </table>
+        <br /><br />
+        <span><strong>阶段计划表:</strong></span>
+        <div class="layui-form" id="table-list" style="margin-top:50px;width:600px;">
+            <table class="layui-table" lay-even @*lay-skin="nob"*@ id="tbod">
+                <thead>
+                    <tr>
+                        <th>序号</th>
+                        <th>阶段</th>
+                        <th>开始日期</th>
+                        <th>完成日期</th>
+                        <th>阶段负责人</th>
+                    </tr>
+                </thead>
+                <tbody id="tdy"></tbody>
+            </table>
+        </div>
+    </div>
+</body>
+</html>
 <script>
     $().ready(function () {
         ProjectDetail();
         StageDetail();
     })
 
-     function ChangeDateFormat(val) {
+    function ChangeDateFormat(val) {
         if (val != null) {
             var date = new Date(parseInt(val.replace("/Date(", "").replace(")/", ""), 10));
             //月份为0-11，所以+1，月份小于10时补个0
@@ -21,7 +113,7 @@
     }
     function ProjectDetail() {
         var ProjectId = $("#hidProjectId").val();
-        
+
         $.ajax({
             url: "/Project/ProjectDetail",
             data: {
@@ -48,23 +140,23 @@
     function StageDetail() {
         //var ProjectStageId = 1;
 
-         var ProjectId = $("#hidProjectId").val();
-            
+        var ProjectId = $("#hidProjectId").val();
+
 
         $.ajax({
             url: "/Project/StageDetail",
             data: {
-                ProjectStageId:ProjectId
+                ProjectStageId: ProjectId
             },
             datatype: "Json",
-            type:"Post",
+            type: "Post",
             success: function (res) {
                 var list = "";
                 $(res.Stage).each(function () {
                     list += "<tr>" +
                         "<td>" + this.PlanId + "</td>" +
                         "<td>" + this.StageName + "</td>" +
-                        "<td>" +ChangeDateFormat(this.StageStartTime) + "</td>" +
+                        "<td>" + ChangeDateFormat(this.StageStartTime) + "</td>" +
                         "<td>" + ChangeDateFormat(this.StageFinishTime) + "</td>" +
                         "<td>" + this.StageStaffName + "</td>" +
                         "</tr>";
