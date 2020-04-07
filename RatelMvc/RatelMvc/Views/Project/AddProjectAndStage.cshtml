@@ -1,21 +1,154 @@
 ﻿
 @{
     ViewBag.Title = "AddProjectAndStage";
-    Layout = "~/Views/Master/Project/ProjectAddOrUpdate.cshtml";
+    Layout = "~/Views/Shared/_Layout.cshtml";
 }
+<!DOCTYPE html>
 
+<html>
+<head>
+    <meta name="viewport" content="width=device-width" />
+    <title>@ViewBag.Title</title>
+    <link rel="stylesheet" type="text/css" href="~/admin/layui/css/layui.css" />
+    <link rel="stylesheet" type="text/css" href="~/admin/css/admin.css" />
+    <script src="~/Scripts/jquery-3.4.1.min.js"></script>
+    <script src="~/Scripts/jquery.unobtrusive-ajax.min.js"></script>
+    <style>
+        #tbo td {
+            padding: 10px;
+        }
+
+        #tbod th {
+            text-align: center;
+        }
+
+        #tbod td {
+            text-align: center;
+        }
+
+        #tab {
+            border-collapse: collapse;
+        }
+
+            #tab td {
+                padding: 10px;
+                border: 1px solid #000000;
+                text-align: center;
+            }
+    </style>
+</head>
+
+<body>
+    <div style="float:right;margin-right:400px;">
+        <button class="layui-btn layui-btn-mini layui-btn-normal table-list-status" style="width:70px;height:50px; margin-left:20px;margin-top:30px;" onclick="ProjectUpdate()">编辑</button>
+        <button class="layui-btn layui-btn-small layui-btn-danger del-btn" style="width:70px;height:50px;margin-left:50px;margin-top:30px;" onclick="ExitProject()">取消</button>
+    </div>
+    <div style="margin-top:30px;">
+        <input type="hidden" id="hidProjectId" value="@Request["ProjectId"]" />
+        <table id="tbo">
+            <tr>
+                <td style="color:red">项目编号：</td>
+                <td><input type="text" id="txtNumber" placeholder="请输入项目编号" style="height:30px;width:180px" /></td>
+            </tr>
+            <tr>
+                <td style="color:blue">项目名称：</td>
+                <td><input type="text" id="txtName" placeholder="请输入项目名称" style="height:30px;width:180px" /></td>
+            </tr>
+            <tr>
+                <td style="color:fuchsia">项目描述：</td>
+                <td><input type="text" id="txtDetail" placeholder="请输入项目名称" style="height:30px;width:180px" /></td>
+            </tr>
+            <tr>
+                <td style="color:palevioletred">项目负责人：</td>
+                <td>
+                    <select id="selProject" style="height:30px;width:180px">
+                        <option value="0">请选择</option>
+                    </select>
+                </td>
+            </tr>
+            <tr>
+                <td style="color:palevioletred">技术负责人：</td>
+                <td>
+                    <select id="selTech" style="height:30px;width:180px">
+                        <option value="0">请选择</option>
+                    </select>
+                </td>
+            </tr>
+            <tr>
+                <td style="color:palevioletred">产品负责人：</td>
+                <td>
+                    <select id="selProduct" style="height:30px;width:180px">
+                        <option value="0">请选择</option>
+                    </select>
+                </td>
+            </tr>
+            <tr>
+                <td style="color:palevioletred">测试负责人：</td>
+                <td>
+                    <select id="selTest" style="height:30px;width:180px">
+                        <option value="0">请选择</option>
+                    </select>
+                </td>
+            </tr>
+            <tr>
+                <td style="color:palevioletred">市场负责人：</td>
+                <td>
+                    <select id="selMark" style="height:30px;width:180px">
+                        <option value="0">请选择</option>
+                    </select>
+                </td>
+            </tr>
+            <tr>
+                <td style="color:red">项目开始日期：</td>
+                <td>
+                    <form action="time">
+                        <input type="date" id="txtStartTime" style="height:30px;width:180px" />
+                    </form>
+                </td>
+            </tr>
+            <tr>
+                <td style="color:blue">项目截止日期：</td>
+                <td>
+                    <form action="time">
+                        <input type="date" id="txtOffTime" style="height:30px;width:180px" />
+                    </form>
+                </td>
+            </tr>
+        </table>
+    </div>
+    <div style="margin-top:15px;margin-left:15px;">
+        <span>阶段计划表:</span>
+        <span><a onclick="AddStage()">新增阶段</a></span>
+        <div class="layui-form" id="table-list" style="margin-top:50px;width:1200px;">
+            <table class="layui-table" lay-even @*lay-skin="nob"*@ id="tbod">
+                <thead>
+                    <tr>
+                        <th>序号</th>
+                        <th>阶段</th>
+                        <th>开始日期</th>
+                        <th>完成日期</th>
+                        <th>阶段负责人</th>
+                        <th colspan="2">操作</th>
+                    </tr>
+                </thead>
+                <tbody id="tby"></tbody>
+            </table>
+        </div>
+    </div>
+</body>
+</html>
 <script>
     $().ready(function () {
-         ProjectBackFill();
-         StageDetail();
-         ProjectBand();
-         MarkBand();
-         TestBand();
-         TechBand();
-         ProductBand();
-     })
+        ProjectBackFill();
+        StageDetail();
+        ProjectBand();
+        MarkBand();
+        TestBand();
+        TechBand();
+        ProductBand();
+    })
 
-    
+
     function ChangeDateFormat(val) {
         if (val != null) {
             var date = new Date(parseInt(val.replace("/Date(", "").replace(")/", ""), 10));
@@ -27,27 +160,27 @@
         return "";
     }
 
-      function StageDelete(PlanId) {
-          if (confirm("确定要删除么？")) {
-              $.ajax({
-                  url:"/Project/DeleteStage",
-                  data: {
-                      PlanId: PlanId
-                  },
-                  type: "post",
-                  datatype: "json",
-                  success: function (res) {
-                      if (res.IsRegistSuccess) {
-                          StageDetail();
-                          alert(res.Message);
-                          
-                      }
-                      else {
-                          alert(res.Message);
-                      }
-                  }
-                 })
+    function StageDelete(PlanId) {
+        if (confirm("确定要删除么？")) {
+            $.ajax({
+                url: "/Project/DeleteStage",
+                data: {
+                    PlanId: PlanId
+                },
+                type: "post",
+                datatype: "json",
+                success: function (res) {
+                    if (res.IsRegistSuccess) {
+                        StageDetail();
+                        alert(res.Message);
+
+                    }
+                    else {
+                        alert(res.Message);
+                    }
                 }
+            })
+        }
     }
 
     function StageUpdtae(PlanId) {
@@ -60,7 +193,7 @@
         $.ajax({
             url: "/Project/ProjectDetail",
             data: {
-                ProjectId:ProjectId
+                ProjectId: ProjectId
             },
             type: "post",
             datatype: "json",
@@ -82,21 +215,20 @@
         var ProjectNumber = $("#txtNumber").val();
         var ProjectName = $("#txtName").val();
         var ProjectDescribe = $("#txtDetail").val();
-        var ProjectStaffId = $("#selProject").text();
-        var TechStaffId = $("#selTech").text();
-        var ProductStaffId = $("#selProduct").text();
-        var TestStaffId = $("#selTest").text();
-        var MarketStaffId = $("#selMark").text();
+        var ProjectStaffId = $("#selProject").val();
+        var TechStaffId = $("#selTech").val();
+        var ProductStaffId = $("#selProduct").val();
+        var TestStaffId = $("#selTest").val();
+        var MarketStaffId = $("#selMark").val();
         var ProjectStartTime = $("#txtStartTime").val();
         var ProjectOutTime = $("#txtOffTime").val();
         var ProjectStage = 0;
 
-        alert(TechStaff);
 
         $.ajax({
             url: "/Project/UpdateProject",
             data: {
-                ProjectId:ProjectId,
+                ProjectId: ProjectId,
                 ProjectNumber: ProjectNumber,
                 ProjectName: ProjectName,
                 ProjectDescribe: ProjectDescribe,
@@ -107,7 +239,7 @@
                 MarketStaffId: MarketStaffId,
                 ProjectStartTime: ProjectStartTime,
                 ProjectOutTime: ProjectOutTime,
-                ProjectStage:ProjectStage
+                ProjectStage: ProjectStage
             },
             type: "post",
             datatype: "json",
@@ -140,7 +272,7 @@
             success: function (res) {
                 var list = "";
                 $(res.info).each(function () {
-                    list += "<option value='" + this.Id + "' >" + this.PositName + "</option>";
+                    list += "<option value='" + this.PositName + "' >" + this.PositName + "</option>";
                 })
                 $("#selProject").append(list);
             }
@@ -160,7 +292,7 @@
             success: function (res) {
                 var list = "";
                 $(res.info).each(function () {
-                    list += "<option value='" + this.Id + "' >" + this.PositName + "</option>";
+                    list += "<option value='" + this.PositName + "' >" + this.PositName + "</option>";
                 })
                 $("#selTech").append(list);
             }
@@ -180,7 +312,7 @@
             success: function (res) {
                 var list = "";
                 $(res.info).each(function () {
-                    list += "<option value='" + this.Id + "' >" + this.PositName + "</option>";
+                    list += "<option value='" + this.PositName + "' >" + this.PositName + "</option>";
                 })
                 $("#selProduct").append(list);
             }
@@ -200,7 +332,7 @@
             success: function (res) {
                 var list = "";
                 $(res.info).each(function () {
-                    list += "<option value='" + this.Id + "' >" + this.PositName + "</option>";
+                    list += "<option value='" + this.PositName + "' >" + this.PositName + "</option>";
                 })
                 $("#selTest").append(list);
             }
@@ -220,7 +352,7 @@
             success: function (res) {
                 var list = "";
                 $(res.info).each(function () {
-                    list += "<option value='" + this.Id + "' >" + this.PositName + "</option>";
+                    list += "<option value='" + this.PositName + "' >" + this.PositName + "</option>";
                 })
                 $("#selMark").append(list);
             }
@@ -231,34 +363,34 @@
         window.location = "/Project/InfoMation";
     }
 
-    
-    
+
+
     function StageDetail() {
         var ProjectId = $("#hidProjectId").val();
-                
-            $.ajax({
+
+        $.ajax({
             url: "/Project/StageDetail",
             data: {
-                ProjectStageId:ProjectId
+                ProjectStageId: ProjectId
             },
             datatype: "Json",
-            type:"Post",
+            type: "Post",
             success: function (res) {
                 var list = "";
                 $(res.Stage).each(function () {
                     list += "<tr>" +
                         "<td>" + this.PlanId + "</td>" +
                         "<td>" + this.StageName + "</td>" +
-                        "<td>" +ChangeDateFormat(this.StageStartTime) + "</td>" +
-                        "<td>" +ChangeDateFormat(this.StageFinishTime) + "</td>" +
+                        "<td>" + ChangeDateFormat(this.StageStartTime) + "</td>" +
+                        "<td>" + ChangeDateFormat(this.StageFinishTime) + "</td>" +
                         "<td>" + this.StageStaffName + "</td>" +
-                        "<td><a onclick='StageDelete("+this.PlanId+")' >删除</a>"+"</td>"+
-                        "<td><a onclick='StageUpdtae("+this.PlanId+")' >修改</a>"+"</td>"+
-                        "</tr>";  
+                        "<td><a onclick='StageDelete(" + this.PlanId + ")' >删除</a>" + "</td>" +
+                        "<td><a onclick='StageUpdtae(" + this.PlanId + ")' >修改</a>" + "</td>" +
+                        "</tr>";
                 })
                 $("#tby").append(list);
 
-              
+
             }
         })
     }
@@ -266,6 +398,6 @@
     function AddStage() {
         var ProjectId = $("#hidProjectId").val();
 
-        window.location = "/Project/StageUpdate?ProjectStage="+ProjectId;
+        window.location = "/Project/StageUpdate?ProjectStage=" + ProjectId;
     }
 </script>
