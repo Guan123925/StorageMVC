@@ -36,15 +36,15 @@
                     data: { token: token },
                     success: function (data) {
                         if (data == "SERVER_SUCCESS1") {
-                            var username = $("#acc").val()
-                            var password = $("#pass").val()
+                            var usernames = username
+                            var passwords = password
                             $.ajax({
                                 url: "/Users/UserLogin",
                                 type: "post",
                                 datatype: "Json",
                                 data: {
-                                    UserPhone: username,
-                                    UserPass: password
+                                    UserPhone: usernames,
+                                    UserPass: passwords
                                 },
                                 success: function (res) {
                                     if (res.IsLoginSuccess) {
@@ -56,12 +56,12 @@
                                             },
                                             success: function () {
                                                 alert(res.Message);
-                                                location.href ="~/Views/RatelMenu/StartShow"
+                                                location.href ="/RatelMenu/StartShow"
                                             }
                                         });
                                     }
                                     else {
-                                        window.location.reload();
+                                        //window.location.reload();
                                         alert("登录失败");
                                     }
                                 }

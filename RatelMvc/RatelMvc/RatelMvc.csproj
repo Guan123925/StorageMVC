@@ -130,6 +130,9 @@
     <Compile Include="App_Start\RouteConfig.cs" />
     <Compile Include="Controllers\HttpClientHelper.cs" />
     <Compile Include="Controllers\Project\ProjectController.cs" />
+    <Compile Include="Controllers\RatelMenuController.cs" />
+    <Compile Include="Controllers\Talent\RecordController.cs" />
+    <Compile Include="Controllers\Talent\TalentsController.cs" />
     <Compile Include="Controllers\User\UsersController.cs" />
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
@@ -850,8 +853,6 @@
     </Content>
     <Content Include="Views\Web.config" />
     <Content Include="Views\_ViewStart.cshtml" />
-    <Content Include="Views\Shared\Error.cshtml" />
-    <Content Include="Views\Shared\_Layout.cshtml" />
     <Content Include="Views\Home\About.cshtml" />
     <Content Include="Views\Home\Contact.cshtml" />
     <Content Include="Views\Home\Index.cshtml" />
@@ -864,6 +865,17 @@
     <Content Include="Views\Master\Project\StageUpdate.cshtml" />
     <Content Include="Views\Project\StageUpdate.cshtml" />
     <Content Include="Views\Users\RegistShow.cshtml" />
+    <Content Include="Views\Users\LoginShows.cshtml" />
+    <Content Include="Views\Users\_LoginShows.cshtml" />
+    <Content Include="Views\RatelMenu\StartShow.cshtml" />
+    <Content Include="Views\Talents\AddTalent.cshtml" />
+    <Content Include="Views\Talents\Index.cshtml" />
+    <Content Include="Views\Talents\PutTalent.cshtml" />
+    <Content Include="Views\Record\AddRecoed.cshtml" />
+    <Content Include="Views\Record\Index.cshtml" />
+    <Content Include="Views\Shared\Error.cshtml" />
+    <Content Include="Views\Shared\_Layout.cshtml" />
+    <Content Include="Views\Shared\ViewPage1.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
