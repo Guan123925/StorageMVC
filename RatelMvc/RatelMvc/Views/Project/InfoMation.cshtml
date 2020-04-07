@@ -113,6 +113,7 @@
         $("#tbo").empty();
 
         $.ajax({
+             
             url: "/Project/ProjectShow",
             data: {
                 PageIndex:PageIndex,
@@ -124,9 +125,10 @@
             type: "post",
             success: function (res) {
                 var list = "";
-
+                
                 if (res.IsRegistSuccess) {
                     $(res.Project).each(function () {
+                        $("#tbo").empty();
                     list += "<tr>" +
                         "<td>" + this.ProjectId + "</td>" +
                         "<td>" + this.ProjectNumber + "</td>" +
@@ -181,6 +183,295 @@
                 }
             })
         }
+    }
+
+
+    //首页
+    function btnFirst() {
+
+        var PageIndex = 1;
+        var PageSize = 3;
+        var ProjectNumber = $("#txtNumber").val();
+        var Projectstage = $("#SelectMent").val();
+        
+        $.ajax({
+            url: "/Project/ProjectShow",
+            data: {
+                PageIndex:PageIndex,
+                PageSize:PageSize,
+                Projectstage: Projectstage,
+                ProjectNumber:ProjectNumber
+            },
+            datatype: "json",
+            type: "post",
+            success: function (res) {
+                var list = "";
+                $(res.Project).each(function () {
+                    $("#tbo").empty();
+                    list += "<tr>" +
+                        "<td>" + this.ProjectId + "</td>" +
+                        "<td>" + this.ProjectNumber + "</td>" +
+                        "<td>" + this.ProjectDescribe + "</td>" +
+                        "<td>" + this.ProjectName + "</td>" +
+                        "<td>"+this.ProjectDescribe+"</td>"+
+                        "<td style='color:paleturquoise'>"+(this.ProjectStage==0 ?'进行中':(this.ProjectStage==1?'已完成':'已延期')) +"</td>" +
+                        "<td>" +ChangeDateFormat(this.ProjectStartTime) + "</td>" +
+                        "<td>"+
+                        "<button class='layui-btn layui-btn-mini table-list-status layui-btn-warm' onclick='ProjectStage(" + this.ProjectId + ")';'>跟进</button>" +
+                        "<button class='layui-btn layui-btn-small layui-btn-danger del-btn' onclick='ProjectDelete(" + this.ProjectId + ")' >删除</button>" +
+                        "<button class='layui-btn layui-btn-mini table-list-status layui-btn-warm'  onclick='ProjectUpdate(" + this.ProjectId + ")' >编辑</button>" +
+                        "<button class='layui-btn layui-btn-mini layui-btn-normal table-list-status' onclick='ProjectDetail(" + this.ProjectId + ")' >详情</button>" +
+                        "</td>"+
+                        "</tr>";
+
+                    $("#tbo").append(list);
+                })
+            }
+        })
+        
+    }
+
+    //上一页
+    function btnBack() {
+        var thisIndex = Math.floor($("#hidIndex").val());
+        var PageIndex = Math.floor(thisIndex-1);
+
+        if (PageIndex<=1) {
+            PageIndex = 1;
+        }
+
+         $("#hidIndex").val(PageIndex);
+
+        var PageSize = 3;
+        var ProjectNumber = $("#txtNumber").val();
+        var Projectstage = $("#SelectMent").val();
+
+          $("#tbo").empty();
+        
+        $.ajax({
+            url: "/Project/ProjectShow",
+            data: {
+                PageIndex:PageIndex,
+                PageSize:PageSize,
+                Projectstage: Projectstage,
+                ProjectNumber:ProjectNumber
+            },
+            datatype: "json",
+            type: "post",
+            success: function (res) {
+                var list = "";
+                $(res.Project).each(function () {
+                    $("#tbo").empty();
+                    list += "<tr>" +
+                        "<td>" + this.ProjectId + "</td>" +
+                        "<td>" + this.ProjectNumber + "</td>" +
+                        "<td>" + this.ProjectDescribe + "</td>" +
+                        "<td>" + this.ProjectName + "</td>" +
+                        "<td>"+this.ProjectDescribe+"</td>"+
+                        "<td style='color:paleturquoise'>"+(this.ProjectStage==0 ?'进行中':(this.ProjectStage==1?'已完成':'已延期')) +"</td>" +
+                        "<td>" +ChangeDateFormat(this.ProjectStartTime) + "</td>" +
+                        "<td>"+
+                        "<button class='layui-btn layui-btn-mini table-list-status layui-btn-warm' onclick='ProjectStage(" + this.ProjectId + ")';'>跟进</button>" +
+                        "<button class='layui-btn layui-btn-small layui-btn-danger del-btn' onclick='ProjectDelete(" + this.ProjectId + ")' >删除</button>" +
+                        "<button class='layui-btn layui-btn-mini table-list-status layui-btn-warm'  onclick='ProjectUpdate(" + this.ProjectId + ")' >编辑</button>" +
+                        "<button class='layui-btn layui-btn-mini layui-btn-normal table-list-status' onclick='ProjectDetail(" + this.ProjectId + ")' >详情</button>" +
+                        "</td>"+
+                        "</tr>";
+
+                    $("#tbo").append(list);
+                })
+            }
+        })
+
+    }
+
+    //下一页
+    function btnNext() {
+        //var PageSize = 3;
+        //var Pageindex = this.PageIndex + 1;
+        var ProjectNumber = $("#txtNumber").val();
+        var ProjectStage = $("#SelectMent").val();
+
+        $.ajax({
+            url: "/Project/ProjectShow",
+            data: {
+                ProjectNumber: ProjectNumber,
+                ProjectStage: ProjectStage,
+            },
+            datatype: "json",
+            type: "post",
+            success: function (res) {
+
+                var Totalcount = res.TotalCount;
+                var thisIndex = Math.floor($("#hidIndex").val());
+                var PageIndex = Math.floor(thisIndex + 1);
+                var PageSize = 3;
+                var ProjectNumber = $("#txtNumber").val();
+                var Projectstage = $("#SelectMent").val();
+                var Count = Math.floor(Totalcount / PageSize);
+
+                if (Totalcount % PageSize>0) {
+                    Count = Count + 1;
+                }
+
+                //if (Pageindex >= Count) {
+                //    Pageindex = Count; 
+                //}    
+
+                $("#hidIndex").val(PageIndex);
+
+                $("#tbo").empty();
+        
+                 $.ajax({
+                 url: "/Project/ProjectShow",
+                 data: {
+                 PageIndex:PageIndex,
+                 PageSize:PageSize,
+                 Projectstage: Projectstage,
+                 ProjectNumber:ProjectNumber
+            },
+            datatype: "json",
+            type: "post",
+            success: function (res) {
+                var list = "";
+                $(res.Project).each(function () {
+                    $("#tbo").empty();
+                    list += "<tr>" +
+                        "<td>" + this.ProjectId + "</td>" +
+                        "<td>" + this.ProjectNumber + "</td>" +
+                        "<td>" + this.ProjectDescribe + "</td>" +
+                        "<td>" + this.ProjectName + "</td>" +
+                        "<td>"+this.ProjectDescribe+"</td>"+
+                        "<td style='color:paleturquoise'>"+(this.ProjectStage==0 ?'进行中':(this.ProjectStage==1?'已完成':'已延期')) +"</td>" +
+                        "<td>" +ChangeDateFormat(this.ProjectStartTime) + "</td>" +
+                        "<td>"+
+                        "<button class='layui-btn layui-btn-mini table-list-status layui-btn-warm' onclick='ProjectStage(" + this.ProjectId + ")';'>跟进</button>" +
+                        "<button class='layui-btn layui-btn-small layui-btn-danger del-btn' onclick='ProjectDelete(" + this.ProjectId + ")' >删除</button>" +
+                        "<button class='layui-btn layui-btn-mini table-list-status layui-btn-warm'  onclick='ProjectUpdate(" + this.ProjectId + ")' >编辑</button>" +
+                        "<button class='layui-btn layui-btn-mini layui-btn-normal table-list-status' onclick='ProjectDetail(" + this.ProjectId + ")' >详情</button>" +
+                        "</td>"+
+                        "</tr>";
+
+                    $("#tbo").append(list);
+                })
+            }
+        })
+            }
+        })
+
+       
+
+        //PageProject(Pageindex,PageSize,ProjectNumber,ProjectStage);
+    }
+
+    //尾页
+    function btnEnd() {
+        var ProjectNumber = $("#txtNumber").val();
+        var ProjectStage = $("#SelectMent").val();
+
+        $.ajax({
+            url: "/Project/ProjectShow",
+            data: {
+                ProjectNumber: ProjectNumber,
+                ProjectStage: ProjectStage,
+            },
+            datatype: "json",
+            type: "post",
+            success: function (res) {
+
+                var Totalcount = res.TotalCount;
+
+                var PageSize = 3;
+                var ProjectNumber = $("#txtNumber").val();
+                var Projectstage = $("#SelectMent").val();
+                var Count = Math.floor(Totalcount / PageSize);
+
+                if (Totalcount % PageSize>0) {
+                    Count = Count + 1;
+                }
+                PageIndex = Count;
+
+                $("#hidIndex").val(PageIndex);
+
+            $("#tbo").empty();
+        
+            $.ajax({
+            url: "/Project/ProjectShow",
+            data: {
+                PageIndex:PageIndex,
+                PageSize:PageSize,
+                Projectstage: Projectstage,
+                ProjectNumber:ProjectNumber
+            },
+            datatype: "json",
+            type: "post",
+            success: function (res) {
+                var list = "";
+                $(res.Project).each(function () {
+                    $("#tbo").empty();
+                    list += "<tr>" +
+                        "<td>" + this.ProjectId + "</td>" +
+                        "<td>" + this.ProjectNumber + "</td>" +
+                        "<td>" + this.ProjectDescribe + "</td>" +
+                        "<td>" + this.ProjectName + "</td>" +
+                        "<td>"+this.ProjectDescribe+"</td>"+
+                        "<td style='color:paleturquoise'>"+(this.ProjectStage==0 ?'进行中':(this.ProjectStage==1?'已完成':'已延期')) +"</td>" +
+                        "<td>" +ChangeDateFormat(this.ProjectStartTime) + "</td>" +
+                        "<td>"+
+                        "<button class='layui-btn layui-btn-mini table-list-status layui-btn-warm' onclick='ProjectStage(" + this.ProjectId + ")';'>跟进</button>" +
+                        "<button class='layui-btn layui-btn-small layui-btn-danger del-btn' onclick='ProjectDelete(" + this.ProjectId + ")' >删除</button>" +
+                        "<button class='layui-btn layui-btn-mini table-list-status layui-btn-warm'  onclick='ProjectUpdate(" + this.ProjectId + ")' >编辑</button>" +
+                        "<button class='layui-btn layui-btn-mini layui-btn-normal table-list-status' onclick='ProjectDetail(" + this.ProjectId + ")' >详情</button>" +
+                        "</td>"+
+                        "</tr>";
+
+                    $("#tbo").append(list);
+                })
+            }
+        })
+            }
+        })
+
+    }
+
+    function PageProject(PageIndex,PageSize,Projectstage,ProjectNumber) {
+
+        alert(PageIndex);
+        
+        $.ajax({
+            url: "/Project/ProjectShow",
+            data: {
+                PageIndex:5,
+                PageSize:PageSize,
+                Projectstage: Projectstage,
+                ProjectNumber:ProjectNumber
+            },
+            datatype: "json",
+            type: "post",
+            success: function (res) {
+                var list = "";
+                $(res.Project).each(function () {
+                    $("#tbo").empty();
+                    list += "<tr>" +
+                        "<td>" + this.ProjectId + "</td>" +
+                        "<td>" + this.ProjectNumber + "</td>" +
+                        "<td>" + this.ProjectDescribe + "</td>" +
+                        "<td>" + this.ProjectName + "</td>" +
+                        "<td>"+this.ProjectDescribe+"</td>"+
+                        "<td style='color:paleturquoise'>"+(this.ProjectStage==0 ?'进行中':(this.ProjectStage==1?'已完成':'已延期')) +"</td>" +
+                        "<td>" +ChangeDateFormat(this.ProjectStartTime) + "</td>" +
+                        "<td>"+
+                        "<button class='layui-btn layui-btn-mini table-list-status layui-btn-warm' onclick='ProjectStage(" + this.ProjectId + ")';'>跟进</button>" +
+                        "<button class='layui-btn layui-btn-small layui-btn-danger del-btn' onclick='ProjectDelete(" + this.ProjectId + ")' >删除</button>" +
+                        "<button class='layui-btn layui-btn-mini table-list-status layui-btn-warm'  onclick='ProjectUpdate(" + this.ProjectId + ")' >编辑</button>" +
+                        "<button class='layui-btn layui-btn-mini layui-btn-normal table-list-status' onclick='ProjectDetail(" + this.ProjectId + ")' >详情</button>" +
+                        "</td>"+
+                        "</tr>";
+
+                    $("#tbo").append(list);
+                })
+            }
+        })
     }
 </script>
 
