@@ -130,6 +130,9 @@
     <Compile Include="App_Start\RouteConfig.cs" />
     <Compile Include="Controllers\HttpClientHelper.cs" />
     <Compile Include="Controllers\Project\ProjectController.cs" />
+    <Compile Include="Controllers\Reimbursement\ReimController.cs" />
+    <Compile Include="Controllers\Talent\RecordController.cs" />
+    <Compile Include="Controllers\Talent\TalentsController.cs" />
     <Compile Include="Controllers\User\UsersController.cs" />
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
@@ -864,6 +867,11 @@
     <Content Include="Views\Master\Project\StageUpdate.cshtml" />
     <Content Include="Views\Project\StageUpdate.cshtml" />
     <Content Include="Views\Users\RegistShow.cshtml" />
+    <Content Include="Views\Record\AddRecoed.cshtml" />
+    <Content Include="Views\Record\Index.cshtml" />
+    <Content Include="Views\Reim\add.cshtml" />
+    <Content Include="Views\Reim\Detail.cshtml" />
+    <Content Include="Views\Reim\show.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
