@@ -11,7 +11,7 @@ namespace RatelMvc.Controllers.Talent
 {
     public class RecordController : Controller
     {
-        HttpClientHelper helper = new HttpClientHelper("http://localhost:8066/");
+        HttpClientHelper helper = new HttpClientHelper("http://localhost:51845/");
         // GET: Record
         public ActionResult AddRecoed()
         {
