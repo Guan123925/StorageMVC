@@ -130,6 +130,7 @@
     <Compile Include="App_Start\RouteConfig.cs" />
     <Compile Include="Controllers\HttpClientHelper.cs" />
     <Compile Include="Controllers\Project\ProjectController.cs" />
+    <Compile Include="Controllers\RatelMenuController.cs" />
     <Compile Include="Controllers\Reimbursement\ReimController.cs" />
     <Compile Include="Controllers\Talent\RecordController.cs" />
     <Compile Include="Controllers\Talent\TalentsController.cs" />
@@ -580,7 +581,6 @@
     <Content Include="fonts\glyphicons-halflings-regular.svg" />
     <Content Include="Global.asax" />
     <Content Include="Content\Site.css" />
-    <Content Include="Img\timg.jpg" />
     <Content Include="layui-v2.5.6\layui\css\layui.css" />
     <Content Include="layui-v2.5.6\layui\css\layui.mobile.css" />
     <Content Include="layui-v2.5.6\layui\css\modules\code.css" />
@@ -859,9 +859,13 @@
     <Content Include="Views\Home\About.cshtml" />
     <Content Include="Views\Home\Contact.cshtml" />
     <Content Include="Views\Home\Index.cshtml" />
+    <Content Include="Views\Master\Project\ProjectInfoMation.cshtml" />
     <Content Include="Views\Project\InfoMation.cshtml" />
+    <Content Include="Views\Master\Project\ProjectDetail.cshtml" />
     <Content Include="Views\Project\Detail.cshtml" />
+    <Content Include="Views\Master\Project\ProjectAddOrUpdate.cshtml" />
     <Content Include="Views\Project\AddProjectAndStage.cshtml" />
+    <Content Include="Views\Master\Project\StageUpdate.cshtml" />
     <Content Include="Views\Project\StageUpdate.cshtml" />
     <Content Include="Views\Users\RegistShow.cshtml" />
     <Content Include="Views\Record\AddRecoed.cshtml" />
@@ -869,13 +873,14 @@
     <Content Include="Views\Reim\add.cshtml" />
     <Content Include="Views\Reim\Detail.cshtml" />
     <Content Include="Views\Reim\show.cshtml" />
-    <Content Include="Views\RatelMenu\StartShow.cshtml" />
+    <Content Include="Views\Users\LoginShows.cshtml" />
+    <Content Include="Views\Users\_LoginShows.cshtml" />
     <Content Include="Views\Shared\Error.cshtml" />
     <Content Include="Views\Shared\_Layout.cshtml" />
+    <Content Include="Views\RatelMenu\StartShow.cshtml" />
     <Content Include="Views\Talents\AddTalent.cshtml" />
     <Content Include="Views\Talents\Index.cshtml" />
     <Content Include="Views\Talents\PutTalent.cshtml" />
-    <Content Include="Views\Project\ProjectAdd.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
