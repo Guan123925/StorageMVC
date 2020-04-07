@@ -52,7 +52,7 @@
     <Reference Include="Microsoft.CSharp" />
     <Reference Include="SDKClient, Version=1.0.0.0, Culture=neutral, processorArchitecture=MSIL">
       <SpecificVersion>False</SpecificVersion>
-      <HintPath>..\..\..\API2\RatelCMSAPI\SDKClient\bin\Debug\SDKClient.dll</HintPath>
+      <HintPath>..\..\..\CMS\RatelCMSAPI\SDKClient\bin\Debug\SDKClient.dll</HintPath>
     </Reference>
     <Reference Include="System" />
     <Reference Include="System.Data" />
@@ -855,8 +855,6 @@
     </Content>
     <Content Include="Views\Web.config" />
     <Content Include="Views\_ViewStart.cshtml" />
-    <Content Include="Views\Shared\Error.cshtml" />
-    <Content Include="Views\Shared\_Layout.cshtml" />
     <Content Include="Views\Home\About.cshtml" />
     <Content Include="Views\Home\Contact.cshtml" />
     <Content Include="Views\Home\Index.cshtml" />
@@ -869,14 +867,11 @@
     <Content Include="Views\Master\Project\StageUpdate.cshtml" />
     <Content Include="Views\Project\StageUpdate.cshtml" />
     <Content Include="Views\Users\RegistShow.cshtml" />
-    <Content Include="Views\Reim\add.cshtml" />
-    <Content Include="Views\Reim\show.cshtml" />
-    <Content Include="Views\Reim\Detail.cshtml" />
-    <Content Include="Views\Talents\AddTalent.cshtml" />
-    <Content Include="Views\Talents\Index.cshtml" />
-    <Content Include="Views\Talents\PutTalent.cshtml" />
     <Content Include="Views\Record\AddRecoed.cshtml" />
     <Content Include="Views\Record\Index.cshtml" />
+    <Content Include="Views\Reim\add.cshtml" />
+    <Content Include="Views\Reim\Detail.cshtml" />
+    <Content Include="Views\Reim\show.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
