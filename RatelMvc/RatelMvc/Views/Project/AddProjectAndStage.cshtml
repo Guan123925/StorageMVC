@@ -4,6 +4,7 @@
     Layout = "~/Views/Shared/_Layout.cshtml";
 }
 <!DOCTYPE html>
+
 <html>
 <head>
     <meta name="viewport" content="width=device-width" />
@@ -136,7 +137,6 @@
     </div>
 </body>
 </html>
-
 <script>
     $().ready(function () {
         ProjectBackFill();
@@ -215,16 +215,15 @@
         var ProjectNumber = $("#txtNumber").val();
         var ProjectName = $("#txtName").val();
         var ProjectDescribe = $("#txtDetail").val();
-        var ProjectStaffId = $("#selProject").text();
-        var TechStaffId = $("#selTech").text();
-        var ProductStaffId = $("#selProduct").text();
-        var TestStaffId = $("#selTest").text();
-        var MarketStaffId = $("#selMark").text();
+        var ProjectStaffId = $("#selProject").val();
+        var TechStaffId = $("#selTech").val();
+        var ProductStaffId = $("#selProduct").val();
+        var TestStaffId = $("#selTest").val();
+        var MarketStaffId = $("#selMark").val();
         var ProjectStartTime = $("#txtStartTime").val();
         var ProjectOutTime = $("#txtOffTime").val();
         var ProjectStage = 0;
 
-        alert(TechStaff);
 
         $.ajax({
             url: "/Project/UpdateProject",
@@ -273,7 +272,7 @@
             success: function (res) {
                 var list = "";
                 $(res.info).each(function () {
-                    list += "<option value='" + this.Id + "' >" + this.PositName + "</option>";
+                    list += "<option value='" + this.PositName + "' >" + this.PositName + "</option>";
                 })
                 $("#selProject").append(list);
             }
@@ -293,7 +292,7 @@
             success: function (res) {
                 var list = "";
                 $(res.info).each(function () {
-                    list += "<option value='" + this.Id + "' >" + this.PositName + "</option>";
+                    list += "<option value='" + this.PositName + "' >" + this.PositName + "</option>";
                 })
                 $("#selTech").append(list);
             }
@@ -313,7 +312,7 @@
             success: function (res) {
                 var list = "";
                 $(res.info).each(function () {
-                    list += "<option value='" + this.Id + "' >" + this.PositName + "</option>";
+                    list += "<option value='" + this.PositName + "' >" + this.PositName + "</option>";
                 })
                 $("#selProduct").append(list);
             }
@@ -333,7 +332,7 @@
             success: function (res) {
                 var list = "";
                 $(res.info).each(function () {
-                    list += "<option value='" + this.Id + "' >" + this.PositName + "</option>";
+                    list += "<option value='" + this.PositName + "' >" + this.PositName + "</option>";
                 })
                 $("#selTest").append(list);
             }
@@ -353,7 +352,7 @@
             success: function (res) {
                 var list = "";
                 $(res.info).each(function () {
-                    list += "<option value='" + this.Id + "' >" + this.PositName + "</option>";
+                    list += "<option value='" + this.PositName + "' >" + this.PositName + "</option>";
                 })
                 $("#selMark").append(list);
             }
