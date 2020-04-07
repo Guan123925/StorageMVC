@@ -137,6 +137,7 @@
             success: function (res) {
                 var list = "";
                 $(res.Project).each(function () {
+                    $("#tbo").empty();
                     list += "<tr>" +
                         "<td>" + this.ProjectId + "</td>" +
                         "<td>" + this.ProjectNumber + "</td>" +

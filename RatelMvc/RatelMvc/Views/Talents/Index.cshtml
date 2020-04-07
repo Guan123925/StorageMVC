@@ -9,7 +9,23 @@
 
 @using (Html.BeginForm())
 {
-
+    <div class="form-inline" style="margin-top:30px;margin-bottom:20px">
+        <div class="row">
+            <div class="col-lg-12">
+                <input type="text" class="form-control" name="Name" value="" placeholder="请输入名称" />
+                <input type="submit" name="name" value="查询" class="form-control " />
+                &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+                &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+                &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+                &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+                &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+                &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+                &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+                &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+                <input type="button" style="width:50px;height:33px;" class="layui-btn layui-btn-danger layui-btn-xs" name="name" value="添加" onclick="location.href='/Talents/AddTalent/'" />
+            </div>
+        </div>
+    </div>
 }
 
 <table class="layui-table" lay-skin="line">
@@ -38,34 +54,35 @@
         <th></th>
     </tr>
 
-@foreach (var item in Model) {
-    <tr>
-        <td>
-            @Html.DisplayFor(modelItem => item.TId)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.TName)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.TelePhone)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.Station)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.Information)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.FanKui)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.TState)
-        </td>
-        <td>
-            @Html.ActionLink("修改", "PutTalent", new { /* id=item.PrimaryKey */ },new { @class = "layui-btn layui-btn-danger layui-btn-xs" }) |
-            @Html.ActionLink("查看", "Details", new { /* id=item.PrimaryKey */ },new { @class = "layui-btn layui-btn-primary layui-btn-xs" }) |
-        </td>
-    </tr>
-}
+    @foreach (var item in Model)
+    {
+        <tr>
+            <td>
+                @Html.DisplayFor(modelItem => item.TId)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.TName)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.TelePhone)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Station)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Information)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.FanKui)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.TState)
+            </td>
+            <td>
+                @Html.ActionLink("修改", "PutTalent", new { id = item.TId }, new { @class = "layui-btn layui-btn-danger layui-btn-xs" }) |
+                @Html.ActionLink("删除", "DeleteTalent", new { id = item.TId }, new { @class = "layui-btn layui-btn-danger layui-btn-xs" })
+            </td>
+        </tr>
+    }
 
 </table>
