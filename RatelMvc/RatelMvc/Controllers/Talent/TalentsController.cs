@@ -11,7 +11,7 @@ namespace RatelMvc.Controllers.Talent
     public class TalentsController : Controller
     {
 
-        HttpClientHelper helper = new HttpClientHelper("http://localhost:51845");
+        HttpClientHelper helper = new HttpClientHelper("http://localhost:8066/");
         // GET: Talents
         public ActionResult AddTalent()
         {

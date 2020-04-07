@@ -130,6 +130,7 @@
     <Compile Include="App_Start\RouteConfig.cs" />
     <Compile Include="Controllers\HttpClientHelper.cs" />
     <Compile Include="Controllers\Project\ProjectController.cs" />
+    <Compile Include="Controllers\RatelMenuController.cs" />
     <Compile Include="Controllers\Reimbursement\ReimController.cs" />
     <Compile Include="Controllers\Talent\RecordController.cs" />
     <Compile Include="Controllers\Talent\TalentsController.cs" />
@@ -873,8 +874,13 @@
     <Content Include="Views\Reim\Detail.cshtml" />
     <Content Include="Views\Reim\show.cshtml" />
     <Content Include="Views\Users\LoginShows.cshtml" />
-    <Content Include="Views\Users\View.cshtml" />
     <Content Include="Views\Users\_LoginShows.cshtml" />
+    <Content Include="Views\Shared\Error.cshtml" />
+    <Content Include="Views\Shared\_Layout.cshtml" />
+    <Content Include="Views\RatelMenu\StartShow.cshtml" />
+    <Content Include="Views\Talents\AddTalent.cshtml" />
+    <Content Include="Views\Talents\Index.cshtml" />
+    <Content Include="Views\Talents\PutTalent.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
