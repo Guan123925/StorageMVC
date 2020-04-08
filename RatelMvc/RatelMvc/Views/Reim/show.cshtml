@@ -1,4 +1,4 @@
-﻿@model IEnumerable<Models.Talent.TalentsModel>
+﻿@model IEnumerable<Models.ReimbursementInfo>
 @{
     ViewBag.Title = "show";
 }
@@ -18,13 +18,13 @@
         <td><select id="Select1"><option></option></select></td>
     </tr>
     <tr>
-        <td><input id="Button1" type="button" value="查询" /></td>
+        <td><input id="Button1" type="button" value="查询" class="btn btn-info"/></td>
     </tr>
 </table>
 <table class="table table-bordered">
     <tr>
         <td>
-            <input id="Button1" type="button" value="新增" />
+            <input id="Button1" type="button" value="新增" class="btn btn-info" onclick="window.location.href = '/Reim/Add' " />
         </td>
     </tr>
     <tr>
@@ -36,5 +36,33 @@
         <td>报销日期</td>
         <td>操作</td>
     </tr>
+    @foreach (var item in Model)
+    {
+<tr>
+    <td>
+        @Html.DisplayFor(modelItem => item.Id)
+    </td>
+    <td>
+        @Html.DisplayFor(modelItem => item.CostId)
+    </td>
+    <td>
+        @Html.DisplayFor(modelItem => item.Money)
+    </td>
+    <td>
+        @Html.DisplayFor(modelItem => item.ApplyName)
+    </td>
+    <td style="color:skyblue">
+        @Html.DisplayFor(modelItem => item.ApplyState)
+    </td>
+    <td>
+        @Html.DisplayFor(modelItem => item.ApplyTime)
+    </td>
+    <td>
+        @Html.ActionLink("完成报销", "UpdateStage", new { id = item.Id })
+        @Html.ActionLink("修改", "DeleteRecoed", new { id = item.Id })
+        @Html.ActionLink("详情", "Detail", new { id = item.Id })
+    </td>
+</tr>
+    }
 </table>
 }

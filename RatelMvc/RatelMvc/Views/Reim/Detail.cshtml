@@ -1,4 +1,4 @@
-﻿@model IEnumerable<Models.Talent.TalentsModel>
+﻿@model IEnumerable<Models.ReimbursementInfo>
 @{
     ViewBag.Title = "Detail";
 }
@@ -9,23 +9,34 @@
 
 
 <table class="table table-bordered">
-    <tr>
-        <td>报销人:</td>
-    </tr>
-    <tr>
-        <td>报销类型:</td>
-    </tr>
-    <tr>
-        <td>报销日期:</td>
-    </tr>
-    <tr>
-        <td>报销金额:</td>
-    </tr>
-    <tr>
-        <td>报销状态:</td>
-    </tr>
-    <tr>
-        <td>备注说明:</td>
-    </tr>
+    @foreach (var item in Model)
+    {
+        <tr>
+            <td>报销人:</td>
+            <td> @Html.DisplayFor(modelItem => item.ApplyName)</td>
+        </tr>
+        <tr>
+            <td>报销类型:</td>
+            <td>@Html.DisplayFor(modelItem => item.CostId)</td>
+        </tr>
+        <tr>
+            <td>报销日期:</td>
+            <td> @Html.DisplayFor(modelItem => item.ApplyTime)</td>
+        </tr>
+        <tr>
+            <td>报销金额:</td>
+            <td> @Html.DisplayFor(modelItem => item.Money)</td>
+        </tr>
+        <tr>
+            <td>报销状态:</td>
+            <td> @Html.DisplayFor(modelItem => item.ApplyState)</td>
+        </tr>
+        <tr>
+            <td>备注说明:</td>
+            <td> @Html.DisplayFor(modelItem => item.ApplyExplain)</td>
+        </tr>
+    }
+
+
 </table>
 }

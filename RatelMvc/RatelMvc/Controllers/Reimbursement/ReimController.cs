@@ -4,7 +4,7 @@ using System.Linq;
 using System.Web;
 using System.Web.Mvc;
 using Newtonsoft.Json;
-using Model;
+using Models;
 
 namespace RatelMvc.Controllers.Reimbursement
 {
@@ -23,23 +23,23 @@ namespace RatelMvc.Controllers.Reimbursement
             int i = int.Parse(str);
             if (i > 0)
             {
-                Response.Write("<script>alert('添加成功');location.href=''</script>");
+                Response.Write("<script>alert('添加成功');location.href='/Reim/Show/'</script>");
             }
             else
             {
-                Response.Write("<script>alert('添加成功')</script>");
+                Response.Write("<script>alert('添加失败')</script>");
             }
         }
         public ActionResult show()
         {
-            string json = helper.Get("/api/Reim/Reimbursements");
+            string json = helper.Get("/api/Reim/ReimbursementsShow");
             List<ReimbursementInfo> list = JsonConvert.DeserializeObject<List<ReimbursementInfo>>(json);
             return View(list);
         }
-        public ActionResult Detail()
+        public ActionResult Detail(int Id)
         {
-            string json = helper.Get("/api/Reim/Reimbursements");
-            List<ReimbursementInfo> list = JsonConvert.DeserializeObject<List<ReimbursementInfo>>(json);
+            string json = helper.Get("api/Reim/ReimbursementInfos?DepartId="+Id);
+            List <ReimbursementInfo> list = JsonConvert.DeserializeObject<List<ReimbursementInfo>>(json);
             return View(list);
         }
        

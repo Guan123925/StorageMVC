@@ -38,7 +38,8 @@
 <body>
     <div style="margin-left:20px;margin-top:30px;">
         <input type="hidden" id="hidProjectId" value="@Request["ProjectId"]" />
-        <table class="layui-table" style="height:300px;width:300px;" lay-even id="tbod">
+        <span style="float:left;margin-left:50px;margin-top:30px;"><strong>项目详情:</strong></span>
+        <table class="layui-table" style="height:300px;width:300px;float:left;margin-left:30px;margin-top:30px;" lay-even id="tbod;">
             <tr>
                 <td><span>项目编号：</span></td>
                 <td><span id="SpanNumber"></span></td>
@@ -76,9 +77,8 @@
                 <td><span id="SpanOffTime"></span></td>
             </tr>
         </table>
-        <br /><br />
-        <span><strong>阶段计划表:</strong></span>
-        <div class="layui-form" id="table-list" style="margin-top:50px;width:600px;">
+        <span style="float:left;margin-left:120px;margin-top:30px;"><strong>阶段计划表:</strong></span>
+        <div class="layui-form" id="table-list" style="width:600px;float:left;margin-left:30px;margin-top:20px;">
             <table class="layui-table" lay-even @*lay-skin="nob"*@ id="tbod">
                 <thead>
                     <tr>
