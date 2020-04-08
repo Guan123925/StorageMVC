@@ -17,6 +17,7 @@
                 <li class="layui-nav-item">
                     <a href="javascript:;">
                         欢迎  @Session["name"] 登录
+                        <input type="hidden" id="enneryone" value=@Session["name"] />
                     </a>
                     <dl class="layui-nav-child">
                         <dd><a href="">基本资料</a></dd>
@@ -87,36 +88,15 @@
         </div>
     </div>
     <script src="~/Scripts/jquery-3.4.1.js"></script>
-
     <script>
-
-        //function window.onload()
-        //{
-        //    var manager = '<%=session("name")%>';
-        //    if (manager != 'true') {
-        //        alert("请先登录");
-        //        window.navigate("Users/UserLogin");
-        //    }
-        //}
-
-        //JavaScript代码区域
-        layui.use('element', function () {
+        layui.use('element', 'jquery', function () {
             var element = layui.element;
+            var $ = layui.jquery;
+           
+            if ($('#enneryone').val() == "") {
+                alert("登录");
+            }
         });
-
-
     </script>
-
-
 </body>
 </html>
-  manager.asp
-    <%
-    if not session("name") then %>
-<script language=javascript>
-    alert("请先登录");
-    window.navigate("~/Views/Users/LoginShows.cshtml");
-</script>
-    <% end if
-    %>
-    show.asp
