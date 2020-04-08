@@ -1,4 +1,4 @@
-﻿@model IEnumerable<Models.Talent.TalentsModel>
+﻿@model Models.ReimbursementInfo
 @{
     ViewBag.Title = "add";
 }
@@ -6,37 +6,35 @@
 <h2>新增</h2>
 @using (Html.BeginForm())
 {
-
-
-<table class="table table-bordered">
-    <tr>
-        <td>报销人:</td>
-        <td><input id="Text1" type="text" /></td>
-    </tr>
-    <tr>
-        <td>报销类型:</td>
-        <td>
-            <input id="Radio1" type="radio" name="sex" value="餐费" checked="checked" />餐费
-            <input id="Radio1" type="radio" name="sex" value="打车费" />打车费
-            <input id="Radio1" type="radio" name="sex" value="其他费用" />其他费用
-        </td>
-    </tr>
-    <tr>
-        <td>报销日期:</td>
-        <td><input id="Text2" type="text" /></td>
-    </tr>
-    <tr>
-        <td>报销金额:</td>
-        <td><input id="Text3" type="text" /></td>
-    </tr>
-    <tr>
-        <td>报销说明:</td>
-        <td><input id="Text4" type="text" /></td>
-    </tr>
-    <tr>
-        <td>
-            <input id="Button1" type="submit" value="添加" class="btn btn-info" />
-        </td>
-    </tr>
-</table>
+    <table class="table table-bordered">
+        <tr>
+            <td>报销人:</td>
+            <td><input id="Text1" name="applyName" type="text" /></td>
+        </tr>
+        <tr>
+            <td>报销类型:</td>
+            <td>
+                <input id="Radio1" type="radio" name="CostId" value="1" checked="checked" />餐费
+                <input id="Radio1" type="radio" name="CostId" value="2" />打车费
+                <input id="Radio1" type="radio" name="CostId" value="3" />其他费用
+            </td>
+        </tr>
+        <tr>
+            <td>报销日期:</td>
+            <td><input id="Text2" name="ApplyTime" type="text" /></td>
+        </tr>
+        <tr>
+            <td>报销金额:</td>
+            <td><input id="Text3" name="Money" type="text" /></td>
+        </tr>
+        <tr>
+            <td>报销说明:</td>
+            <td><input id="Text4" name="ApplyExplain" type="text" /></td>
+        </tr>
+        <tr>
+            <td>
+                <input id="Button1" type="submit" value="添加" class="btn btn-info" />
+            </td>
+        </tr>
+    </table>
 }
