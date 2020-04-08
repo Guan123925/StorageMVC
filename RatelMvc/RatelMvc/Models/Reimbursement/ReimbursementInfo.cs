@@ -4,7 +4,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace Model
+namespace Models
 {
     public class ReimbursementInfo
     {
@@ -29,22 +29,6 @@ namespace Model
         /// </summary>
         public decimal Money { get; set; }
         /// <summary>
-        /// 同行人员
-        /// </summary>
-        public string Field { get; set; }
-        /// <summary>
-        /// 下班时间
-        /// </summary>
-        public DateTime ClosingTime { get; set; }
-        /// <summary>
-        /// 上车时间
-        /// </summary>
-        public DateTime PickUpTime { get; set; }
-        /// <summary>
-        /// 下车时间
-        /// </summary>
-        public DateTime GetOffTime { get; set; }
-        /// <summary>
         /// 报销说明
         /// </summary>
         public string ApplyExplain { get; set; }
@@ -52,5 +36,6 @@ namespace Model
         /// 状态 
         /// </summary>
         public int ApplyState { get; set; }
+
     }
 }
