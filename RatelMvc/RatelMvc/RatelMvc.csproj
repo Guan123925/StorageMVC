@@ -52,7 +52,7 @@
     <Reference Include="Microsoft.CSharp" />
     <Reference Include="SDKClient, Version=1.0.0.0, Culture=neutral, processorArchitecture=MSIL">
       <SpecificVersion>False</SpecificVersion>
-      <HintPath>..\..\..\CMS\RatelCMSAPI\SDKClient\bin\Debug\SDKClient.dll</HintPath>
+      <HintPath>..\..\..\RatelApi\RatelCMSAPI\SDKClient\bin\Debug\SDKClient.dll</HintPath>
     </Reference>
     <Reference Include="System" />
     <Reference Include="System.Data" />
@@ -134,12 +134,12 @@
     <Compile Include="Controllers\Reimbursement\ReimController.cs" />
     <Compile Include="Controllers\Talent\RecordController.cs" />
     <Compile Include="Controllers\Talent\TalentsController.cs" />
+    <Compile Include="Controllers\User\SessController.cs" />
     <Compile Include="Controllers\User\UsersController.cs" />
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
     <Compile Include="Models\Reimbursement\ReimbursementInfo.cs" />
-    <Compile Include="Models\Reimbursement\Reimbursementtype.cs" />
     <Compile Include="Models\Talent\RecordModel.cs" />
     <Compile Include="Models\Talent\TalentsModel.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
@@ -882,9 +882,11 @@
     <Content Include="Views\Talents\Index.cshtml" />
     <Content Include="Views\Talents\PutTalent.cshtml" />
     <Content Include="Views\Users\View.cshtml" />
+    <Content Include="Views\Reim\Update.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
+    <Folder Include="Views\Sess\" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="fonts\glyphicons-halflings-regular.woff2" />

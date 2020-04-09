@@ -6,7 +6,7 @@ using System.Web.Mvc;
 
 namespace RatelMvc.Controllers
 {
-    public class RatelMenuController : Controller
+    public class RatelMenuController :SessController
     {
         // GET: RatelMenu
         public ActionResult Index()

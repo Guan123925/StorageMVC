@@ -42,6 +42,27 @@ namespace RatelMvc.Controllers.Reimbursement
             List <ReimbursementInfo> list = JsonConvert.DeserializeObject<List<ReimbursementInfo>>(json);
             return View(list);
         }
-       
+        public ActionResult Update(int id)
+        {
+            string json = helper.Get("/api/Reim/ReimbursementInfos?DepartId=" + id);
+            List<ReimbursementInfo> list = JsonConvert.DeserializeObject<List<ReimbursementInfo>>(json);
+            return View(list);
+        }
+        [HttpPost]
+        public void Update(ReimbursementInfo model)
+        {
+            string str = helper.Post("/api/Reim/UpdateReimburse", JsonConvert.SerializeObject(model));
+
+            int i = int.Parse(str);
+
+            if (i > 0)
+            {
+                Response.Write("<script>alert('修改成功');location.href='/Reim/Show/'</script>");
+            }
+            else
+            {
+                Response.Write("<script>alert('修改失败');location.href='/Reim/Show/'<script>");
+            }
+        }
     }
 }

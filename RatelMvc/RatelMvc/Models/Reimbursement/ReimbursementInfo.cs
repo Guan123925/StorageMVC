@@ -19,7 +19,7 @@ namespace Models
         /// <summary>
         /// 报销类型
         /// </summary>
-        public int CostId { get; set; }
+        public string CostId { get; set; }
         /// <summary>
         /// 报销日期
         /// </summary>

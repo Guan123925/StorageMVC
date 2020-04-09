@@ -8,14 +8,22 @@
 {
 
 
-<table class="table table-bordered">
+<table class="table">
     <tr>
         <td>报销人:</td>
         <td><input id="Text1" type="text" /></td>
         <td>报销类型:</td>
-        <td><select id="Select1"><option></option></select></td>
+        <td><select id="Select1">
+            <option>请选择</option>
+            <option>餐费</option>
+            <option>打车费</option>
+            <option>其他费用</option>
+        </select></td>
         <td>报销状态:</td>
-        <td><select id="Select1"><option></option></select></td>
+        <td><select id="Select1">
+            <option>未报销</option>
+            <option>已报销</option>
+            </select></td>
     </tr>
     <tr>
         <td><input id="Button1" type="button" value="查询" class="btn btn-info"/></td>
@@ -59,7 +67,7 @@
     </td>
     <td>
         @Html.ActionLink("完成报销", "UpdateStage", new { id = item.Id })
-        @Html.ActionLink("修改", "DeleteRecoed", new { id = item.Id })
+        @Html.ActionLink("修改", "Update", new { id = item.Id })
         @Html.ActionLink("详情", "Detail", new { id = item.Id })
     </td>
 </tr>
