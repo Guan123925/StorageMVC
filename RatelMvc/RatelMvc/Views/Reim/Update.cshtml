@@ -1,15 +1,17 @@
-﻿@model Models.ReimbursementInfo
+﻿@model IEnumerable<Models.ReimbursementInfo>
 @{
-    ViewBag.Title = "add";
+    ViewBag.Title = "Update";
 }
 
-<h2>新增</h2>
+<h2>修改费用</h2>
 @using (Html.BeginForm())
 {
-    <table class="table table-bordered">
+<table class="table table-bordered">
+    @foreach (var item in Model)
+    {
         <tr>
             <td>报销人:</td>
-            <td><input id="Text1" name="applyName" type="text" /></td>
+            <td><input id="Text1" name="applyName" type="text" value="@Html.DisplayFor(modelItem => item.ApplyName)" /></td>
         </tr>
         <tr>
             <td>报销类型:</td>
@@ -29,16 +31,18 @@
         </tr>
         <tr>
             <td>报销金额:</td>
-            <td><input id="Text3" name="Money" type="text" /></td>
+            <td><input id="Text3" name="Money" type="text" value="@Html.DisplayFor(modelItem => item.Money)" /></td>
         </tr>
         <tr>
             <td>报销说明:</td>
-            <td><input id="Text4" name="ApplyExplain" type="text" /></td>
+            <td><input id="Text4" name="ApplyExplain" type="text" value="@Html.DisplayFor(modelItem => item.ApplyExplain)" /></td>
         </tr>
         <tr>
             <td>
-                <input id="Button1" type="submit" value="添加" class="btn btn-info" />
+                <input id="Button1" type="submit" value="修改" class="btn btn-info" />
             </td>
         </tr>
-    </table>
+    }
+
+</table>
 }
