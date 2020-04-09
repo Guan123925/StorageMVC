@@ -17,6 +17,7 @@
                 <li class="layui-nav-item">
                     <a href="javascript:;">
                         欢迎  @Session["name"] 登录
+                        <input type="hidden" id="enneryone" value=@Session["name"] />
                     </a>
                     <dl class="layui-nav-child">
                         <dd><a href="">基本资料</a></dd>
@@ -85,12 +86,15 @@
             小微企业高效管理
         </div>
     </div>
-
-    
+    <script src="~/Scripts/jquery-3.4.1.js"></script>
     <script>
-        //JavaScript代码区域
-        layui.use('element', function () {
+        layui.use('element', 'jquery', function () {
             var element = layui.element;
+            var $ = layui.jquery;
+           
+            if ($('#enneryone').val() == "") {
+                alert("登录");
+            }
         });
     </script>
 </body>
