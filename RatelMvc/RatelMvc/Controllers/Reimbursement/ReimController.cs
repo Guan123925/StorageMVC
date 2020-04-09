@@ -57,11 +57,11 @@ namespace RatelMvc.Controllers.Reimbursement
 
             if (i > 0)
             {
-                Response.Write("<script>alert('修改成功');location.href='/Reim/show'<script>");
+                Response.Write("<script>alert('修改成功');location.href='/Reim/Show/'</script>");
             }
             else
             {
-                Response.Write("<script>alert('修改失败');location.href='/Reim/show'<script>");
+                Response.Write("<script>alert('修改失败');location.href='/Reim/Show/'<script>");
             }
         }
     }
