@@ -1,4 +1,4 @@
-﻿@model Models.Talent.TalentsModel
+﻿@model IEnumerable<Models.Talent.TalentsModel>
 
 @{
     ViewBag.Title = "AddTalent";
@@ -8,24 +8,23 @@
 
 @using (Html.BeginForm())
 {
-<table class="table">
+<table class="layui-table">
     <tr>
-        <td>姓名</td>
-        <td><input id="Text1" name="TName" value="" />
-        <td>
+        <td>姓名:</td>
+        <td><input id="Text1" name="TName" value="" /><td>
     </tr>
     <tr>
-        <td>联系方式</td>
+        <td>联系方式:</td>
         <td><input id="Text2" name="TelePhone" value="" />
         <td>
     </tr>
     <tr>
-        <td>毕业院校</td>
+        <td>毕业院校:</td>
         <td><input id="Text3" name="Graduate" value="" />
         <td>
     </tr>
     <tr>
-        <td>学历</td>
+        <td>学历:</td>
         <td>
             <select id="Select1" name="Education">
                 <option value="--请选择--">--请选择--</option>
@@ -36,7 +35,7 @@
         <td>
     </tr>
     <tr>
-        <td>应聘岗位</td>
+        <td>应聘岗位:</td>
         <td>
             <select id="Select2" name="Station">
                 <option value="--请选择--">--请选择--</option>
@@ -50,7 +49,7 @@
         <td>
     </tr>
     <tr>
-        <td>信息来源</td>
+        <td>信息来源:</td>
         <td>
             <select id="Select3" name="Information">
                 <option value="--请选择--">--请选择--</option>
@@ -63,32 +62,29 @@
         <td>
     </tr>
     <tr>
-        <td>电子邮件</td>
+        <td>电子邮件:</td>
         <td><input id="Text4" name="Email" value="" />
         <td>
     </tr>
     <tr>
-        <td>反馈</td>
+        <td>反馈:</td>
         <td><input id="Text5" name="FanKui" value="" />
         <td>
     </tr>
     <tr>
-        <td>人员状态</td>
+        <td>人员状态:</td>
         <td>
             <select id="Select5" name="TState">
                 <option value="--请选择--">--请选择--</option>
                 <option value="跟进中    ">跟进中    </option>
                 <option value="已完成    ">已完成    </option>
             </select>
-<td>
+       <td>
     </tr>
+    <tr><td><a onclick="location.href='/Record/AddRecoed/'">添加个人简历</a></td></tr>
     <tr>
-        <td><input id="Submit1" type="submit" value="提交" class="layui-btn layui-btn-danger layui-btn-xs" />
+        <td><input id="Submit1" style="width:70px;height:33px;" type="submit" value="提交" class="layui-btn layui-btn-mini layui-btn-normal table-list-status" />
         <td>
     </tr>
 </table>
 }
-
-<div>
-    @Html.ActionLink("Back to List", "Index")
-</div>

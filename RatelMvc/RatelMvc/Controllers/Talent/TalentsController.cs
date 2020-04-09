@@ -38,16 +38,16 @@ namespace RatelMvc.Controllers.Talent
             List<TalentsModel> list = JsonConvert.DeserializeObject <List<TalentsModel>>(json);
             return View(list);
         }
-        public ActionResult PutTalent(int Id)
+        public ActionResult UpdateTalent(int Id)
         {
-            string json = helper.Get("api/Talents/TalentId/Id=" + Id);
+            string json = helper.Get("api/Talents/GetTalentId?Id=" + Id);
             List<TalentsModel> list = JsonConvert.DeserializeObject<List<TalentsModel>>(json);
             return View(list);
         }
         [HttpPost]
-        public void PutTalent(TalentsModel model)
+        public void UpdateTalent(TalentsModel model)
         {
-            string str = helper.Put("api/Talents/PutTalent", JsonConvert.SerializeObject(model));
+            string str = helper.Put("api/Talents/UpdateTalent", JsonConvert.SerializeObject(model));
 
             int i = int.Parse(str);
 
@@ -74,6 +74,13 @@ namespace RatelMvc.Controllers.Talent
             {
                 Response.Write("<script>alert('删除失败');location.href='/Talents/Index/';</script>");
             }
+        }
+        [HttpGet]
+        public ActionResult Detail(int Id)
+        {
+            string json = helper.Get("api/Talents/GetTalentId?Id=" + Id);
+            List<TalentsModel> list = JsonConvert.DeserializeObject<List<TalentsModel>>(json);
+            return View(list);
         }
     }
 }
