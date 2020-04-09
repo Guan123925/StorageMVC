@@ -4,12 +4,12 @@
     ViewBag.Title = "Index";
 }
 
-<h2>Index</h2>
+<h2>显示个人简历</h2>
+<div>
+    <input id="Button1"  type="button" class="layui-btn layui-btn-mini layui-btn-normal table-list-status"  value="返回个人信息" onclick="location.href='/Talents/AddTalent/'" />
+</div>
 
-<p>
-    @Html.ActionLink("Create New", "Create")
-</p>
-<table class="table">
+<table class="layui-table">
     <tr>
         <th>
             编号
@@ -59,7 +59,7 @@
             @Html.DisplayFor(modelItem => item.RTime)
         </td>
         <td>
-            @Html.ActionLink("删除", "DeleteRecoed", new { id=item.RId },new { @class = "layui-btn layui-btn-danger layui-btn-xs" })
+            @Html.ActionLink("删除", "DeleteRecoed", new { id=item.RId },new { @class = "layui-btn layui-btn-mini table-list-status layui-btn-warm" })
         </td>
     </tr>
 }

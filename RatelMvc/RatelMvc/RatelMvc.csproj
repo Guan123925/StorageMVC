@@ -52,7 +52,7 @@
     <Reference Include="Microsoft.CSharp" />
     <Reference Include="SDKClient, Version=1.0.0.0, Culture=neutral, processorArchitecture=MSIL">
       <SpecificVersion>False</SpecificVersion>
-      <HintPath>..\..\..\RatelApi\RatelCMSAPI\SDKClient\bin\Debug\SDKClient.dll</HintPath>
+      <HintPath>..\..\..\3月\API2\RatelCMSAPI\SDKClient\bin\Debug\SDKClient.dll</HintPath>
     </Reference>
     <Reference Include="System" />
     <Reference Include="System.Data" />
@@ -880,9 +880,10 @@
     <Content Include="Views\RatelMenu\StartShow.cshtml" />
     <Content Include="Views\Talents\AddTalent.cshtml" />
     <Content Include="Views\Talents\Index.cshtml" />
-    <Content Include="Views\Talents\PutTalent.cshtml" />
     <Content Include="Views\Users\View.cshtml" />
     <Content Include="Views\Reim\Update.cshtml" />
+    <Content Include="Views\Talents\UpdateTalent.cshtml" />
+    <Content Include="Views\Talents\Detail.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

@@ -16,9 +16,13 @@
     <link rel="stylesheet" type="text/css" href="~/admin/css/admin.css" />
     <script src="~/Scripts/jquery-3.4.1.min.js"></script>
     <script src="~/Scripts/jquery.unobtrusive-ajax.min.js"></script>
+    <script src="~/Scripts/vue.min.js"></script>
     <meta name="viewport" content="width=device-width" />
     <title>项目详情</title>
     <style>
+        #fuhao {
+        }
+
         #tbod td {
             height: 40px;
             width: 5px;
@@ -77,7 +81,8 @@
                         <td style='color:paleturquoise'>(this.ProjectStage == 0 ? '进行中' : (this.ProjectStage == 1 ? '已完成' : '已延期'))</td>
                         <td>ChangeDateFormat(this.ProjectStartTime)</td>
                         <td>
-                            <button class='layui-btn layui-btn-mini table-list-status layui-btn-warm' onclick='ProjectStage(" + this.ProjectId + ")' ;'>跟进</button>
+
+                            <button class='layui-btn layui-btn-mini table-list-status layui-btn-warm' onclick='ProjectStage(" + this.ProjectId + ")'>跟进</button>
                             <button class='layui-btn layui-btn-small layui-btn-danger del-btn' onclick='ProjectDelete(" + this.ProjectId + ")'>删除</button>
                             <button class='layui-btn layui-btn-mini table-list-status layui-btn-warm' onclick='ProjectUpdate(" + this.ProjectId + ")'>编辑</button>
                             <button class='layui-btn layui-btn-mini layui-btn-normal table-list-status' onclick='ProjectDetail(" + this.ProjectId + ")'>详情</button>
@@ -91,7 +96,7 @@
                 <button style="height:30px;width:50px;margin-left:30px;" class='layui-btn layui-btn-mini layui-btn-normal table-list-status' onclick="btnNext()">下一页</button>
                 <button style="height:30px;width:50px;margin-left:30px;" class='layui-btn layui-btn-mini layui-btn-normal table-list-status' onclick="btnEnd()">尾页</button>
             </div>
-        </div>
+            </div>
     </div>
     <script src="~/admin/layui/layui.js" type="text/javascript" charset="utf-8"></script>
     <script src="~/admin/js/common.js" type="text/javascript" charset="utf-8"></script>
@@ -145,10 +150,10 @@
                         "<td style='color:paleturquoise'>" + (this.ProjectStage == 0 ? '进行中' : (this.ProjectStage == 1 ? '已完成' : '已延期')) + "</td>" +
                         "<td>" + ChangeDateFormat(this.ProjectStartTime) + "</td>" +
                         "<td>" +
-                        "<button class='layui-btn layui-btn-mini table-list-status layui-btn-warm' onclick='ProjectStage(" + this.ProjectId + ")';'>跟进</button>" +
-                        "<button class='layui-btn layui-btn-small layui-btn-danger del-btn' onclick='ProjectDelete(" + this.ProjectId + ")' >删除</button>" +
-                        "<button class='layui-btn layui-btn-mini table-list-status layui-btn-warm'  onclick='ProjectUpdate(" + this.ProjectId + ")' >编辑</button>" +
-                        "<button class='layui-btn layui-btn-mini layui-btn-normal table-list-status' onclick='ProjectDetail(" + this.ProjectId + ")' >详情</button>" +
+                        "<button style='height:30px;width:40px;font-size:20px;' id='fuhao' class='layui-btn layui-btn-mini table-list-status layui-btn-warm' onclick='ProjectStage(" + this.ProjectId + ")'><b>⇋</b></button>" +
+                        "<button style='height:30px;width:40px;font-size:20px;' class='layui-btn layui-btn-small layui-btn-danger del-btn' onclick='ProjectDelete(" + this.ProjectId + ")' ><b><i class='layui-icon'>&#xe640;</i></b></button>" +
+                        "<button style='height:30px;width:40px;font-size:20px;' class='layui-btn layui-btn-mini table-list-status layui-btn-warm'  onclick='ProjectUpdate(" + this.ProjectId + ")' ><b><i class='layui-icon'>&#xe642;</i></b></button>" +
+                        "<button style='height:30px;width:40px;font-size:20px;' class='layui-btn layui-btn-mini layui-btn-normal table-list-status' onclick='ProjectDetail(" + this.ProjectId + ")' > ✉</button>" +
                         "</td>" +
                         "</tr>";
 
@@ -233,10 +238,10 @@
                             "<td style='color:paleturquoise'>" + (this.ProjectStage == 0 ? '进行中' : (this.ProjectStage == 1 ? '已完成' : '已延期')) + "</td>" +
                             "<td>" + ChangeDateFormat(this.ProjectStartTime) + "</td>" +
                             "<td>" +
-                            "<button class='layui-btn layui-btn-mini table-list-status layui-btn-warm' onclick='ProjectStage(" + this.ProjectId + ")'; >跟进</button>" +
-                            "<button class='layui-btn layui-btn-small layui-btn-danger del-btn' onclick='ProjectDelete(" + this.ProjectId + ")' >删除</button>" +
-                            "<button class='layui-btn layui-btn-mini table-list-status layui-btn-warm' disabled autocomplete='off' onclick='ProjectUpdate(" + this.ProjectId + ")'>编辑</button>" +
-                            "<button class='layui-btn layui-btn-mini layui-btn-normal table-list-status' onclick='ProjectDetail(" + this.ProjectId + ")' >详情</button>" +
+                            "<button style='height:30px;width:40px;font-size:20px;' id='fuhao' class='layui-btn layui-btn-mini table-list-status layui-btn-warm' onclick='ProjectStage(" + this.ProjectId + ")'><b>⇋</b></button>" +
+                        "<button style='height:30px;width:40px;font-size:20px;' class='layui-btn layui-btn-small layui-btn-danger del-btn' onclick='ProjectDelete(" + this.ProjectId + ")' ><b><i class='layui-icon'>&#xe640;</i></b></button>" +
+                        "<button style='height:30px;width:40px;font-size:20px;' class='layui-btn layui-btn-mini table-list-status layui-btn-warm'  onclick='ProjectUpdate(" + this.ProjectId + ")' ><b><i class='layui-icon'>&#xe642;</i></b></button>" +
+                        "<button style='height:30px;width:40px;font-size:20px;' class='layui-btn layui-btn-mini layui-btn-normal table-list-status' onclick='ProjectDetail(" + this.ProjectId + ")' > ✉</button>" +
                             "</td>" +
                             "</tr>";
 
@@ -310,10 +315,10 @@
                         "<td style='color:paleturquoise'>" + (this.ProjectStage == 0 ? '进行中' : (this.ProjectStage == 1 ? '已完成' : '已延期')) + "</td>" +
                         "<td>" + ChangeDateFormat(this.ProjectStartTime) + "</td>" +
                         "<td>" +
-                        "<button class='layui-btn layui-btn-mini table-list-status layui-btn-warm' onclick='ProjectStage(" + this.ProjectId + ")';'>跟进</button>" +
-                        "<button class='layui-btn layui-btn-small layui-btn-danger del-btn' onclick='ProjectDelete(" + this.ProjectId + ")' >删除</button>" +
-                        "<button class='layui-btn layui-btn-mini table-list-status layui-btn-warm'  onclick='ProjectUpdate(" + this.ProjectId + ")' >编辑</button>" +
-                        "<button class='layui-btn layui-btn-mini layui-btn-normal table-list-status' onclick='ProjectDetail(" + this.ProjectId + ")' >详情</button>" +
+                        "<button style='height:30px;width:40px;font-size:20px;' id='fuhao' class='layui-btn layui-btn-mini table-list-status layui-btn-warm' onclick='ProjectStage(" + this.ProjectId + ")'><b>⇋</b></button>" +
+                        "<button style='height:30px;width:40px;font-size:20px;' class='layui-btn layui-btn-small layui-btn-danger del-btn' onclick='ProjectDelete(" + this.ProjectId + ")' ><b><i class='layui-icon'>&#xe640;</i></b></button>" +
+                        "<button style='height:30px;width:40px;font-size:20px;' class='layui-btn layui-btn-mini table-list-status layui-btn-warm'  onclick='ProjectUpdate(" + this.ProjectId + ")' ><b><i class='layui-icon'>&#xe642;</i></b></button>" +
+                        "<button style='height:30px;width:40px;font-size:20px;' class='layui-btn layui-btn-mini layui-btn-normal table-list-status' onclick='ProjectDetail(" + this.ProjectId + ")' > ✉</button>" +
                         "</td>" +
                         "</tr>";
 
@@ -364,10 +369,10 @@
                         "<td style='color:paleturquoise'>" + (this.ProjectStage == 0 ? '进行中' : (this.ProjectStage == 1 ? '已完成' : '已延期')) + "</td>" +
                         "<td>" + ChangeDateFormat(this.ProjectStartTime) + "</td>" +
                         "<td>" +
-                        "<button class='layui-btn layui-btn-mini table-list-status layui-btn-warm' onclick='ProjectStage(" + this.ProjectId + ")';'>跟进</button>" +
-                        "<button class='layui-btn layui-btn-small layui-btn-danger del-btn' onclick='ProjectDelete(" + this.ProjectId + ")' >删除</button>" +
-                        "<button class='layui-btn layui-btn-mini table-list-status layui-btn-warm'  onclick='ProjectUpdate(" + this.ProjectId + ")' >编辑</button>" +
-                        "<button class='layui-btn layui-btn-mini layui-btn-normal table-list-status' onclick='ProjectDetail(" + this.ProjectId + ")' >详情</button>" +
+ "<button style='height:30px;width:40px;font-size:20px;' id='fuhao' class='layui-btn layui-btn-mini table-list-status layui-btn-warm' onclick='ProjectStage(" + this.ProjectId + ")'><b>⇋</b></button>" +
+                        "<button style='height:30px;width:40px;font-size:20px;' class='layui-btn layui-btn-small layui-btn-danger del-btn' onclick='ProjectDelete(" + this.ProjectId + ")' ><b><i class='layui-icon'>&#xe640;</i></b></button>" +
+                        "<button style='height:30px;width:40px;font-size:20px;' class='layui-btn layui-btn-mini table-list-status layui-btn-warm'  onclick='ProjectUpdate(" + this.ProjectId + ")' ><b><i class='layui-icon'>&#xe642;</i></b></button>" +
+                        "<button style='height:30px;width:40px;font-size:20px;' class='layui-btn layui-btn-mini layui-btn-normal table-list-status' onclick='ProjectDetail(" + this.ProjectId + ")' > ✉</button>" +
                         "</td>" +
                         "</tr>";
 
@@ -438,10 +443,10 @@
                                 "<td style='color:paleturquoise'>" + (this.ProjectStage == 0 ? '进行中' : (this.ProjectStage == 1 ? '已完成' : '已延期')) + "</td>" +
                                 "<td>" + ChangeDateFormat(this.ProjectStartTime) + "</td>" +
                                 "<td>" +
-                                "<button class='layui-btn layui-btn-mini table-list-status layui-btn-warm' onclick='ProjectStage(" + this.ProjectId + ")';'>跟进</button>" +
-                                "<button class='layui-btn layui-btn-small layui-btn-danger del-btn' onclick='ProjectDelete(" + this.ProjectId + ")' >删除</button>" +
-                                "<button class='layui-btn layui-btn-mini table-list-status layui-btn-warm'  onclick='ProjectUpdate(" + this.ProjectId + ")' >编辑</button>" +
-                                "<button class='layui-btn layui-btn-mini layui-btn-normal table-list-status' onclick='ProjectDetail(" + this.ProjectId + ")' >详情</button>" +
+                                "<button style='height:30px;width:40px;font-size:20px;' id='fuhao' class='layui-btn layui-btn-mini table-list-status layui-btn-warm' onclick='ProjectStage(" + this.ProjectId + ")'><b>⇋</b></button>" +
+                        "<button style='height:30px;width:40px;font-size:20px;' class='layui-btn layui-btn-small layui-btn-danger del-btn' onclick='ProjectDelete(" + this.ProjectId + ")' ><b><i class='layui-icon'>&#xe640;</i></b></button>" +
+                        "<button style='height:30px;width:40px;font-size:20px;' class='layui-btn layui-btn-mini table-list-status layui-btn-warm'  onclick='ProjectUpdate(" + this.ProjectId + ")' ><b><i class='layui-icon'>&#xe642;</i></b></button>" +
+                        "<button style='height:30px;width:40px;font-size:20px;' class='layui-btn layui-btn-mini layui-btn-normal table-list-status' onclick='ProjectDetail(" + this.ProjectId + ")' > ✉</button>" +
                                 "</td>" +
                                 "</tr>";
 
@@ -511,10 +516,10 @@
                                 "<td style='color:paleturquoise'>" + (this.ProjectStage == 0 ? '进行中' : (this.ProjectStage == 1 ? '已完成' : '已延期')) + "</td>" +
                                 "<td>" + ChangeDateFormat(this.ProjectStartTime) + "</td>" +
                                 "<td>" +
-                                "<button class='layui-btn layui-btn-mini table-list-status layui-btn-warm' onclick='ProjectStage(" + this.ProjectId + ")';'>跟进</button>" +
-                                "<button class='layui-btn layui-btn-small layui-btn-danger del-btn' onclick='ProjectDelete(" + this.ProjectId + ")' >删除</button>" +
-                                "<button class='layui-btn layui-btn-mini table-list-status layui-btn-warm'  onclick='ProjectUpdate(" + this.ProjectId + ")' >编辑</button>" +
-                                "<button class='layui-btn layui-btn-mini layui-btn-normal table-list-status' onclick='ProjectDetail(" + this.ProjectId + ")' >详情</button>" +
+                                 "<button style='height:30px;width:40px;font-size:20px;' id='fuhao' class='layui-btn layui-btn-mini table-list-status layui-btn-warm' onclick='ProjectStage(" + this.ProjectId + ")'><b>⇋</b></button>" +
+                        "<button style='height:30px;width:40px;font-size:20px;' class='layui-btn layui-btn-small layui-btn-danger del-btn' onclick='ProjectDelete(" + this.ProjectId + ")' ><b><i class='layui-icon'>&#xe640;</i></b></button>" +
+                        "<button style='height:30px;width:40px;font-size:20px;' class='layui-btn layui-btn-mini table-list-status layui-btn-warm'  onclick='ProjectUpdate(" + this.ProjectId + ")' ><b><i class='layui-icon'>&#xe642;</i></b></button>" +
+                        "<button style='height:30px;width:40px;font-size:20px;' class='layui-btn layui-btn-mini layui-btn-normal table-list-status' onclick='ProjectDetail(" + this.ProjectId + ")' > ✉</button>" +
                                 "</td>" +
                                 "</tr>";
 
@@ -554,10 +559,10 @@
                         "<td style='color:paleturquoise'>" + (this.ProjectStage == 0 ? '进行中' : (this.ProjectStage == 1 ? '已完成' : '已延期')) + "</td>" +
                         "<td>" + ChangeDateFormat(this.ProjectStartTime) + "</td>" +
                         "<td>" +
-                        "<button class='layui-btn layui-btn-mini table-list-status layui-btn-warm' onclick='ProjectStage(" + this.ProjectId + ")';'>跟进</button>" +
-                        "<button class='layui-btn layui-btn-small layui-btn-danger del-btn' onclick='ProjectDelete(" + this.ProjectId + ")' >删除</button>" +
-                        "<button class='layui-btn layui-btn-mini table-list-status layui-btn-warm'  onclick='ProjectUpdate(" + this.ProjectId + ")' >编辑</button>" +
-                        "<button class='layui-btn layui-btn-mini layui-btn-normal table-list-status' onclick='ProjectDetail(" + this.ProjectId + ")' >详情</button>" +
+                        "<button style='height:30px;width:50px;font-size:20px;' class='layui-btn layui-btn-mini table-list-status layui-btn-warm' onclick='ProjectStage(" + this.ProjectId + ")';'>跟进</button>" +
+                        "<button style='height:30px;width:50px;font-size:20px;' class='layui-btn layui-btn-small layui-btn-danger del-btn' onclick='ProjectDelete(" + this.ProjectId + ")' >删除</button>" +
+                        "<button style='height:30px;width:50px;font-size:20px;' class='layui-btn layui-btn-mini table-list-status layui-btn-warm'  onclick='ProjectUpdate(" + this.ProjectId + ")' >编辑</button>" +
+                        "<button style='height:30px;width:50px;font-size:20px;' class='layui-btn layui-btn-mini layui-btn-normal table-list-status' onclick='ProjectDetail(" + this.ProjectId + ")' >详情</button>" +
                         "</td>" +
                         "</tr>";
 
@@ -565,6 +570,7 @@
                 })
             }
         })
-    }
+        }
+
 </script>
 
