@@ -71,9 +71,9 @@
                 @Html.DisplayFor(modelItem => item.TState)
             </td>
             <td>
-                @Html.ActionLink("修改", "UpdateTalent", new { id = item.TId }, new { @class = "layui-btn layui-btn-mini table-list-status layui-btn-warm" }) |
-                @Html.ActionLink("删除", "DeleteTalent", new { id = item.TId }, new { @class = "layui-btn layui-btn-mini layui-btn-normal table-list-status" })
-                @Html.ActionLink("详情", "Detail", new { id = item.TId }, new { @class = "layui-btn layui-btn-mini layui-btn-normal table-list-status" })
+                @Html.ActionLink("修改", "UpdateTalent", new { id = item.TId }, new { @class = "layui-btn layui-btn-mini table-list-status layui-btn-warm" }  ) |
+                @Html.ActionLink("删除", "DeleteTalent", new { id = item.TId }, new { @class = "layui-btn layui-btn-mini layui-btn-normal table-list-status" }) |
+                @Html.ActionLink("详情", "Detail", new { id = item.TId }      , new { @class = "layui-btn layui-btn-mini layui-btn-normal table-list-status" }) |
             </td>
         </tr>
     }
