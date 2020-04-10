@@ -8,7 +8,7 @@
 {
 
 
-<table class="table">
+<table class="layui-table" lay-skin="line">
     <tr>
         <td>报销人:</td>
         <td><input id="Text1" type="text" /></td>
@@ -66,9 +66,9 @@
         @Html.DisplayFor(modelItem => item.ApplyTime)
     </td>
     <td>
-        @Html.ActionLink("完成报销", "UpdateStage", new { id = item.Id })
-        @Html.ActionLink("修改", "Update", new { id = item.Id })
-        @Html.ActionLink("详情", "Detail", new { id = item.Id })
+        @Html.ActionLink("完成报销", "UpdateStage", new { id = item.Id }, new { @class = "layui-btn layui-btn-mini table-list-status layui-btn-warm" })
+        @Html.ActionLink("修改", "Update", new { id = item.Id } , new { @class = "layui-btn layui-btn-mini layui-btn-normal table-list-status" })
+        @Html.ActionLink("详情", "Detail", new { id = item.Id }, new { @class = "layui-btn layui-btn-mini layui-btn-normal table-list-status" })
     </td>
 </tr>
     }
