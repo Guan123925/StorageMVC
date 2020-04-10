@@ -884,6 +884,7 @@
     <Content Include="Views\Reim\Update.cshtml" />
     <Content Include="Views\Talents\UpdateTalent.cshtml" />
     <Content Include="Views\Talents\Detail.cshtml" />
+    <Content Include="Views\Project\ProjectAdd.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
