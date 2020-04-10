@@ -53,11 +53,11 @@
                 <td style="color:red">项目编号：</td>
                 <td><input type="text" id="txtNumber" placeholder="请输入项目编号" style="height:40px;width:240px" /></td>
                 <td style="color:blue;">项目名称：</td>
-                <td><input type="text" id="txtName" placeholder="请输入项目名称" style="height:40px;width:240px" /></td>
+                <td><input type="text" id="txtName"  placeholder="请输入项目名称" style="height:40px;width:240px" /></td>
             </tr>
             <tr>
                 <td style="color:fuchsia">项目描述：</td>
-                <td><input type="text" id="txtDetail" placeholder="请输入项目描述" style="height:40px;width:240px" /></td>
+                <td><input type="text" id="txtDetail" placeholder="请输入项目描述" style="height:40px;width:240px;" /></td>
                 <td style="color:palevioletred">项目负责人：</td>
                 <td>
                     <select id="selProject" style="height:40px;width:240px">
@@ -153,6 +153,7 @@
         return "";
     }
 
+
     function StageDelete(PlanId) {
         if (confirm("确定要删除么？")) {
             $.ajax({
@@ -217,7 +218,32 @@
         var ProjectOutTime = $("#txtOffTime").val();
         var ProjectStage = 0;
 
-
+        if (ProjectNumber == "") {
+            $("#txtNumber").attr('placeholder', '项目编号数据为空！！');
+            return;
+        }
+         if (ProjectName == "") {
+            $("#txtName").attr('placeholder', '项目名称数据为空！！');
+            return;
+        }
+         if (ProjectDescribe == "") {
+            $("#txtDetail").attr('placeholder', '项目描述数据为空！！');
+            return;
+        }
+        if (ProjectStartTime == "") {
+            $("#txtStartTime").css({color:"red"});
+            return;
+        }
+        else {
+            $("#txtStartTime").css({color:"black"});
+        }
+         if (ProjectOutTime == "") {
+            $("#txtOffTime").css({color:"red"});
+            return;
+        }
+         else {
+            $("#txtOffTime").css({color:"black"});
+        }
         $.ajax({
             url: "/Project/UpdateProject",
             data: {
