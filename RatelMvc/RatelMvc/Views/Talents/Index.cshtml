@@ -15,8 +15,6 @@
                 <input type="button" style="width:50px;height:33px;" class="layui-btn layui-btn-danger layui-btn-xs" name="name" value="添加" onclick="location.href='/Talents/AddTalent/'" />
                 <input type="text" class="form-control" name="Name" value="" placeholder="请输入名称" />
                 <input type="submit" name="name" value="查询" class="form-control " />
-                <input type="button" style="width:70px;height:33px;" class="layui-btn layui-btn-danger layui-btn-xs" name="name" value="添加简历" onclick="location.href='/Record/AddRecoed/'" />
-                <input type="button" style="width:70px;height:33px;" class="layui-btn layui-btn-danger layui-btn-xs" name="name" value="显示个人简历" onclick="location.href='/Record/Index/'" />
             </div>
         </div>
     </div>
@@ -73,8 +71,9 @@
                 @Html.DisplayFor(modelItem => item.TState)
             </td>
             <td>
-                @Html.ActionLink("修改", "PutTalent", new { id = item.TId }, new { @class = "layui-btn layui-btn-danger layui-btn-xs" }) |
-                @Html.ActionLink("删除", "DeleteTalent", new { id = item.TId }, new { @class = "layui-btn layui-btn-danger layui-btn-xs" })
+                @Html.ActionLink("修改", "UpdateTalent", new { id = item.TId }, new { @class = "layui-btn layui-btn-mini table-list-status layui-btn-warm" }) |
+                @Html.ActionLink("删除", "DeleteTalent", new { id = item.TId }, new { @class = "layui-btn layui-btn-mini layui-btn-normal table-list-status" })
+                @Html.ActionLink("详情", "Detail", new { id = item.TId }, new { @class = "layui-btn layui-btn-mini layui-btn-normal table-list-status" })
             </td>
         </tr>
     }

@@ -1,0 +1,47 @@
+﻿@model IEnumerable<Models.Talent.TalentsModel>
+
+@{
+    ViewBag.Title = "Detail";
+}
+    <h4>个人数据详情</h4>
+    <hr />
+@using (Html.BeginForm())
+{
+
+<table class="table table-bordered">
+    @foreach (var item in Model)
+    {
+        <tr>
+            <td>序号:</td>
+            <td> @Html.DisplayFor(modelItem => item.TId)</td>
+        </tr>
+        <tr>
+            <td>姓名:</td>
+            <td>@Html.DisplayFor(modelItem => item.TName)</td>
+        </tr>
+        <tr>
+            <td>联系方式:</td>
+            <td> @Html.DisplayFor(modelItem => item.TelePhone)</td>
+        </tr>
+        <tr>
+            <td>应聘岗位:</td>
+            <td> @Html.DisplayFor(modelItem => item.Station)</td>
+        </tr>
+        <tr>
+            <td>信息来源:</td>
+            <td> @Html.DisplayFor(modelItem => item.Information)</td>
+        </tr>
+        <tr>
+            <td>面试反馈:</td>
+            <td> @Html.DisplayFor(modelItem => item.FanKui)</td>
+        </tr>
+        <tr>
+            <td>人员状态:</td>
+            <td> @Html.DisplayFor(modelItem => item.TState)</td>
+        </tr>
+        <tr>
+            <td><input id="Button1" type="button" value="返回显示" class="layui-btn layui-btn-mini layui-btn-normal table-list-status" onclick="location.href='/Talents/Index/'" /></td>
+        </tr>
+    }
+</table>
+}

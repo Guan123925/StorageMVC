@@ -3,10 +3,10 @@
     ViewBag.Title = "AddRecoed";
 }
 
-<h2>AddRecoed</h2>
+<h2>添加个人简历</h2>
 @using (Html.BeginForm())
 {
-<table class="table">
+<table class="layui-table">
     <tr>
         <td>工作单位:</td>
         <td><input id="Text1" name="Organization" value="" />
@@ -38,7 +38,7 @@
     </tr>
     <tr>
         <td>
-            <input id="Submit1" type="submit" value="提交" />
+            <input id="Submit1" type="submit" value="提交"  class="layui-btn layui-btn-mini layui-btn-normal table-list-status" />
         <td>
     </tr>
 </table>
