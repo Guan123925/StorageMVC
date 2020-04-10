@@ -4,73 +4,78 @@
 }
 
 <h2>费用管理</h2>
+
 @using (Html.BeginForm())
 {
 
+    <table id="tbo" class="table">
+        <tr>
+            <td>报销人:</td>
+            <td><input value="" name="applyname" id="Text1" type="text" /></td>
+            <td>报销类型:</td>
+            <td>
+                <select name="lei1" id="Select1">
+                    <option value="请选择">请选择</option>
+                    <option value="餐费">餐费</option>
+                    <option value="打车费">打车费</option>
+                    <option value="其他费用">其他费用</option>
+                </select>
+            </td>
+            <td>报销状态:</td>
+            <td>
+                <select name="zhuang1" id="Select2">
+                    <option value="0">未报销</option>
+                    <option value="1">已报销</option>
+                </select>
+            </td>
+        </tr>
+        <tr>
+            <td><input id="Button1" type="submit" value="查询" name="name" class="btn btn-info" /></td>
+        </tr>
+    </table>
 
-<table class="layui-table" lay-skin="line">
-    <tr>
-        <td>报销人:</td>
-        <td><input id="Text1" type="text" /></td>
-        <td>报销类型:</td>
-        <td><select id="Select1">
-            <option>请选择</option>
-            <option>餐费</option>
-            <option>打车费</option>
-            <option>其他费用</option>
-        </select></td>
-        <td>报销状态:</td>
-        <td><select id="Select1">
-            <option>未报销</option>
-            <option>已报销</option>
-            </select></td>
-    </tr>
-    <tr>
-        <td><input id="Button1" type="button" value="查询" class="btn btn-info"/></td>
-    </tr>
-</table>
-<table class="table table-bordered">
-    <tr>
-        <td>
-            <input id="Button1" type="button" value="新增" class="btn btn-info" onclick="window.location.href = '/Reim/Add' " />
-        </td>
-    </tr>
-    <tr>
-        <td>序号</td>
-        <td>报销类型</td>
-        <td>金额(元)</td>
-        <td>报销人</td>
-        <td>状态</td>
-        <td>报销日期</td>
-        <td>操作</td>
-    </tr>
-    @foreach (var item in Model)
-    {
-<tr>
-    <td>
-        @Html.DisplayFor(modelItem => item.Id)
-    </td>
-    <td>
-        @Html.DisplayFor(modelItem => item.CostId)
-    </td>
-    <td>
-        @Html.DisplayFor(modelItem => item.Money)
-    </td>
-    <td>
-        @Html.DisplayFor(modelItem => item.ApplyName)
-    </td>
-    <td style="color:skyblue">
-        @Html.DisplayFor(modelItem => item.ApplyState)
-    </td>
-    <td>
-        @Html.DisplayFor(modelItem => item.ApplyTime)
-    </td>
-    <td>
-        @Html.ActionLink("完成报销", "UpdateStage", new { id = item.Id }, new { @class = "layui-btn layui-btn-mini table-list-status layui-btn-warm" })
-        @Html.ActionLink("修改", "Update", new { id = item.Id } , new { @class = "layui-btn layui-btn-mini layui-btn-normal table-list-status" })
-        @Html.ActionLink("详情", "Detail", new { id = item.Id }, new { @class = "layui-btn layui-btn-mini layui-btn-normal table-list-status" })
-    </td>
-</tr>
-    }
-</table>
+    <table class="table table-bordered">
+        <tr>
+            <td>
+                <input id="Button1" type="button" value="新增" class="btn btn-info" onclick="window.location.href = '/Reim/Add' " />
+            </td>
+        </tr>
+        <tr>
+            <td>序号</td>
+            <td>报销类型</td>
+            <td>金额(元)</td>
+            <td>报销人</td>
+            <td>状态</td>
+            <td>报销日期</td>
+            <td>操作</td>
+        </tr>
+        @foreach (var item in Model)
+        {
+            <tr>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Id)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.CostId)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Money)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.ApplyName)
+                </td>
+                <td style="color:skyblue">
+                    @Html.DisplayFor(modelItem => item.ApplyState)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.ApplyTime)
+                </td>
+                <td>
+                    @Html.ActionLink("完成报销", "UpdateReimburseStage", new { id = item.Id })
+                    @Html.ActionLink("修改", "Update", new { id = item.Id })
+                    @Html.ActionLink("详情", "Detail", new { id = item.Id })
+                </td>
+            </tr>
+        }
+    </table>
 }

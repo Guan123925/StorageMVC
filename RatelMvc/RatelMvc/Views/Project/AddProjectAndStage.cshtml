@@ -53,15 +53,15 @@
                 <td style="color:red">项目编号：</td>
                 <td><input type="text" id="txtNumber" placeholder="请输入项目编号" style="height:40px;width:240px" /></td>
                 <td style="color:blue;">项目名称：</td>
-                <td><input type="text" id="txtName" placeholder="请输入项目名称" style="height:40px;width:240px" /></td>
+                <td><input type="text" id="txtName"  placeholder="请输入项目名称" style="height:40px;width:240px" /></td>
             </tr>
             <tr>
                 <td style="color:fuchsia">项目描述：</td>
-                <td><input type="text" id="txtDetail" placeholder="请输入项目描述" style="height:40px;width:240px" /></td>
+                <td><input type="text" id="txtDetail" placeholder="请输入项目描述" style="height:40px;width:240px;" /></td>
                 <td style="color:palevioletred">项目负责人：</td>
                 <td>
                     <select id="selProject" style="height:40px;width:240px">
-                        <option value="0">请选择</option>
+                        <option value="请选择">请选择</option>
                     </select>
                 </td>
             </tr>
@@ -69,13 +69,13 @@
                 <td style="color:palevioletred">技术负责人：</td>
                 <td>
                     <select id="selTech" style="height:40px;width:240px">
-                        <option value="0">请选择</option>
+                        <option value="请选择">请选择</option>
                     </select>
                 </td>
                 <td style="color:palevioletred">产品负责人：</td>
                 <td>
                     <select id="selProduct" style="height:40px;width:240px">
-                        <option value="0">请选择</option>
+                        <option value="请选择">请选择</option>
                     </select>
                 </td>
             </tr>
@@ -83,13 +83,13 @@
                 <td style="color:palevioletred">测试负责人：</td>
                 <td>
                     <select id="selTest" style="height:40px;width:240px">
-                        <option value="0">请选择</option>
+                        <option value="请选择">请选择</option>
                     </select>
                 </td>
                 <td style="color:palevioletred">市场负责人：</td>
                 <td>
                     <select id="selMark" style="height:40px;width:240px">
-                        <option value="0">请选择</option>
+                        <option value="请选择">请选择</option>
                     </select>
                 </td>
             </tr>
@@ -152,6 +152,7 @@
         }
         return "";
     }
+
 
     function StageDelete(PlanId) {
         if (confirm("确定要删除么？")) {
@@ -217,7 +218,32 @@
         var ProjectOutTime = $("#txtOffTime").val();
         var ProjectStage = 0;
 
-
+        if (ProjectNumber == "") {
+            $("#txtNumber").attr('placeholder', '项目编号数据为空！！');
+            return;
+        }
+         if (ProjectName == "") {
+            $("#txtName").attr('placeholder', '项目名称数据为空！！');
+            return;
+        }
+         if (ProjectDescribe == "") {
+            $("#txtDetail").attr('placeholder', '项目描述数据为空！！');
+            return;
+        }
+        if (ProjectStartTime == "") {
+            $("#txtStartTime").css({color:"red"});
+            return;
+        }
+        else {
+            $("#txtStartTime").css({color:"black"});
+        }
+         if (ProjectOutTime == "") {
+            $("#txtOffTime").css({color:"red"});
+            return;
+        }
+         else {
+            $("#txtOffTime").css({color:"black"});
+        }
         $.ajax({
             url: "/Project/UpdateProject",
             data: {

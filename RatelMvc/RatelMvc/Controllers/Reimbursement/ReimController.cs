@@ -64,5 +64,27 @@ namespace RatelMvc.Controllers.Reimbursement
                 Response.Write("<script>alert('修改失败');location.href='/Reim/Show/'<script>");
             }
         }
+        [HttpPost]
+        public ActionResult show(string applyname, string lei1, int zhuang1)
+        {
+            string json = helper.Get("api/Reim/Reimbursements?ApplyName=" + applyname + "&CostId=" + lei1 + "&ApplyState=" + zhuang1 + "");
+            List<ReimbursementInfo> list = JsonConvert.DeserializeObject<List<ReimbursementInfo>>(json);
+            return View(list);
+        }
+        [HttpPost]
+        public void UpdateReimburseStage(int ReimId)
+        {
+            string str = helper.Get("api/Reim/UpdateReimburseStage?ReimId="+ReimId);
+            int i = int.Parse(str);
+
+            if (i > 0)
+            {
+                Response.Write("<script>alert('已报销');location.href='/Reim/Show/'</script>");
+            }
+            else
+            {
+                Response.Write("<script>alert('报销失败');location.href='/Reim/Show/'<script>");
+            }
+        }
     }
 }
