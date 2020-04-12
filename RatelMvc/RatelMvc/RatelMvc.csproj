@@ -1451,7 +1451,6 @@
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
-    <Folder Include="Views\Sess\" />
     <Folder Include="ztree\.git\objects\info\" />
     <Folder Include="ztree\.git\refs\tags\" />
   </ItemGroup>
