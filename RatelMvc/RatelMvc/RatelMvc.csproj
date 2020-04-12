@@ -859,13 +859,9 @@
     <Content Include="Views\Home\About.cshtml" />
     <Content Include="Views\Home\Contact.cshtml" />
     <Content Include="Views\Home\Index.cshtml" />
-    <Content Include="Views\Master\Project\ProjectInfoMation.cshtml" />
     <Content Include="Views\Project\InfoMation.cshtml" />
-    <Content Include="Views\Master\Project\ProjectDetail.cshtml" />
     <Content Include="Views\Project\Detail.cshtml" />
-    <Content Include="Views\Master\Project\ProjectAddOrUpdate.cshtml" />
     <Content Include="Views\Project\AddProjectAndStage.cshtml" />
-    <Content Include="Views\Master\Project\StageUpdate.cshtml" />
     <Content Include="Views\Project\StageUpdate.cshtml" />
     <Content Include="Views\Users\RegistShow.cshtml" />
     <Content Include="Views\Record\AddRecoed.cshtml" />
