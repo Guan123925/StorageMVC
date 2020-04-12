@@ -27,5 +27,33 @@ namespace BLL
         {
             return ApiRequestHelp.Post<UserRegistRequest,UserRegistReponse>(request);
         }
+
+        /// <summary>
+        /// 部门
+        /// </summary>
+        /// <param name="request"></param>
+        /// <returns></returns>
+        public DepartmentInfoGetResponse DepartmentInfoGet(DepartmentInfoGetRequest request)
+        {
+            return ApiRequestHelp.Post<DepartmentInfoGetRequest, DepartmentInfoGetResponse>(request);
+        }
+        /// <summary>
+        /// 职位
+        /// </summary>
+        /// <param name="request"></param>
+        /// <returns></returns>
+        public PositionInfoGetResponse PositionInfoGet(PositionInfoGetRequest request)
+        {
+            return ApiRequestHelp.Post<PositionInfoGetRequest, PositionInfoGetResponse>(request);
+        }
+        /// <summary>
+        /// 员工
+        /// </summary>
+        /// <param name="request"></param>
+        /// <returns></returns>
+        public StaffInfoGetResponse StaffInfoGet(StaffInfoGetRequset request)
+        {
+            return ApiRequestHelp.Post<StaffInfoGetRequset, StaffInfoGetResponse>(request);
+        }
     }
 }

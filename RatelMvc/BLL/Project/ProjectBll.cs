@@ -10,15 +10,6 @@ namespace BLL
     public  class ProjectBll
     {
         /// <summary>
-        /// 项目参与人员绑定
-        /// 根据所在职位部门
-        /// 加入单例
-        /// </summary>
-        public UserGetProjectResponse BandProjectbinding(UserGetProjectRequest request)
-        {
-            return ApiRequestHelp.Post<UserGetProjectRequest, UserGetProjectResponse>(request);
-        }
-        /// <summary>
         /// 修改项目阶段
         /// </summary>
         /// <param name="request"></param>
