@@ -6,7 +6,7 @@
 <h2>修改费用</h2>
 @using (Html.BeginForm())
 {
-<table class="table table-bordered">
+<table class="layui-table">
     @foreach (var item in Model)
     {
         <tr>
@@ -39,7 +39,7 @@
         </tr>
         <tr>
             <td>
-                <input id="Submit1" type="submit" value="修改" class="btn btn-info" />
+                <input id="Submit1" type="submit" value="修改" class="layui-btn layui-btn-mini layui-btn-normal table-list-status" />
             </td>
         </tr>
     }

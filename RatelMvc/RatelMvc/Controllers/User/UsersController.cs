@@ -78,5 +78,38 @@ namespace RatelMvc.Controllers
         {
             return View();
         }
+
+        [HttpPost]
+        /// <summary>
+        /// 部门
+        /// </summary>
+        /// <param name="request"></param>
+        /// <returns></returns>
+        public JsonResult DepartmentInfoGet(DepartmentInfoGetRequest request)
+        {
+            return Json(bll.DepartmentInfoGet(request));
+        }
+
+        [HttpPost]
+        /// <summary>
+        /// 职位
+        /// </summary>
+        /// <param name="request"></param>
+        /// <returns></returns>
+        public JsonResult PositionInfoGet(PositionInfoGetRequest request)
+        {
+            return Json(bll.PositionInfoGet(request));
+        }
+
+        [HttpPost]
+        /// <summary>
+        /// 员工
+        /// </summary>
+        /// <param name="request"></param>
+        /// <returns></returns>
+        public JsonResult StaffInfoGet(StaffInfoGetRequset request)
+        {
+            return Json(bll.StaffInfoGet(request));
+        }
     }
 }
