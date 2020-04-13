@@ -38,26 +38,27 @@ namespace RatelMvc.Controllers.Talent
             }
         }
 
-        public ActionResult UpdateTalent(string Id)
+        public ActionResult UpdateTalent(int Id)
         {
-            string json = helper.Get("api/Talents/GetTalentId?Id=" + Id);
+            string json = helper.Get("api/Talents/TalentId?Id=" + Id);
             List<TalentsModel> list = JsonConvert.DeserializeObject<List<TalentsModel>>(json);
             return View(list);
         }
         [HttpPost]
         public void UpdateTalent(TalentsModel model)
         {
-            string str = helper.Put("api/Talents/UpdateTalent", JsonConvert.SerializeObject(model));
+            string str = helper.Post("api/Talents/UpdateTalent", JsonConvert.SerializeObject(model));
 
             int i = int.Parse(str);
 
             if (i > 0)
             {
-                Response.Write("<script>alert('修改成功');location.href='/Talents/Index/'<script>");
+                //Response.Write("<script>alert('修改成功');location.href='/Talents/Index/'<script>");
+                Response.Write("<script>alert('修改成功');location.href='/Talents/Index'</script>");
             }
             else
             {
-                Response.Write("<script>alert('修改失败');location.href='/Talents/Index/'<script>");
+                Response.Write("<script>alert('修改失败')<script>");
             }
         }
         public void DeleteTalent(int Id)
@@ -78,7 +79,7 @@ namespace RatelMvc.Controllers.Talent
         [HttpGet]
         public ActionResult Detail(int Id)
         {
-            string json = helper.Get("api/Talents/GetTalentId?Id=" + Id);
+            string json = helper.Get("api/Talents/TalentId?Id=" + Id);
             List<TalentsModel> list = JsonConvert.DeserializeObject<List<TalentsModel>>(json);
             return View(list);
         }
