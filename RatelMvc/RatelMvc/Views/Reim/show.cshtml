@@ -51,31 +51,33 @@
         </tr>
         @foreach (var item in Model)
         {
-            <tr>
-                <td>
-                    @Html.DisplayFor(modelItem => item.Id)
-                </td>
-                <td>
-                    @Html.DisplayFor(modelItem => item.CostId)
-                </td>
-                <td>
-                    @Html.DisplayFor(modelItem => item.Money)
-                </td>
-                <td>
-                    @Html.DisplayFor(modelItem => item.ApplyName)
-                </td>
-                <td style="color:skyblue">
-                    @Html.DisplayFor(modelItem => item.ApplyState)
-                </td>
-                <td>
-                    @Html.DisplayFor(modelItem => item.ApplyTime)
-                </td>
-                <td>
-                    @Html.ActionLink("完成报销", "UpdateReimburseStage", new { id = item.Id }, new { @class = "layui-btn layui-btn-mini table-list-status layui-btn-warm" })
-                    @Html.ActionLink("修改", "Update", new { id = item.Id }, new { @class = "layui-btn layui-btn-mini layui-btn-normal table-list-status" })
-                    @Html.ActionLink("详情", "Detail", new { id = item.Id }, new { @class = "layui-btn layui-btn-mini layui-btn-normal table-list-status" })
-                </td>
-            </tr>
+    <tr>
+        <td>
+            @Html.DisplayFor(modelItem => item.Id)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.CostId)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Money)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.ApplyName)
+        </td>
+        <td style="color:skyblue">
+            @(item.ApplyState==1?"未报销":"已报销")
+        </td>
+       
+        <td>
+            @Html.DisplayFor(modelItem => item.ApplyTime)
+        </td>
+        <td>
+            @Html.ActionLink("修改", "Update", new { id = item.Id }, new { @class = "layui-btn layui-btn-mini layui-btn-normal table-list-status" })
+            @Html.ActionLink("详情", "Detail", new { id = item.Id }, new { @class = "layui-btn layui-btn-mini layui-btn-normal table-list-status" })
+            @Html.ActionLink("报销", "UpdateReimburseStage", new { id = item.Id }, new { @class = "layui-btn layui-btn-mini table-list-status layui-btn-warm" })
+
+        </td>
+    </tr>
         }
     </table>
 }
