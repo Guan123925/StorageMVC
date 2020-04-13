@@ -1,7 +1,6 @@
 ﻿
 @{
-    ViewBag.Title = "AddProjectAndStage";
-    Layout = "~/Views/Shared/_Layout.cshtml";
+    Layout = null;
 }
 <!DOCTYPE html>
 
@@ -11,14 +10,19 @@
     <title>@ViewBag.Title</title>
     <link rel="stylesheet" type="text/css" href="~/admin/layui/css/layui.css" />
     <link rel="stylesheet" type="text/css" href="~/admin/css/admin.css" />
+    <link href="~/ztree/css/zTreeStyle/zTreeStyle.css" rel="stylesheet" />
+    <link href="~/ztree/css/demo.css" rel="stylesheet" />
     <script src="~/Scripts/jquery-3.4.1.min.js"></script>
+    <script src="~/ztree/js/jquery.ztree.core.js"></script>
+    <script src="~/ztree/js/jquery.ztree.excheck.js"></script>
     <script src="~/Scripts/jquery.unobtrusive-ajax.min.js"></script>
+    <script src="~/Scripts/zTreeConfiguration.js"></script>
     <style>
         #tbo td {
-            padding-left:20px;
-            padding-top:10px;
-            padding-bottom:10px;
-            padding-right:20px;
+            padding-left: 20px;
+            padding-top: 10px;
+            padding-bottom: 10px;
+            padding-right: 20px;
         }
 
         #tbod th {
@@ -38,13 +42,40 @@
                 border: 1px solid #000000;
                 text-align: center;
             }
+
+        .black_overlay {
+            display: none;
+            position: absolute;
+            top: 0%;
+            left: 0%;
+            width: 100%;
+            height: 100%;
+            background-color: black;
+            z-index: 1001;
+            opacity: .80;
+            filter: alpha(opacity=88);
+        }
+
+        .white_content {
+            display: none;
+            position: absolute;
+            top: 25%;
+            left: 20%;
+            width: 15%;
+            height: 30%;
+            padding: 20px;
+            border: 1px solid black;
+            background-color: #d1a4a4;
+            z-index: 1002;
+            overflow: auto;
+        }
     </style>
 </head>
 
 <body>
     <div style="float:right;margin-right:270px;">
         <button class="layui-btn layui-btn-mini layui-btn-normal table-list-status" style="width:60px;height:40px;margin-top:250px;" onclick="ProjectUpdate()">保存</button>
-        <button class="layui-btn layui-btn-small layui-btn-danger del-btn" style="width:60px;height:40px;margin-left:50px;margin-top:250px;" onclick="ExitProject()">取消</button>
+        <button class="layui-btn layui-btn-small layui-btn-danger del-btn" style="width:60px;height:40px;margin-left:50px;margin-top:250px;" onclick="ExitProjects()">取消</button>
     </div>
     <div style="margin-top:30px;">
         <input type="hidden" id="hidProjectId" value="@Request["ProjectId"]" />
@@ -60,37 +91,72 @@
                 <td><input type="text" id="txtDetail" placeholder="请输入项目描述" style="height:40px;width:240px;" /></td>
                 <td style="color:palevioletred">项目负责人：</td>
                 <td>
-                    <select id="selProject" style="height:40px;width:240px">
-                        <option value="请选择">请选择</option>
-                    </select>
+                    <button id="ProjectDetail" style="width:240px;height:40px;" href="javascript:void(0)" onclick="document.getElementById('light').style.display = 'block'; document.getElementById('fade').style.display = 'block';">选择项目负责人</button>
+                    <div id="light" class="white_content">
+                        <button href="javascript:void(0)" onclick="document.getElementById('light').style.display = 'none'; document.getElementById('fade').style.display = 'none';">确定选中</button>
+                        <div>
+                            <div id="treeDemo" class="ztree">
+
+                            </div>
+                        </div>
+                    </div>
+                    <div id="fade" class="black_overlay"></div>
                 </td>
             </tr>
             <tr>
                 <td style="color:palevioletred">技术负责人：</td>
                 <td>
-                    <select id="selTech" style="height:40px;width:240px">
-                        <option value="请选择">请选择</option>
-                    </select>
+                    <button id="technologyDetail" style="width:240px;height:40px;" href="javascript:void(0)" onclick="document.getElementById('light1').style.display='block';document.getElementById('fade').style.display='block'">选择技术负责人</button>
+                    <div id="light1" class="white_content">
+                        <button href="javascript:void(0)" onclick="document.getElementById('light1').style.display = 'none'; document.getElementById('fade').style.display = 'none';">确定选中</button>
+                        <div>
+                            <div id="treeDemoTechnology" class="ztree">
+
+                            </div>
+                        </div>
+                    </div>
+                    <div id="fade" class="black_overlay"></div>
                 </td>
                 <td style="color:palevioletred">产品负责人：</td>
                 <td>
-                    <select id="selProduct" style="height:40px;width:240px">
-                        <option value="请选择">请选择</option>
-                    </select>
+                    <button id="ProductDetail" style="width:240px;height:40px;" href="javascript:void(0)" onclick="document.getElementById('light2').style.display='block';document.getElementById('fade').style.display='block'">选择产品负责人</button>
+                    <div id="light2" class="white_content">
+                        <button href="javascript:void(0)" onclick="document.getElementById('light2').style.display='none';document.getElementById('fade').style.display='none'">确定选中</button>
+                        <div>
+                            <div id="treeDemoProduct" class="ztree">
+
+                            </div>
+                        </div>
+                    </div>
+                    <div id="fade" class="black_overlay"></div>
                 </td>
             </tr>
             <tr>
                 <td style="color:palevioletred">测试负责人：</td>
                 <td>
-                    <select id="selTest" style="height:40px;width:240px">
-                        <option value="请选择">请选择</option>
-                    </select>
+                    <button id="TestDetail" style="width:240px;height:40px;" href="javascript:void(0)" onclick="document.getElementById('light3').style.display='block';document.getElementById('fade').style.display='block'">选择测试负责人</button>
+                    <div id="light3" class="white_content">
+                        <button href="javascript:void(0)" onclick="document.getElementById('light3').style.display='none';document.getElementById('fade').style.display='none'">确定选中</button>
+                        <div>
+                            <div id="treeDemoTest" class="ztree">
+
+                            </div>
+                        </div>
+                    </div>
+                    <div id="fade" class="black_overlay"></div>
                 </td>
                 <td style="color:palevioletred">市场负责人：</td>
                 <td>
-                    <select id="selMark" style="height:40px;width:240px">
-                        <option value="请选择">请选择</option>
-                    </select>
+                    <button id="MarkDetail" style="width:240px;height:40px;" href="javascript:void(0)" onclick="document.getElementById('light4').style.display='block';document.getElementById('fade').style.display='block'">选择市场负责人</button>
+                    <div id="light4" class="white_content">
+                        <button href="javascript:void(0)" onclick="document.getElementById('light4').style.display='none';document.getElementById('fade').style.display='none'">确定选中</button>
+                        <div>
+                            <div id="treeDemoMark" class="ztree">
+
+                            </div>
+                        </div>
+                    </div>
+                    <div id="fade" class="black_overlay"></div>
                 </td>
             </tr>
             <tr>
@@ -134,11 +200,11 @@
     $().ready(function () {
         ProjectBackFill();
         StageDetail();
-        ProjectBand();
-        MarkBand();
-        TestBand();
-        TechBand();
-        ProductBand();
+        //ProjectBand();
+        //MarkBand();
+        //TestBand();
+        //TechBand();
+        //ProductBand();
     })
 
 
@@ -198,6 +264,11 @@
                     $("#txtDetail").val(res.Project[0].ProjectDescribe);
                     $("#txtStartTime").val(ChangeDateFormat(res.Project[0].ProjectStartTime));
                     $("#txtOffTime").val(ChangeDateFormat(res.Project[0].ProjectOutTime));
+                    $("#ProjectDetail").text(res.Project[0].ProjectStaffId);
+                    $("#ProductDetail").text(res.Project[0].ProductStaffId);
+                    $("#TestDetail").text(res.Project[0].TestStaffId);
+                    $("#MarkDetail").text(res.Project[0].MarketStaffId);
+                    $("#technologyDetail").text(res.Project[0].TechStaffId);
                     ProjectStageIdOrBackFill = res.Project[0].ProjectStage;
                 })
             }
@@ -209,11 +280,11 @@
         var ProjectNumber = $("#txtNumber").val();
         var ProjectName = $("#txtName").val();
         var ProjectDescribe = $("#txtDetail").val();
-        var ProjectStaffId = $("#selProject").val();
-        var TechStaffId = $("#selTech").val();
-        var ProductStaffId = $("#selProduct").val();
-        var TestStaffId = $("#selTest").val();
-        var MarketStaffId = $("#selMark").val();
+        var ProjectStaffId = $("#ProjectDetail").text();
+        var TechStaffId = $("#technologyDetail").text();
+        var ProductStaffId = $("#ProductDetail").text();
+        var TestStaffId = $("#TestDetail").text();
+        var MarketStaffId = $("#MarkDetail").text();
         var ProjectStartTime = $("#txtStartTime").val();
         var ProjectOutTime = $("#txtOffTime").val();
         var ProjectStage = 0;
@@ -265,7 +336,9 @@
             success: function (res) {
                 if (res.IsRegistSuccess) {
                     alert(res.Message);
-                    location.href = "/Project/InfoMation";
+                      window.opener=null;
+                        window.open('','_self');
+                        window.close();
                 }
                 else {
                     alert(res.Message);
@@ -274,112 +347,11 @@
         })
     }
 
-    //function AddStage() {
-    //    window.location = "/Project/StageUpdate?ProjectStageId="+;
-    //}
 
-    function ProjectBand() {
-        var DepartId = 1;
-
-        $.ajax({
-            url: "/Project/BandProjectbinding",
-            data: {
-                DepartId: DepartId
-            },
-            type: "post",
-            datatype: "json",
-            success: function (res) {
-                var list = "";
-                $(res.info).each(function () {
-                    list += "<option value='" + this.PositName + "' >" + this.PositName + "</option>";
-                })
-                $("#selProject").append(list);
-            }
-        })
-    }
-
-    function TechBand() {
-        var DepartId = 2;
-
-        $.ajax({
-            url: "/Project/BandProjectbinding",
-            data: {
-                DepartId: DepartId
-            },
-            type: "post",
-            datatype: "json",
-            success: function (res) {
-                var list = "";
-                $(res.info).each(function () {
-                    list += "<option value='" + this.PositName + "' >" + this.PositName + "</option>";
-                })
-                $("#selTech").append(list);
-            }
-        })
-    }
-
-    function ProductBand() {
-        var DepartId = 3;
-
-        $.ajax({
-            url: "/Project/BandProjectbinding",
-            data: {
-                DepartId: DepartId
-            },
-            type: "post",
-            datatype: "json",
-            success: function (res) {
-                var list = "";
-                $(res.info).each(function () {
-                    list += "<option value='" + this.PositName + "' >" + this.PositName + "</option>";
-                })
-                $("#selProduct").append(list);
-            }
-        })
-    }
-
-    function TestBand() {
-        var DepartId = 4;
-
-        $.ajax({
-            url: "/Project/BandProjectbinding",
-            data: {
-                DepartId: DepartId
-            },
-            type: "post",
-            datatype: "json",
-            success: function (res) {
-                var list = "";
-                $(res.info).each(function () {
-                    list += "<option value='" + this.PositName + "' >" + this.PositName + "</option>";
-                })
-                $("#selTest").append(list);
-            }
-        })
-    }
-
-    function MarkBand() {
-        var DepartId = 5;
-
-        $.ajax({
-            url: "/Project/BandProjectbinding",
-            data: {
-                DepartId: DepartId
-            },
-            type: "post",
-            datatype: "json",
-            success: function (res) {
-                var list = "";
-                $(res.info).each(function () {
-                    list += "<option value='" + this.PositName + "' >" + this.PositName + "</option>";
-                })
-                $("#selMark").append(list);
-            }
-        })
-    }
-
-    function ExitProject() {
-        window.location = "/Project/InfoMation";
+    function ExitProjects() {
+        window.opener=null;
+        window.open('','_self');
+        window.close();
     }
 
 

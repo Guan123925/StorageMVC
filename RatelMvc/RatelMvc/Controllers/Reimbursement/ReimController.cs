@@ -71,6 +71,8 @@ namespace RatelMvc.Controllers.Reimbursement
             List<ReimbursementInfo> list = JsonConvert.DeserializeObject<List<ReimbursementInfo>>(json);
             return View(list);
         }
+
+  
         [HttpPost]
         public void UpdateReimburseStage(int ReimId)
         {
