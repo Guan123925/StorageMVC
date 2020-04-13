@@ -12,6 +12,12 @@ namespace RatelMvc.Controllers.Talent
     {
 
         HttpClientHelper helper = new HttpClientHelper("http://localhost:51845/");
+        public ActionResult Index(string CName)
+        {
+            string json = helper.Get("api/Talents/Show?CName=" + CName);
+            List<TalentsModel> list = JsonConvert.DeserializeObject<List<TalentsModel>>(json);
+            return View(list);
+        }
         // GET: Talents
         public ActionResult AddTalent()
         {
@@ -31,14 +37,8 @@ namespace RatelMvc.Controllers.Talent
                 Response.Write("<script>alert('添加成功')</script>");
             }
         }
-        [HttpGet]
-        public ActionResult Index(string Name)
-        {
-            string json = helper.Get("api/Talents/Show?Name=" + Name);
-            List<TalentsModel> list = JsonConvert.DeserializeObject <List<TalentsModel>>(json);
-            return View(list);
-        }
-        public ActionResult UpdateTalent(int Id)
+
+        public ActionResult UpdateTalent(string Id)
         {
             string json = helper.Get("api/Talents/GetTalentId?Id=" + Id);
             List<TalentsModel> list = JsonConvert.DeserializeObject<List<TalentsModel>>(json);
