@@ -8,7 +8,7 @@ namespace Models.Talent
 {
     public class TalentsModel
     {
-        public int TId { get; set; }
+        public int Id { get; set; }
         public string TName { get; set; }
         public string TelePhone { get; set; }
         public string Graduate { get; set; }

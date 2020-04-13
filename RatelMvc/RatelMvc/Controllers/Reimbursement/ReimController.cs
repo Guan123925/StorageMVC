@@ -1,7 +1,10 @@
-﻿using Models;
-using Newtonsoft.Json;
+﻿using System;
 using System.Collections.Generic;
+using System.Linq;
+using System.Web;
 using System.Web.Mvc;
+using Newtonsoft.Json;
+using Models;
 
 namespace RatelMvc.Controllers.Reimbursement
 {
@@ -35,8 +38,8 @@ namespace RatelMvc.Controllers.Reimbursement
         }
         public ActionResult Detail(int Id)
         {
-            string json = helper.Get("api/Reim/ReimbursementInfos?DepartId=" + Id);
-            List<ReimbursementInfo> list = JsonConvert.DeserializeObject<List<ReimbursementInfo>>(json);
+            string json = helper.Get("api/Reim/ReimbursementInfos?DepartId="+Id);
+            List <ReimbursementInfo> list = JsonConvert.DeserializeObject<List<ReimbursementInfo>>(json);
             return View(list);
         }
         public ActionResult Update(int id)
@@ -69,10 +72,11 @@ namespace RatelMvc.Controllers.Reimbursement
             return View(list);
         }
 
+  
         [HttpPost]
         public void UpdateReimburseStage(int ReimId)
         {
-            string str = helper.Get("api/Reim/UpdateReimburseStage?ReimId=" + ReimId);
+            string str = helper.Get("api/Reim/UpdateReimburseStage?ReimId="+ReimId);
             int i = int.Parse(str);
 
             if (i > 0)
@@ -81,11 +85,8 @@ namespace RatelMvc.Controllers.Reimbursement
             }
             else
             {
-                Response.Write("<script>alert('未报销');location.href='/Reim/Show/'<script>");
+                Response.Write("<script>alert('报销失败');location.href='/Reim/Show/'<script>");
             }
         }
-    
-       
-
     }
 }

@@ -12,9 +12,9 @@
     <div class="form-inline" style="margin-top:30px;margin-bottom:20px">
         <div class="row">
             <div class="col-lg-12">
-                <input type="button" style="width:50px;height:33px;" class="layui-btn layui-btn-danger layui-btn-xs" name="name" value="添加" onclick="location.href='/Talents/AddTalent/'" />
-                <input type="text" class="form-control" name="Name" value="" placeholder="请输入名称" />
+                <input type="text" class="form-control" name="CName" value="" placeholder="请输入名称" />
                 <input type="submit" name="name" value="查询" class="form-control " />
+                <input type="button" style="width:50px;height:33px;" class="layui-btn layui-btn-danger layui-btn-xs" name="name" value="添加" onclick="location.href='/Talents/AddTalent/'" />
             </div>
         </div>
     </div>
@@ -50,7 +50,7 @@
     {
         <tr>
             <td>
-                @Html.DisplayFor(modelItem => item.TId)
+                @Html.DisplayFor(modelItem => item.Id)
             </td>
             <td>
                 @Html.DisplayFor(modelItem => item.TName)
@@ -71,9 +71,9 @@
                 @Html.DisplayFor(modelItem => item.TState)
             </td>
             <td>
-                @Html.ActionLink("修改", "UpdateTalent", new { id = item.TId }, new { @class = "layui-btn layui-btn-mini table-list-status layui-btn-warm" }  ) |
-                @Html.ActionLink("删除", "DeleteTalent", new { id = item.TId }, new { @class = "layui-btn layui-btn-mini layui-btn-normal table-list-status" }) |
-                @Html.ActionLink("详情", "Detail", new { id = item.TId }      , new { @class = "layui-btn layui-btn-mini layui-btn-normal table-list-status" }) |
+                @Html.ActionLink("修改", "UpdateTalent", new { id = item.Id }, new { @class = "layui-btn layui-btn-mini table-list-status layui-btn-warm" }  ) |
+                @Html.ActionLink("删除", "DeleteTalent", new { id = item.Id }, new { @class = "layui-btn layui-btn-mini layui-btn-normal table-list-status" }) |
+                @Html.ActionLink("详情", "Detail", new { id = item.Id }      , new { @class = "layui-btn layui-btn-mini layui-btn-normal table-list-status" }) |
             </td>
         </tr>
     }
